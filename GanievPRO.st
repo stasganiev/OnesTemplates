@@ -1,0 +1,2646 @@
+﻿{1,
+{4,
+{"Ganiev.PRO (v8.3.1.5 from 01 Aug 2023)",1,0,"",""},
+{0,
+{"Ваши предложения по улучшению / Your suggestions for improvement",0,0,"","// Есть мысли по развитию шаблонов? Пишите на e-mail: stas@ganiev.pro или в Telegram: @stas_ganiev
+
+// If you have a things about improvements, text me please: stas@ganiev.pro"}
+},
+{0,
+{"Описание и история изменений / Description and versions history",0,0,"","// Шаблоны для работы в конфигураторе с системами 1С:Предприятие версии 8.3
+// Последнюю версию шаблонов всегда можно найти тут: 1c.chistov.pro
+// С уважением, Стас Ганиев (@stas_ganiev)
+
+#Область 2023_07
+	// За основу комплекта шаблонов взята последняя версия разработки от Павла Чистова (с)
+	// Устранены неоднозначности результата в рзных версиях одного шаблона; исправлены мелкие опечатки
+	// Реализована английская версия для всех шаблонов
+	// Добавлены вставки областей модулей с указание предопределенных имен спец. областей
+	// Добавлены инструкции препроцессора для редактирования расширений в режиме контроля
+	// Добавлена инструкция препроцессора - заглушка для неисполняемого кода
+	// Инструкция препроцессора для выделения серверного контекста
+	// Комментарии тех.долга
+	// Расширенные варианты процедур и функций
+	// Новые директивы компиляции и инструкции препроцесоора
+	// Команды со спецсимволами можно вызывать через прямой и обратный слэш
+	// Дня универсальных коллекций добавлен общий сниппет ""Коллек[ция]"", расширены возможности работы сколлекциями
+	// Новая группа шаблонов ""ОткрытьФ[орму]"" для разных вариантов открытия управляемой формы справочника
+	// Добавлены сокращения для ЗаполнитьЗначенияСвойств(), ЗначениеЗаполнено() и ТекущаяДатаСеанса()
+	// Добавлены варианты локализации для НСтр() и ЧислоПрописью()
+#КонецОбласти
+"}
+},
+{11,
+{"EN",1,0,"",""},
+{4,
+{"Comments and regions",1,0,"",""},
+{6,
+{"Region",1,0,"",""},
+{0,
+{"Region",0,0,"Regi[on]","#Region <?""Region name (without spaces)"">
+
+#EndRegion"}
+},
+{0,
+{"Region (common module)",0,0,"Regi[on]","#Region <?""Region name"", VariantChoice, ""Public"", ""Public"", ""Internal"", ""Internal"", ""Private"", ""Private"">
+
+#EndRegion"}
+},
+{0,
+{"Region (object module)",0,0,"Regi[on]","#Region <?""Region name"", VariantChoice, ""Variables"", ""Variables"", ""Public"", ""Public"", ""EventHandlers"", ""EventHandlers"", ""Internal"", ""Internal"", ""Private"", ""Private"", ""Initialize"", ""Initialize"">
+
+#EndRegion"}
+},
+{0,
+{"Region (manager module)",0,0,"Regi[on]","#Region <?""Region name"", VariantChoice, ""Public"", ""Public"", ""EventHandlers"", ""EventHandlers"", ""Internal"", ""Internal"", ""Private"", ""Private"">
+
+#EndRegion"}
+},
+{0,
+{"Region (form module)",0,0,"Regi[on]","#Region <?""Region name"", VariantChoice, ""Variables"", ""Variables"", ""FormEventHandlers"", ""FormEventHandlers"", ""FormHeaderItemsEventHandlers"", ""FormHeaderItemsEventHandlers"", ""FormTableItemsEventHandlers"", ""FormTableItemsEventHandlers#FromTableName"", ""FormCommandsEventHandlers"", ""FormCommandsEventHandlers"", ""Private"", ""Private"">
+
+#EndRegion"}
+},
+{0,
+{"Region (command module)",0,0,"Regi[on]","#Region <?""Region name"", VariantChoice, ""EventHandlers"", ""EventHandlers"", ""Private"", ""Private"">
+
+#EndRegion"}
+}
+},
+{3,
+{"Technical debt",1,0,"",""},
+{0,
+{"To-do",0,0,"todo","//TODO: <?>"}
+},
+{0,
+{"To-do (alert)",0,0,"todo","//XXX: <?>"}
+},
+{0,
+{"To-do (mistake)",0,0,"todo","//FIXME: <?>"}
+}
+},
+{15,
+{"Comments",1,0,"",""},
+{0,
+{"Comment (procedure title)",0,0,"Comm[ent]","//TODO: <Procedure description>
+//
+// Parameters:
+//  <Parameter1>  - <Type.Kind> - <parameter description>
+//                 <further description>
+//  <Parameter2>  - <Type.Kind> - <parameter description>
+//                 <further description>
+//"}
+},
+{0,
+{"Comment (function title)",0,0,"Comm[ent]","//TODO: <Function description>
+//
+// Parameters:
+//  <Parameter1>  - <Type.Kind> - <parameter description>
+//                 <further description>
+//  <Parameter2>  - <Type.Kind> - <parameter description>
+//                 <further description>
+//
+// Returns:
+//
+// <Type.Kind> - <description>
+//"}
+},
+{0,
+{"Comment (module title)",0,0,"Comm[ent]","///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// <?""Title name"">
+"}
+},
+{0,
+{"Module title",0,0,"/MT","///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// MODULE <?>: 
+// 
+// 
+// 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+"}
+},
+{0,
+{"Module title",0,0,"\MT","///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// MODULE <?>: 
+// 
+// 
+// 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+"}
+},
+{0,
+{"Grouping with comment",0,0,"\[]","//{<?>
+//}"}
+},
+{0,
+{"Grouping with comment",0,0,"/[]","//{<?>
+//}"}
+},
+{0,
+{"Grouping with comment Open",0,0,"\[","//{<?>"}
+},
+{0,
+{"Grouping with comment Open",0,0,"/[","//{<?>"}
+},
+{0,
+{"Grouping with comment Close",0,0,"\]","//}<?>"}
+},
+{0,
+{"Grouping with comment Close",0,0,"/]","//}<?>"}
+},
+{0,
+{"Snippet Add",0,0,"\+","//{[+](snippet ADD), <?"""", UserFullName> <?"""", DateTime, ""DLF=DT"">
+<?>
+//}<?"""", UserFullName> <?"""", DateTime, ""DLF=DT"">"}
+},
+{0,
+{"Snippet Delete",0,0,"\-","//{[-](snippet DELETE)<?"""", UserFullName> <?"""", DateTime, ""DLF=DT"">
+<?>
+//}<?"""", UserFullName> <?"""", DateTime, ""DLF=DT"">
+"}
+},
+{0,
+{"Snippet Edit",0,0,"\=","//{[*](snippet EDIT), <?"""", UserFullName> <?"""", DateTime, ""DLF=DT"">
+<?>
+//}<?"""", UserFullName> <?"""", DateTime, ""DLF=DT"">"}
+},
+{0,
+{"Dash",0,0,"\*","//=====================================================================================================================
+<?>"}
+}
+},
+{5,
+{"Module structure",1,0,"",""},
+{0,
+{"Common module",0,0,"","///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// <Module tiile: description and using conditions.>
+// 
+// 
+// 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#Region Public
+
+#EndRegion
+
+#Region Internal
+
+#EndRegion
+
+#Region Private
+
+#EndRegion
+"}
+},
+{0,
+{"Object module",0,0,"","#If Server Or ThickClientOrdinaryApplication Or ExternalConnection Then
+
+#Region Variables
+
+#EndRegion
+
+#Region Public
+
+#EndRegion
+
+#Region EventHandlers
+
+#EndRegion
+
+#Region Internal
+
+#EndRegion
+
+#Region Private
+
+#EndRegion
+
+#Region Initialize
+
+#EndRegion
+
+#EndIf
+"}
+},
+{0,
+{"Manager module",0,0,"","#If Server Or ThickClientOrdinaryApplication Or ExternalConnection Then
+
+#Region Public
+
+#EndRegion
+
+#Region EventHandlers
+
+#EndRegion
+
+#Region Internal
+
+#EndRegion
+
+#Region Private
+
+#EndRegion
+
+#EndIf
+"}
+},
+{0,
+{"Form module",0,0,"","#Region Variables
+
+#EndRegion
+
+#Region FormEventHandlers
+
+#EndRegion
+
+#Region FormHeaderItemsEventHandlers
+
+#EndRegion
+
+#Region FormTableItemsEventHandlers#FromTableName
+
+#EndRegion
+
+#Region FormCommandsEventHandlers
+
+#EndRegion
+
+#Region Private
+
+#EndRegion
+"}
+},
+{0,
+{"Command module",0,0,"","#Region EventHandlers
+
+&AtClient
+Procedure CommandProcessing(CommandParameter, CommandExecuteParameters)
+	//TODO: Paste handler content.
+	//FormParameters = New Structure("""", );
+	//OpenForm(""CommonForm."", FormParameters, CommandExecuteParameters.Source, CommandExecuteParameters.Uniqueness, CommandExecuteParameters.Window, CommandExecuteParameters.URL);
+EndProcedure
+
+#EndRegion
+
+#Region Private
+
+#EndRegion
+"}
+}
+}
+},
+{6,
+{"Preprocessor commands",1,0,"",""},
+{0,
+{"#If",0,0,"#If","#If <?"""", VariantChoice, ""Client"", ""Client"", ""AtClient"", ""AtClient"", ""Server"", ""Server"", ""AtServer"", ""AtServer"", ""ThinClient"", ""ThinClient"", ""WebClient"", ""WebClient"", ""MobileAppClient"", ""MobileAppClient"", ""MobileAppServer"", ""MobileAppServer"", ""MobileClient"", ""MobileClient"", ""MobileStandaloneServer"", ""MobileStandaloneServer"", ""ThickClientManagedApplication"", ""ThickClientManagedApplication"", ""ThickClientOrdinaryApplication"", ""ThickClientOrdinaryApplication"", ""ExternalConnection"", ""ExternalConnection""> Then
+<?>
+#EndIf"}
+},
+{0,
+{"#If (plug)",0,0,"#If","#If Server And Not Server Then
+<?>
+#EndIf"}
+},
+{0,
+{"#If (plug)",0,0,"Plug","#If Server And Not Server Then
+<?>
+#EndIf"}
+},
+{0,
+{"#If (server module)",0,0,"#If","#If Server Or ThickClientOrdinaryApplication Or ExternalConnection Then
+<?>
+#EndIf"}
+},
+{0,
+{"#Insert",0,0,"#Ins[ert]","#Insert
+<?>
+#EndInsert"}
+},
+{0,
+{"#Delete",0,0,"#Del[ete]","#Delete
+<?>
+#EndDelete"}
+}
+},
+{8,
+{"Managing",1,0,"",""},
+{0,
+{"If",0,0,"If","If <?> Then
+	
+EndIf;"}
+},
+{0,
+{"ElsIf",0,0,"ElsIf","ElsIf <?> Then"}
+},
+{0,
+{"While",0,0,"While","While <?> Do
+	
+EndDo;"}
+},
+{0,
+{"For",0,0,"For","For <?""Counter (including started value)""> To <?""Restriction""> Do
+	<?>
+EndDo;"}
+},
+{0,
+{"For Each",0,0,"For","For Each <?""Variable""> In <?""Collection""> Do
+	<?>
+EndDo;"}
+},
+{0,
+{"Try",0,0,"Try","Try
+	<?>
+Except
+	//ErrorDescription()
+EndTry;"}
+},
+{9,
+{"Procedure",1,0,"",""},
+{0,
+{"Procedure",0,0,"Proc[edure]","Procedure <?>()
+	
+EndProcedure"}
+},
+{0,
+{"Procedure (with parameters)",0,0,"Proc[edure]","Procedure <?""Procedure name"">(<?""Parameters"">)
+	
+	<?>
+	
+EndProcedure"}
+},
+{0,
+{"Procedure (full version)",0,0,"Proc[edure]","<?""Choice the kind of context"", VariantChoice, ""(Empty)"", """", ""AtClient"", ""&AtClient"", ""AtServer"", ""&AtServer"", ""AtClientAtServer (command module)"", ""&AtClientAtServer"", ""AtServerNoContext (form's module)"", ""&AtServerNoContext"", ""AtClientAtServerNoContext (form's module)"", ""&AtClientAtServerNoContext"">
+Procedure <?""Procedure name"">(<?""Parameters"">)<?""Exporting procedure"", VariantChoice, ""Exporting"", "" Export"", ""No exporting"", """">
+	
+	<?>
+	
+EndProcedure"}
+},
+{0,
+{"Procedure (full version with comment)",0,0,"Proc[edure]","//TODO: <Procedure description>
+//
+// Parameters:
+//  <Parameter1>  - <Type.Kind> - <parameter description>
+//                 <further description>
+//  <Parameter2>  - <Type.Kind> - <parameter description>
+//                 <further description>
+//
+<?""Choice the kind of context"", VariantChoice, ""(Empty)"", ""//"", ""AtClient"", ""&AtClient"", ""AtServer"", ""&AtServer"", ""AtClientAtServer (command module)"", ""&AtClientAtServer"", ""AtServerNoContext (form's module)"", ""&AtServerNoContext"", ""AtClientAtServerNoContext (form's module)"", ""&AtClientAtServerNoContext"">
+Procedure <?""Procedure name"">(<?""Parameters"">)<?""Exporting procedure"", VariantChoice, ""Exporting"", "" Export"", ""No exporting"", """">
+	
+	<?>
+	
+EndProcedure"}
+},
+{0,
+{"Procedure AtClient",0,0,"Proc[edure]","&AtClient
+Procedure <?>()
+	
+EndProcedure"}
+},
+{0,
+{"Procedure AtServer",0,0,"Proc[edure]","&AtServer
+Procedure <?>()
+	
+EndProcedure"}
+},
+{0,
+{"Procedure AtServerNoContext (form's module)",0,0,"Proc[edure]","&AtServerNoContext
+Procedure <?>()
+	
+EndProcedure"}
+},
+{0,
+{"Procedure AtClientAtServerNoContext (form's module)",0,0,"Proc[edure]","&AtClientAtServerNoContext
+Procedure <?>()
+	
+EndProcedure"}
+},
+{0,
+{"Procedure AtClientAtServer (command module)",0,0,"Proc[edure]","&AtClientAtServer
+Procedure <?>()
+	
+EndProcedure"}
+}
+},
+{9,
+{"Function",1,0,"",""},
+{0,
+{"Function",0,0,"Func[tion]","Function <?>()
+	
+EndFunction"}
+},
+{0,
+{"Function (with parameters)",0,0,"Func[tion]","Function <?""Function name"">(<?""Parameters"">)
+	
+	Result = Undefined;
+	
+	<?>
+	
+	Return Result;
+	
+EndFunction"}
+},
+{0,
+{"Function (full version)",0,0,"Func[tion]","<?""Choice the kind of context"", VariantChoice, ""(Empty)"", """", ""AtClient"", ""&AtClient"", ""AtServer"", ""&AtServer"", ""AtClientAtServer (command module)"", ""&AtClientAtServer"", ""AtServerNoContext (form's module)"", ""&AtServerNoContext"", ""AtClientAtServerNoContext (form's module)"", ""&AtClientAtServerNoContext"">
+Function <?""Function name"">(<?""Parameters"">)<?""Exporting function"", VariantChoice, ""Exporting"", "" Export"", ""No exporting"", """">
+	
+	Result = Undefined;
+	
+	<?>
+	
+	Return Result;
+	
+EndFunction"}
+},
+{0,
+{"Function (full version with comment)",0,0,"Func[tion]","//TODO: <Function description>
+//
+// Parameters:
+//  <Parameter1>  - <Type.Kind> - <parameter description>
+//                 <further description>
+//  <Parameter2>  - <Type.Kind> - <parameter description>
+//                 <further description>
+//
+// Returns:
+//
+// <Type.Kind> - <description>
+//
+<?""Choice the kind of context"", VariantChoice, ""(Empty)"", ""//"", ""AtClient"", ""&AtClient"", ""AtServer"", ""&AtServer"", ""AtClientAtServer (command module)"", ""&AtClientAtServer"", ""AtServerNoContext (form's module)"", ""&AtServerNoContext"", ""AtClientAtServerNoContext (form's module)"", ""&AtClientAtServerNoContext"">
+Function <?""Function name"">(<?""Parameters"">)<?""Exporting function"", VariantChoice, ""Exporting"", "" Export"", ""No exporting"", """">
+	
+	Result = Undefined;
+	
+	<?>
+	
+	Return Result;
+	
+EndFunction"}
+},
+{0,
+{"Function AtClient",0,0,"Func[tion]","&AtClient
+Function <?>()
+	
+EndFunction"}
+},
+{0,
+{"Function AtServer",0,0,"Func[tion]","&AtServer
+Function <?>()
+	
+EndFunction"}
+},
+{0,
+{"Function AtServerNoContext (form's module)",0,0,"Func[tion]","&AtServerNoContext
+Function <?>()
+	
+EndFunction"}
+},
+{0,
+{"Function AtClientAtServerNoContext (form's module)",0,0,"Func[tion]","&AtClientAtServerNoContext
+Function <?>()
+	
+EndFunction"}
+},
+{0,
+{"Function AtClientAtServer (command module)",0,0,"Func[tion]","&AtClientAtServer
+Function <?>()
+	
+EndFunction"}
+}
+}
+},
+{12,
+{"Queries",1,0,"",""},
+{0,
+{"Query by wizard",0,0,"Query=","Query = New Query;
+Query.Text = 
+""<?"""", QueryText>"";
+
+<?>Query.SetParameter("""", );
+QueryResult = Query.Execute();
+"}
+},
+{0,
+{"Query manually",0,0,"Query=","Query = New Query;
+Query.Text = 
+""SELECT
+|	<?>
+|
+|
+|
+|
+|
+|
+|
+|"";
+
+Query.SetParameter("""", );
+QueryResult = Query.Execute();
+"}
+},
+{0,
+{"Query by wizard with result processing",0,0,"Query=","Query = New Query;
+Query.Text = 
+""<?"""", QueryText>"";
+
+Query.SetParameter("""", );
+QueryResult = Query.Execute();
+
+If QueryResult.IsEmpty() Then
+	Return; //Continue|Break
+EndIf;
+
+Selection = QueryResult.Select();
+While Selection.Next() Do
+	
+	<?>
+	
+EndDo;
+"}
+},
+{0,
+{"Query without wizard with result processing",0,0,"Query=","Query = New Query;
+Query.Text = 
+""<?>"";
+
+Query.SetParameter("""", );
+QueryResult = Query.Execute();
+
+If QueryResult.IsEmpty() Then
+	Return; //Continue|Break
+EndIf;
+
+Selection = QueryResult.Select();
+While Selection.Next() Do
+	
+	
+	
+EndDo;
+"}
+},
+{0,
+{"Document",0,0,"Document.","Document.<?"""", MetadataObject, ""Document"", ""Document.TabularSection"">"}
+},
+{0,
+{"Catalog",0,0,"Catalog.","Catalog.<?"""", MetadataObject, ""Catalog"", ""Catalog.TabularSectino"">"}
+},
+{0,
+{"InformationRegister",0,0,"Reg[ister.]","InformationRegister.<?"""", MetadataObject, ""InformationRegister""><?"""", VariantChoice, ""General table"", ""<?>"", ""SliceFirst"", "".SliceFirst(<?>)"", ""SliceLast"", "".SliceLast(<?>)"">"}
+},
+{0,
+{"AccumulationRegister",0,0,"Reg[ister.]","AccumulationRegister.<?"""", MetadataObject, ""AccumulationRegister""><?"""", VariantChoice, ""General table"", ""<?>"", ""Balance"", "".Balance(<?>)"", ""Turnovers"", "".Turnovers(<?>)"", ""BalanceAndTurnovers"", "".BalanceAndTurnovers(<?>)"">"}
+},
+{0,
+{"AccountingRegister",0,0,"Reg[ister.]","AccountingRegister.<?"""", MetadataObject, ""AccountingRegister""><?"""", VariantChoice, ""General table"", ""<?>"", ""ExtDimensions"", "".ExtDimensions"", ""RecordsWithExtDimensions"", "".RecordsWithExtDimensions(<?>)"", ""Balance"", "".Balance(<?>)"", ""Turnovers"", "".Turnovers(<?>)"", ""BalanceAndTurnovers"", "".BalanceAndTurnovers(<?>)"", ""DrCrTurnovers"", "".DrCrTurnovers(<?>)"">"}
+},
+{0,
+{"CalculationRegister",0,0,"Reg[ister.]","CalculationRegister.<?"""", MetadataObject, ""CalculationRegister"", ""CalculationRegister.Recalculation"">"}
+},
+{0,
+{"LEFT JOIN",0,0,"LEFT","LEFT JOIN"}
+},
+{0,
+{"RIGHT JOIN",0,0,"RIGHT","RIGHT JOIN"}
+}
+},
+{3,
+{"Common objects",1,0,"",""},
+{7,
+{"Spreadsheet document",1,0,"",""},
+{0,
+{"TablDoc (create new)",0,0,"TablDoc=","TablDoc = New SpreadsheetDocument;
+<?>"}
+},
+{0,
+{"TablDoc (ordinary form item)",0,0,"TablDoc=","TablDoc = Controls.<?""Item name"">;
+<?>"}
+},
+{0,
+{"TablDoc (managed form item)",0,0,"TablDoc=","TablDoc = Items.<?""Item name"">;
+<?>"}
+},
+{0,
+{"TablDoc (report template)",0,0,"TablDoc=","TablDoc = New SpreadsheetDocument;
+TablDoc.ShowGroups = True;
+TablDoc.ShowHeaders = False;
+TablDoc.ShowGrid = False;
+TablDoc.ReadOnly = True;
+TablDoc.Protection = False;
+
+<?>
+
+TablDoc.Show(""<Title>"");"}
+},
+{0,
+{"Area",0,0,"Area=","Area<?""Area name""> = <?>.GetArea(""<?""Area name"">"");"}
+},
+{0,
+{"Area output",0,0,"Area=","Area<?""Area name""> = <?>.GetArea(""<?""Area name"">"");
+Area<?""Area name"">.Parameters.<ParameterName> = <ParameterValue>;
+TablDoc.Put(Area<?""Area name"">);
+<?>"}
+},
+{0,
+{"Template",0,0,"Templ[ate=]","Template = GetTemplate(""Template"");"}
+}
+},
+{3,
+{"User message",1,0,"",""},
+{0,
+{"User message",0,0,"Mess[age]","Msg = New UserMessage;
+Msg.Text = NStr(""<?>"");
+Msg.Message();"}
+},
+{0,
+{"User message with attribute joining",0,0,"Mess[age]","Msg = New UserMessage;
+Msg.Text = NStr(""<?>"");
+Msg.Field = """"; // attribute name
+Msg.SetData(); // IB object reference
+Msg.Message();"}
+},
+{0,
+{"User message with description",0,0,"Mess[age]","Msg = New UserMessage;
+Msg.Text = NStr(""<?>"");
+
+//Field – string, object field name whch have to join to message:
+// Head requisite (checking requisite filling) – requisite name: Msg.Field = ""Customer"";
+// Tabular section (checking existence TS strings) – tabular section name: Msg.Field = ""Goods"";
+// Tabular section requisite – Msg.Field = «Goods[N].Price», when N is index of string (first is 0)
+Msg.Field = """";
+
+//SetData(Object) – sending object for checking his requisites (for example ThisObject);
+// if checking form's requisite than method don't used (don't need the joining), and mesage have to
+// maked in event FillCheckProcessingAtServer()
+Msg.SetData(ThisObject);
+
+//DataKey – reference of object whose form will be opening after click on message
+//DataPath – string, form's general requisite name which contaned reference for DataKey
+// If message didn't connected with general requisite then don't need for filling one.
+// In that case to fill the Field is enough.
+Msg.DataKey = Object.Ref;
+Msg.DataPath = ""Object"";
+Msg.Message();
+"}
+}
+},
+{4,
+{"Data lock",1,0,"",""},
+{0,
+{"DataLock InformationRegister",0,0,"Lock=","Lock = New DataLock;
+LockItem = Lock.Add(""InformationRegister.<?"""", InformationRegister>"");
+LockItem.Mode = <?"""", VariantChoice, ""DataLockMode.Exclusive"", ""DataLockMode.Exclusive"", ""DataLockMode.Shared"", ""DataLockMode.Shared"">;
+//LockItem.DataSource = <?>;
+//LockItem.UseFromDataSource("""", """");
+//LockItem.SetValue("""", );
+Lock.Lock();"}
+},
+{0,
+{"DataLock AccumulationRegister",0,0,"Lock=","Lock = New DataLock;
+LockItem = Lock.Add(""AccumulationRegister.<?"""", AccumulationRegister>"");
+LockItem.Mode = <?"""", VariantChoice, ""DataLockMode.Exclusive"", ""DataLockMode.Exclusive"", ""DataLockMode.Shared"", ""DataLockMode.Shared"">;
+//LockItem.DataSource = <?>;
+//LockItem.UseFromDataSource("""", """");
+//LockItem.SetValue("""", );
+Lock.Lock();"}
+},
+{0,
+{"DataLock AccountingRegister",0,0,"Lock=","Lock = New DataLock;
+LockItem = Lock.Add(""AccountingRegister.<?"""", AccountingRegister>"");
+LockItem.Mode = <?"""", VariantChoice, ""DataLockMode.Exclusive"", ""DataLockMode.Exclusive"", ""DataLockMode.Shared"", ""DataLockMode.Shared"">;
+//LockItem.SetValue(""Period"", New Range( , ));
+//LockItem.SetValue(""Account"", );
+Lock.Lock();"}
+},
+{0,
+{"DataLock CalculationRegister",0,0,"Lock=","Lock = New DataLock;
+LockItem = Lock.Add(""CalculationRegister.<?"""", CalculationRegister>"");
+LockItem.Mode = <?"""", VariantChoice, ""DataLockMode.Exclusive"", ""DataLockMode.Exclusive"", ""DataLockMode.Shared"", ""DataLockMode.Shared"">;
+//LockItem.DataSource = <?>;
+//LockItem.UseFromDataSource("""", """");
+//LockItem.SetValue("""", );
+Lock.Lock();"}
+}
+}
+},
+{5,
+{"Quick snippets",1,0,"",""},
+{0,
+{"&AtClient",0,0,"&AtCl[ient]","&AtClient"}
+},
+{0,
+{"&AtServer",0,0,"&AtSer[ver]","&AtServer"}
+},
+{0,
+{"&AtServerNoContext",0,0,"&AtSer[ver]","&AtServerNoContext"}
+},
+{0,
+{"&AtClientAtServerNoContext",0,0,"&AtCl[ient]","&AtClientAtServerNoContext"}
+},
+{0,
+{"&AtClientAtServer",0,0,"&AtCl[ient]","&AtClientAtServer"}
+}
+},
+{29,
+{"Universal value collections",1,0,"",""},
+{0,
+{"Array",0,0,"Array=","Array = New Array(<?>);"}
+},
+{0,
+{"Array",0,0,"Collec[tion]","Array = New Array(<?>);"}
+},
+{0,
+{"Array (create and append)",0,0,"Array=","<?""Variable name""> = New Array;
+<?""Variable name"">.Add(<?>);"}
+},
+{0,
+{"Array (create and append)",0,0,"Collec[tion]","<?""Variable name""> = New Array;
+<?""Variable name"">.Add(<?>);"}
+},
+{0,
+{"Map",0,0,"Map=","Map = New Map;
+<?>"}
+},
+{0,
+{"Map",0,0,"Collec[tion]","Map = New Map;
+<?>"}
+},
+{0,
+{"Map (create and append)",0,0,"Map=","<?""Variable name""> = New Map;
+<?""Variable name"">.Insert(<?>, );"}
+},
+{0,
+{"Map (create and append)",0,0,"Collec[tion]","<?""Variable name""> = New Map;
+<?""Variable name"">.Insert(<?>, );"}
+},
+{0,
+{"List of values",0,0,"List=","List = New ValueList;
+<?>"}
+},
+{0,
+{"List of values",0,0,"Collec[tion]","List = New ValueList;
+<?>"}
+},
+{0,
+{"List of values (create and append)",0,0,"List=","<?""Variable name""> = New ValueList;
+<?""Variable name"">.Add(<?>, ""<Presentation>"", <Check>, <Picture>);"}
+},
+{0,
+{"List of values (create and append)",0,0,"Collec[tion]","<?""Variable name""> = New ValueList;
+<?""Variable name"">.Add(<?>, ""<Presentation>"", <Check>, <Picture>);"}
+},
+{0,
+{"Structure",0,0,"Structure=","Structure = New Structure;
+<?>"}
+},
+{0,
+{"Structure",0,0,"Collec[tion]","Structure = New Structure;
+<?>"}
+},
+{0,
+{"Structure (create and append)",0,0,"Structure=","<?""Variable name""> = New Structure;
+<?""Variable name"">.Insert(""<?>"", );"}
+},
+{0,
+{"Structure (create and append)",0,0,"Collec[tion]","<?""Variable name""> = New Structure;
+<?""Variable name"">.Insert(""<?>"", );"}
+},
+{0,
+{"Structure (create by contructor)",0,0,"Structure=","<?""Variable name""> = New Structure(""<?>"", );"}
+},
+{0,
+{"Structure (create by contructor)",0,0,"Collec[tion]","<?""Variable name""> = New Structure(""<?>"", );"}
+},
+{0,
+{"Structure (property check)",0,0,"Structure=","If <?""Variable name"">.Property(""<Key>"", <SearchValue>) Then
+	<?>
+EndIf;"}
+},
+{0,
+{"Structure (property check)",0,0,"Collec[tion]","If <?""Variable name"">.Property(""<Key>"", <SearchValue>) Then
+	<?>
+EndIf;"}
+},
+{0,
+{"Values table",0,0,"VTab=","VTab = New ValueTable;
+<?>"}
+},
+{0,
+{"Values table",0,0,"Collec[tion]","VTab = New ValueTable;
+<?>"}
+},
+{0,
+{"Values table (create and append a column)",0,0,"VTab=","<?""Variable name""> = New ValueTable;
+<?""Variable name"">.Columns.Add(""<?>"", );"}
+},
+{0,
+{"Values table (create and append a column)",0,0,"Collec[tion]","<?""Variable name""> = New ValueTable;
+<?""Variable name"">.Columns.Add(""<?>"", );"}
+},
+{0,
+{"Value tree",0,0,"Tree=","ValueTree = New ValueTree;
+<?>"}
+},
+{0,
+{"Value tree",0,0,"ValueTree=","ValueTree = New ValueTree;
+<?>"}
+},
+{0,
+{"Value tree",0,0,"Collec[tion]","ValueTree = New ValueTree;
+<?>"}
+},
+{0,
+{"KeyAndValue (round collection)",0,0,"Key=","For Each KeyAndValue In <?""Variable name""> Do
+	
+	Key = KeyAndValue.Key;
+	Value = KeyAndValue.Value;
+	
+EndDo;"}
+},
+{0,
+{"KeyAndValue (round collection)",0,0,"Collec[tion]","For Each KeyAndValue In <?""Variable name""> Do
+	
+	Key = KeyAndValue.Key;
+	Value = KeyAndValue.Value;
+	
+EndDo;"}
+}
+},
+{9,
+{"Applied objects",1,0,"",""},
+{0,
+{"Enum value",0,0,"Enums=","Enums.<?"""", EnumValue>"}
+},
+{0,
+{"AccountDrChoice",0,0,"Account[Dr=]","AccountDr = <?"""", ChartOfAccountsPredefinedData>;"}
+},
+{0,
+{"AccountCrChoice",0,0,"Account[Cr=]","AccountCr = <?"""", ChartOfAccountsPredefinedData>;"}
+},
+{0,
+{"RegisterRecord",0,0,"Register[Record=]","Record = RegisterRecords<?>
+Record.Period = Date;"}
+},
+{0,
+{"ExtDimensionsDr",0,0,"ExtDimen[sionsDr=]","ExtDimensionsDr[<?"""", ChartOfCharacteristicTypesPredefinedData>] = <?>;"}
+},
+{0,
+{"ExtDimensionsCr",0,0,"ExtDimen[sionsCr=]","ExtDimensionsCr[<?"""", ChartOfCharacteristicTypesPredefinedData>] = <?>;"}
+},
+{0,
+{"Boundary",0,0,"Boundary=","Boundary = New Boundary(<?>, <?"""", VariantChoice, ""BoundaryType.Including"", ""BoundaryType.Including"", ""BoundaryType.Excluding"", ""BoundaryType.Excluding"">);"}
+},
+{2,
+{"RecordType",1,0,"",""},
+{0,
+{"AccumulationRegisters",0,0,"ВидД[вижения=]","RecordType = <?"""", VariantChoice, ""Receipt"", ""AccumulationRecordType.Receipt"", ""Expense"", ""AccumulationRecordType.Expense"">;"}
+},
+{0,
+{"AccountingRegisters",0,0,"ВидД[вижения=]","RecordType = <?"""", VariantChoice, ""Debit"", ""AccountingRecordType.Debit"", ""Credit"", ""AccountingRecordType.Credit"">;"}
+}
+},
+{5,
+{"Registers records",1,0,"",""},
+{0,
+{"RecordSet InformationRegister",0,0,"RecordSet=","RecordSet = InformationRegisters.<?"""", InformationRegister>.CreateRecordSet();"}
+},
+{0,
+{"RecordSet AccumulationRegister",0,0,"RecordSet=","RecordSet = AccumulationRegisters.<?"""", AccumulationRegister>.CreateRecordSet();
+RecordSet.Filter.Recorder.Set(<?>);
+RecordSet.Read();"}
+},
+{0,
+{"RecordSet AccountingRegister",0,0,"RecordSet=","RecordSet = AccountingRegisters.<?"""", AccountingRegister>.CreateRecordSet();
+RecordSet.Filter.Recorder.Set(<?>);
+RecordSet.Read();"}
+},
+{0,
+{"RecordSet CalculationRegister",0,0,"RecordSet=","RecordSet = CalculationRegisters.<?"""", CalculationRegister>.CreateRecordSet();
+RecordSet.Filter.Recorder.Set(<?>);
+RecordSet.Read();"}
+},
+{0,
+{"Calculation register record",0,0,"Record=","Record = RegisterRecords.<?"""", CalculationRegister>.Add();
+Record.RegistrationPeriod = Date;
+Record.BegOfActionPeriod = ;
+Record.EndOfEffectivePeriod = ;
+Record.ReversingEntry = False;
+Record.BegOfBasePeriod = ;
+Record.EndOfBasePeriod = ;"}
+}
+}
+},
+{7,
+{"Dialogs",1,0,"",""},
+{0,
+{"PeriodSettings",0,0,"PeriodSet[tings]","PeriodSettings = New PeriodSettings;
+PeriodSettings.SetPeriod(PeriodFrom, ?(PeriodTo = '0001-01-01', PeriodTo, EndOfDay(PeriodTo)));
+PeriodSettings.EditAsInterval = True;
+PeriodSettings.EditAsPeriod = True;
+PeriodSettings.SettingsMode = PeriodSettingsVariant.Period;
+If PeriodSettings.Edit() Then
+	PeriodFrom = PeriodSettings.GetDateFrom();
+	PeriodTo = PeriodSettings.GetDateTo();
+EndIf;
+"}
+},
+{0,
+{"FileDialog",0,0,"FileChoice","FileDialog = New FileDialog(FileDialogMode.Save);
+//FileDialog.Directory = ""%HOMEPATH%"";
+//FileDialog.FullFileName = FileName;
+FileDialog.Multiselect = False;
+FileDialog.Title = NStr(""en = 'File choice'"");
+FileDialog.Filter = ""Texts(*.txt)|*.txt|All files (*.*)|*.*"";
+FileDialog.FilterIndex = 0;
+
+If FileDialog.Choose() Then
+	FileName = FileDialog.FullFileName;
+EndIf;
+"}
+},
+{0,
+{"FileDialog",0,0,"FileDialog","FileDialog = New FileDialog(FileDialogMode.Save);
+//FileDialog.Directory = ""%HOMEPATH%"";
+//FileDialog.FullFileName = FileName;
+FileDialog.Multiselect = False;
+FileDialog.Title = NStr(""en = 'File choice'"");
+FileDialog.Filter = ""Texts(*.txt)|*.txt|All files (*.*)|*.*"";
+FileDialog.FilterIndex = 0;
+
+If FileDialog.Choose() Then
+	FileName = FileDialog.FullFileName;
+EndIf;
+"}
+},
+{3,
+{"DoMessageBox",1,0,"",""},
+{0,
+{"DoMessageBox",0,0,"DoMes[sageBox]","ShowMessageBox(,<?>, 60);"}
+},
+{0,
+{"DoMessageBox",0,0,"ShowMes[sageBox]","ShowMessageBox(,<?>, 60);"}
+},
+{0,
+{"DoMessageBox with callback",0,0,"ShowMes[sageBox]","CallbackDescription = New CallbackDescription(""<?""Callback procedure name"">"", ThisObject);
+ShowMessageBox(CallbackDescription, <?>, 60);
+
+//Take it to a separate procedure
+&AtClient
+Procedure <?""Callback procedure name"">(AdditionalParameters) Export
+	
+EndProcedure
+"}
+}
+},
+{6,
+{"DoQueryBox",1,0,"",""},
+{0,
+{"DoQueryBox",0,0,"Ответ=","CallbackDescription = New CallbackDescription(""<?""Callback procedure name"">"", ThisObject);
+ShowQueryBox(CallbackDescription, ""<?""Question text"">"",<?""Question dialog mode"", VariantChoice, ""YesNo"", ""QuestionDialogMode.YesNo"", ""YesNoCancel"", ""QuestionDialogMode.YesNoCancel"", ""OK"", ""QuestionDialogMode.OK"", ""OKCancel"", ""QuestionDialogMode.OKCancel"", ""RetryCancel"", ""QuestionDialogMode.RetryCancel"", ""AbortRetryIgnore"", ""QuestionDialogMode.AbortRetryIgnore"">, 60);
+
+<?>
+//Take it to a separate procedure
+&AtClient
+Procedure <?""Callback procedure name"">(QuetyResult, AdditionalParameters) Export
+	
+EndProcedure
+"}
+},
+{0,
+{"DoQueryBox",0,0,"ПоказатьВо[прос]","CallbackDescription = New CallbackDescription(""<?""Callback procedure name"">"", ThisObject);
+ShowQueryBox(CallbackDescription, ""<?""Question text"">"",<?""Question dialog mode"", VariantChoice, ""YesNo"", ""QuestionDialogMode.YesNo"", ""YesNoCancel"", ""QuestionDialogMode.YesNoCancel"", ""OK"", ""QuestionDialogMode.OK"", ""OKCancel"", ""QuestionDialogMode.OKCancel"", ""RetryCancel"", ""QuestionDialogMode.RetryCancel"", ""AbortRetryIgnore"", ""QuestionDialogMode.AbortRetryIgnore"">, 60);
+
+<?>
+//Take it to a separate procedure
+&AtClient
+Procedure <?""Callback procedure name"">(QuetyResult, AdditionalParameters) Export
+	
+EndProcedure
+"}
+},
+{0,
+{"DoQueryBox",0,0,"Воп[рос]","CallbackDescription = New CallbackDescription(""<?""Callback procedure name"">"", ThisObject);
+ShowQueryBox(CallbackDescription, ""<?""Question text"">"",<?""Question dialog mode"", VariantChoice, ""YesNo"", ""QuestionDialogMode.YesNo"", ""YesNoCancel"", ""QuestionDialogMode.YesNoCancel"", ""OK"", ""QuestionDialogMode.OK"", ""OKCancel"", ""QuestionDialogMode.OKCancel"", ""RetryCancel"", ""QuestionDialogMode.RetryCancel"", ""AbortRetryIgnore"", ""QuestionDialogMode.AbortRetryIgnore"">, 60);
+
+<?>
+//Take it to a separate procedure
+&AtClient
+Procedure <?""Callback procedure name"">(QuetyResult, AdditionalParameters) Export
+	
+EndProcedure
+"}
+},
+{0,
+{"Question with result analysis",0,0,"Ответ=","CallbackDescription = New CallbackDescription(""<?""Callback procedure name"">"", ThisObject);
+ShowQueryBox(CallbackDescription, ""<?""Question text"">"",<?""Question dialog mode"", VariantChoice, ""YesNo"", ""QuestionDialogMode.YesNo"", ""YesNoCancel"", ""QuestionDialogMode.YesNoCancel"", ""OK"", ""QuestionDialogMode.OK"", ""OKCancel"", ""QuestionDialogMode.OKCancel"", ""RetryCancel"", ""QuestionDialogMode.RetryCancel"", ""AbortRetryIgnore"", ""QuestionDialogMode.AbortRetryIgnore"">, 60);
+
+<?>
+//Take it to a separate procedure
+&AtClient
+Procedure <?""Callback procedure name"">(QuetyResult, AdditionalParameters) Export
+	
+	If QuetyResult <?"""", VariantChoice, ""Equal"", ""="", ""Not equal"", ""<>""> <?""Question dialog mode"", VariantChoice, ""Yes"", ""DialogReturnCode.Yes"", ""No"", ""DialogReturnCode.No"", ""OK"", ""DialogReturnCode.OK"", ""Cancel"", ""DialogReturnCode.Cancel"", ""Retry"", ""DialogReturnCode.Retry"", ""Abort"", ""DialogReturnCode.Abort"", ""Ignore"", ""DialogReturnCode.Ignore"", ""Timeout"", ""DialogReturnCode.Timeout""> Then
+		
+	EndIf;
+	
+EndProcedure
+"}
+},
+{0,
+{"Question with result analysis",0,0,"ПоказатьВо[прос]","CallbackDescription = New CallbackDescription(""<?""Callback procedure name"">"", ThisObject);
+ShowQueryBox(CallbackDescription, ""<?""Question text"">"",<?""Question dialog mode"", VariantChoice, ""YesNo"", ""QuestionDialogMode.YesNo"", ""YesNoCancel"", ""QuestionDialogMode.YesNoCancel"", ""OK"", ""QuestionDialogMode.OK"", ""OKCancel"", ""QuestionDialogMode.OKCancel"", ""RetryCancel"", ""QuestionDialogMode.RetryCancel"", ""AbortRetryIgnore"", ""QuestionDialogMode.AbortRetryIgnore"">, 60);
+
+<?>
+//Take it to a separate procedure
+&AtClient
+Procedure <?""Callback procedure name"">(QuetyResult, AdditionalParameters) Export
+	
+	If QuetyResult <?"""", VariantChoice, ""Equal"", ""="", ""Not equal"", ""<>""> <?""Question dialog mode"", VariantChoice, ""Yes"", ""DialogReturnCode.Yes"", ""No"", ""DialogReturnCode.No"", ""OK"", ""DialogReturnCode.OK"", ""Cancel"", ""DialogReturnCode.Cancel"", ""Retry"", ""DialogReturnCode.Retry"", ""Abort"", ""DialogReturnCode.Abort"", ""Ignore"", ""DialogReturnCode.Ignore"", ""Timeout"", ""DialogReturnCode.Timeout""> Then
+		
+	EndIf;
+	
+EndProcedure
+"}
+},
+{0,
+{"Question with result analysis",0,0,"Воп[рос]","CallbackDescription = New CallbackDescription(""<?""Callback procedure name"">"", ThisObject);
+ShowQueryBox(CallbackDescription, ""<?""Question text"">"",<?""Question dialog mode"", VariantChoice, ""YesNo"", ""QuestionDialogMode.YesNo"", ""YesNoCancel"", ""QuestionDialogMode.YesNoCancel"", ""OK"", ""QuestionDialogMode.OK"", ""OKCancel"", ""QuestionDialogMode.OKCancel"", ""RetryCancel"", ""QuestionDialogMode.RetryCancel"", ""AbortRetryIgnore"", ""QuestionDialogMode.AbortRetryIgnore"">, 60);
+
+<?>
+//Take it to a separate procedure
+&AtClient
+Procedure <?""Callback procedure name"">(QuetyResult, AdditionalParameters) Export
+	
+	If QuetyResult <?"""", VariantChoice, ""Equal"", ""="", ""Not equal"", ""<>""> <?""Question dialog mode"", VariantChoice, ""Yes"", ""DialogReturnCode.Yes"", ""No"", ""DialogReturnCode.No"", ""OK"", ""DialogReturnCode.OK"", ""Cancel"", ""DialogReturnCode.Cancel"", ""Retry"", ""DialogReturnCode.Retry"", ""Abort"", ""DialogReturnCode.Abort"", ""Ignore"", ""DialogReturnCode.Ignore"", ""Timeout"", ""DialogReturnCode.Timeout""> Then
+		
+	EndIf;
+	
+EndProcedure
+"}
+}
+},
+{1,
+{"BeginPutFile",1,0,"",""},
+{0,
+{"PutFile",0,0,"PutFile","CallbackDescription = New CallbackDescription(""<?""Callback procedure name"">"", ThisObject);
+BeginPutFile(CallbackDescription, , ,True, UUID);
+
+<?>
+//Take it to a separate procedure
+&AtClient
+Procedure <?""Callback procedure name"">(Result, Address, ChoosingFileName, AdditionalParameters) Export
+	
+EndProcedure
+"}
+}
+},
+{7,
+{"Open form (managed)",1,0,"",""},
+{0,
+{"General form of new object",0,0,"OpenF[orm]","OpenForm(""Catalog.<?"""", MetadataObject, ""Catalog"">.ObjectForm"");"}
+},
+{0,
+{"General form of new folder",0,0,"OpenF[orm]","Parameters = New Structure(""ЭтоГруппа"", True);
+OpenForm(""Catalog.<?"""", MetadataObject, ""Catalog"">.FolderForm"", Parameters);"}
+},
+{0,
+{"List form or choice form",0,0,"OpenF[orm]","OpenForm(""Catalog.<?"""", MetadataObject, ""Catalog"">.<?"""", VariantChoice, ""ListForm"", ""ListForm"", ""ChoiceForm"", ""ChoiceForm"", ""FolderChoiceForm"", ""FolderChoiceForm"">"");"}
+},
+{0,
+{"Free form",0,0,"OpenF[orm]","OpenForm(""Catalog.<?"""", MetadataObject, ""Catalog"">.Form.<?>"");"}
+},
+{0,
+{"General form of existing object",0,0,"OpenF[orm]","Parameters = New Structure(""Key"", <?><CatalogItemReference>);
+OpenForm(""Catalog.<?"""", MetadataObject, ""Catalog"">.ObjectForm"", Parameters);"}
+},
+{0,
+{"List form and activate the item",0,0,"OpenF[orm]","Parameters = New Structure(""CurrentRow"", <?><CatalogItemReference>);
+OpenForm(""Catalog.<?"""", MetadataObject, ""Catalog"">.ListForm"", Parameters);"}
+},
+{0,
+{"List of subcatalog with filter by owner",0,0,"OpenF[orm]","FilterConditions = New Structure(""Owner"", <?><OwnerItemReference>);
+Parameters = New Structure(""Filter"", FilterConditions);
+OpenForm(""Catalog.<?"""", MetadataObject, ""Catalog"">.ListForm"", Parameters);"}
+}
+}
+},
+{26,
+{"Abbreviation",1,0,"",""},
+{0,
+{"BegOfMonth",0,0,"BM","BegOfMonth(<?>)"}
+},
+{0,
+{"EndOfMonth",0,0,"EM","EndOfMonth(<?>)"}
+},
+{0,
+{"BegOfDay",0,0,"BD","BegOfDay(<?>)"}
+},
+{0,
+{"EndOfDay",0,0,"ED","EndOfDay(<?>)"}
+},
+{0,
+{"CurrentDate",0,0,"CD","CurrentDate()<?>"}
+},
+{0,
+{"CurrentSessionDate",0,0,"CD","CurrentSessionDate()<?>"}
+},
+{0,
+{"CurrentSessionDate",0,0,"CSD","CurrentSessionDate()<?>"}
+},
+{0,
+{"BegOfEffectivePeriod",0,0,"BEP","BegOfEffectivePeriod"}
+},
+{0,
+{"EndOfEffectivePeriod",0,0,"EEP","EndOfEffectivePeriod"}
+},
+{0,
+{"BegOfBasePeriod",0,0,"BBP","BegOfBasePeriod"}
+},
+{0,
+{"EndOfBasePeriod",0,0,"EBP","EndOfBasePeriod"}
+},
+{0,
+{"ChartsOfCharacteristicTypes",0,0,"CCT","<?"""", ChartOfCharacteristicTypesPredefinedData>"}
+},
+{0,
+{"ChartsOfCalculationTypes",0,0,"CCT","<?"""", ChartOfCalculationTypesPredefinedData>"}
+},
+{0,
+{"AddMonth",0,0,"AM","AddMonth(<?>,)"}
+},
+{0,
+{"Undefined",0,0,"Undef[ined]","Undefined"}
+},
+{0,
+{"SetParameter",0,0,"SP","SetParameter(""<?>"",);"}
+},
+{0,
+{"Counterparty",0,0,"Cou[nterparty]","Counterparty"}
+},
+{0,
+{"Products",0,0,"Prod[ucts]","Products"}
+},
+{0,
+{"Count",0,0,"Cou[nt]","Count"}
+},
+{0,
+{"Amount",0,0,"Amo[unt]","Amount"}
+},
+{0,
+{"SetParameterValue",0,0,"SPV","SetParameterValue(""<?>"",);"}
+},
+{0,
+{"PointInTime",0,0,"PIT","PointInTime()"}
+},
+{0,
+{"PointInTime",0,0,"PT","PointInTime()"}
+},
+{0,
+{"FillPropertyValues",0,0,"FPV","FillPropertyValues(<?>)"}
+},
+{0,
+{"ValueIsFilled",0,0,"VIF","ValueIsFilled(<?>)"}
+},
+{0,
+{"ValueIsFilled",0,0,"VF","ValueIsFilled(<?>)"}
+}
+},
+{12,
+{"Other",1,0,"",""},
+{0,
+{"Format",0,0,"Format","Format(<?>, ""<?, FormatString>"")"}
+},
+{0,
+{"Type description constructor",0,1,"","<?""Type description constructor"", TypeDescriptionConstructor>"}
+},
+{0,
+{"Type check",0,1,"","If TypeOf(<?""Checking type expression"">) = Type(""<?""Choose type"", TypeChoice>"") Then
+
+	<?>
+
+EndIf;"}
+},
+{0,
+{"Font",0,0,"Font=","// CONSTRUCTOR     Font name, Size, Bold, Italics, Underscore, StrikeOut, Scale
+Font = New Font(   <?>       ,       ,       ,          ,             ,            );"}
+},
+{0,
+{"NumberInWords",0,0,"Number[InWords]","NumberInWords(<?>,,""рубль, рубля, рублей, м, копейка, копейки, копеек, ж, 2"")"}
+},
+{0,
+{"NumberInWords (RUB, Russia)",0,0,"Number[InWords]","NumberInWords(<?>, ""L = ru_RU; FS = True"", ""рубль, рубля, рублей, м, копейка, копейки, копеек, ж, 2"");"}
+},
+{0,
+{"NumberInWords (Dollars, USA)",0,0,"Number[InWords]","NumberInWords(<?>, ""L = en_US; FS = True"", ""dollar, dollars, cent, cents, 2"");"}
+},
+{0,
+{"NumberInWords (Euro, Germany)",0,0,"Number[InWords]","NumberInWords(<?>, ""L = de_DE; FS = True"", ""EURO, EURO, М, Cent, Cent, M, 2"");"}
+},
+{0,
+{"NumberInWords (RON, Romania)",0,0,"Number[InWords]","NumberInWords(<?>, ""L = ro_RO; FS = True"", ""leu, lei, M, ban, bani, W, 2"");"}
+},
+{0,
+{"Selection",0,0,"Select[ion=]","Selection = <?>.Select();
+While Selection.Next() Do
+	
+EndDo;"}
+},
+{0,
+{"NStr EN",0,0,"NStr","NStr(""en='<?>'"", ""en"")"}
+},
+{0,
+{"NStr EN RU",0,0,"NStr","NStr(""ru = '<?>...'; en = '...'"")"}
+}
+}
+},
+{12,
+{"RU",1,0,"",""},
+{4,
+{"Комментарии и области",1,0,"",""},
+{6,
+{"Область",1,0,"",""},
+{0,
+{"Область",0,0,"Облас[ть]","#Область <?""Имя области (без пробелов)"">
+
+#КонецОбласти"}
+},
+{0,
+{"Область (общий модуль)",0,0,"Облас[ть]","#Область <?""Имя области"", ВыборВарианта, ""ПрограммныйИнтерфейс"", ""ПрограммныйИнтерфейс"", ""СлужебныйПрограммныйИнтерфейс"", ""СлужебныйПрограммныйИнтерфейс"", ""СлужебныеПроцедурыИФункции"", ""СлужебныеПроцедурыИФункции"">
+
+#КонецОбласти"}
+},
+{0,
+{"Область (модуль объекта)",0,0,"Облас[ть]","#Область <?""Имя области"", ВыборВарианта, ""ОписаниеПеременных"", ""ОписаниеПеременных"", ""ПрограммныйИнтерфейс"", ""ПрограммныйИнтерфейс"", ""ОбработчикиСобытий"", ""ОбработчикиСобытий"", ""СлужебныйПрограммныйИнтерфейс"", ""СлужебныйПрограммныйИнтерфейс"", ""СлужебныеПроцедурыИФункции"", ""СлужебныеПроцедурыИФункции"", ""Инициализация"", ""Инициализация"">
+
+#КонецОбласти"}
+},
+{0,
+{"Область (модуль менеджера)",0,0,"Облас[ть]","#Область <?""Имя области"", ВыборВарианта, ""ПрограммныйИнтерфейс"", ""ПрограммныйИнтерфейс"", ""ОбработчикиСобытий"", ""ОбработчикиСобытий"", ""СлужебныйПрограммныйИнтерфейс"", ""СлужебныйПрограммныйИнтерфейс"", ""СлужебныеПроцедурыИФункции"", ""СлужебныеПроцедурыИФункции"">
+
+#КонецОбласти"}
+},
+{0,
+{"Область (модуль формы)",0,0,"Облас[ть]","#Область <?""Имя области"", ВыборВарианта, ""ОписаниеПеременных"", ""ОписаниеПеременных"", ""ОбработчикиСобытийФормы"", ""ОбработчикиСобытийФормы"", ""ОбработчикиСобытийЭлементовШапкиФормы"", ""ОбработчикиСобытийЭлементовШапкиФормы"", ""ОбработчикиСобытийЭлементовТаблицыФормы"", ""ОбработчикиСобытийЭлементовТаблицыФормы#ИмяТаблицы"", ""ОбработчикиКомандФормы"", ""ОбработчикиКомандФормы"", ""СлужебныеПроцедурыИФункции"", ""СлужебныеПроцедурыИФункции"">
+
+#КонецОбласти"}
+},
+{0,
+{"Область (модуль команды)",0,0,"Облас[ть]","#Область <?""Имя области"", ВыборВарианта, ""ОбработчикиСобытий"", ""ОбработчикиСобытий"", ""СлужебныеПроцедурыИФункции"", ""СлужебныеПроцедурыИФункции"">
+
+#КонецОбласти"}
+}
+},
+{3,
+{"Технический долг",1,0,"",""},
+{0,
+{"Тех.долг (тех.долг)",0,0,"туду","//TODO: <?>"}
+},
+{0,
+{"Тех.долг (замечание)",0,0,"туду","//XXX: <?>"}
+},
+{0,
+{"Тех.долг (ошибка)",0,0,"туду","//FIXME: <?>"}
+}
+},
+{15,
+{"Комментарии",1,0,"",""},
+{0,
+{"Комментарий* (заголовок процедуры)",0,0,"Коммент[арий]","//TODO: <Описание процедуры>
+//
+// Параметры:
+//  <Параметр1>  - <Тип.Вид> - <описание параметра>
+//                 <продолжение описания параметра>
+//  <Параметр2>  - <Тип.Вид> - <описание параметра>
+//                 <продолжение описания параметра>
+//"}
+},
+{0,
+{"Комментарий* (заголовок функции)",0,0,"Коммент[арий]","//TODO: <Описание функции>
+//
+// Параметры:
+//  <Параметр1>  - <Тип.Вид> - <описание параметра>
+//                 <продолжение описания параметра>
+//  <Параметр2>  - <Тип.Вид> - <описание параметра>
+//                 <продолжение описания параметра>
+//
+// Возвращаемое значение:
+//   <Тип.Вид>   - <описание возвращаемого значения>
+//"}
+},
+{0,
+{"Комментарий* (раздел модуля)",0,0,"Коммент[арий]","///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// <?""Название раздела"">
+"}
+},
+{0,
+{"Заголовок модуля",0,0,"/ЗМ","///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// МОДУЛЬ <?>: 
+// 
+// 
+// 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+"}
+},
+{0,
+{"Заголовок модуля",0,0,"\ЗМ","///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// МОДУЛЬ <?>: 
+// 
+// 
+// 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+"}
+},
+{0,
+{"Группировка с комментарием ",0,0,"\хъ","//{<?>
+//}"}
+},
+{0,
+{"Группировка с комментарием ",0,0,"/хъ","//{<?>
+//}"}
+},
+{0,
+{"Группировка с комментарием Открыть",0,0,"\х","//{<?>"}
+},
+{0,
+{"Группировка с комментарием Открыть",0,0,"/х","//{<?>"}
+},
+{0,
+{"Группировка с комментарием Закрыть",0,0,"\ъ","//}<?>"}
+},
+{0,
+{"Группировка с комментарием Закрыть",0,0,"/ъ","//}<?>"}
+},
+{0,
+{"Фрагмент добавлен",0,0,"/+","//{[+](фрагмент ДОБАВЛЕН), <?"""", ПолноеИмяПользователя> <?"""", ДатаВремя, ""ДЛФ=DT"">
+<?>
+//}<?"""", ПолноеИмяПользователя> <?"""", ДатаВремя, ""ДЛФ=DT"">"}
+},
+{0,
+{"Фрагмент удален",0,0,"/-","//{[-](фрагмент УДАЛЕН)<?"""", ПолноеИмяПользователя> <?"""", ДатаВремя, ""ДЛФ=DT"">
+<?>
+//}<?"""", ПолноеИмяПользователя> <?"""", ДатаВремя, ""ДЛФ=DT"">
+"}
+},
+{0,
+{"Фрагмент изменен",0,0,"/=","//{[*](фрагмент ИЗМЕНЕН), <?"""", ПолноеИмяПользователя> <?"""", ДатаВремя, ""ДЛФ=DT"">
+<?>
+//}<?"""", ПолноеИмяПользователя> <?"""", ДатаВремя, ""ДЛФ=DT"">"}
+},
+{0,
+{"Отчерк",0,0,"/*","//=====================================================================================================================
+<?>"}
+}
+},
+{5,
+{"Структура модулей",1,0,"",""},
+{0,
+{"Общий модуль",0,0,"","///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// <Заголовок модуля: краткое описание и условия применения модуля.>
+// 
+// 
+// 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#Область ПрограммныйИнтерфейс
+
+#КонецОбласти
+
+#Область СлужебныйПрограммныйИнтерфейс
+
+#КонецОбласти
+
+#Область СлужебныеПроцедурыИФункции
+
+#КонецОбласти
+"}
+},
+{0,
+{"Модуль объекта",0,0,"","#Если Сервер Или ТолстыйКлиентОбычноеПриложение Или ВнешнееСоединение Тогда
+
+#Область ОписаниеПеременных
+
+#КонецОбласти
+
+#Область ПрограммныйИнтерфейс
+
+#КонецОбласти
+
+#Область ОбработчикиСобытий
+
+#КонецОбласти
+
+#Область СлужебныйПрограммныйИнтерфейс
+
+#КонецОбласти
+
+#Область СлужебныеПроцедурыИФункции
+
+#КонецОбласти
+
+#Область Инициализация
+
+#КонецОбласти
+
+#КонецЕсли
+"}
+},
+{0,
+{"Модуль менеджера",0,0,"","#Если Сервер Или ТолстыйКлиентОбычноеПриложение Или ВнешнееСоединение Тогда
+
+#Область ПрограммныйИнтерфейс
+
+#КонецОбласти
+
+#Область ОбработчикиСобытий
+
+#КонецОбласти
+
+#Область СлужебныйПрограммныйИнтерфейс
+
+#КонецОбласти
+
+#Область СлужебныеПроцедурыИФункции
+
+#КонецОбласти
+
+#КонецЕсли
+"}
+},
+{0,
+{"Модуль формы",0,0,"","#Область ОписаниеПеременных
+
+#КонецОбласти
+
+#Область ОбработчикиСобытийФормы
+
+#КонецОбласти
+
+#Область ОбработчикиСобытийЭлементовШапкиФормы
+
+#КонецОбласти
+
+#Область ОбработчикиСобытийЭлементовТаблицыФормы#ИмяТаблицы
+
+#КонецОбласти
+
+#Область ОбработчикиКомандФормы
+
+#КонецОбласти
+
+#Область СлужебныеПроцедурыИФункции
+
+#КонецОбласти
+"}
+},
+{0,
+{"Модуль команды",0,0,"","#Область ОбработчикиСобытий
+
+&НаКлиенте
+Процедура ОбработкаКоманды(ПараметрКоманды, ПараметрыВыполненияКоманды)
+	//TODO: Вставить содержимое обработчика.
+	//ПараметрыФормы = Новый Структура("""", );
+	//ОткрытьФорму(""ОбщаяФорма."", ПараметрыФормы, ПараметрыВыполненияКоманды.Источник, ПараметрыВыполненияКоманды.Уникальность, ПараметрыВыполненияКоманды.Окно, ПараметрыВыполненияКоманды.НавигационнаяСсылка);
+КонецПроцедуры
+
+#КонецОбласти
+
+#Область СлужебныеПроцедурыИФункции
+
+#КонецОбласти
+"}
+}
+}
+},
+{11,
+{"Инструкции препроцессору",1,0,"",""},
+{0,
+{"#Если",0,0,"#Если","#Если <?"""", ВыборВарианта, ""Клиент"", ""Клиент"", ""НаКлиенте"", ""НаКлиенте"", ""Сервер"", ""Сервер"", ""НаСервере"", ""НаСервере"", ""ВнешнееСоединение"", ""ВнешнееСоединение"" ,""ТолстыйКлиентОбычноеПриложение"", ""ТолстыйКлиентОбычноеПриложение"", ""ТолстыйКлиентУправляемоеПриложение"",""ТолстыйКлиентУправляемоеПриложение"", ""ТонкийКлиент"", ""ТонкийКлиент"", ""ВебКлиент"", ""ВебКлиент"", ""МобильноеПриложениеКлиент"", ""МобильноеПриложениеКлиент"", ""МобильноеПриложениеСервер"", ""МобильноеПриложениеСервер"", ""МобильныйКлиент"", ""МобильныйКлиент"", ""МобильныйАвтономныйСервер"", ""МобильныйАвтономныйСервер""> Тогда
+<?>
+#КонецЕсли"}
+},
+{0,
+{"#Если",0,0,"№Если","#Если <?"""", ВыборВарианта, ""Клиент"", ""Клиент"", ""НаКлиенте"", ""НаКлиенте"", ""Сервер"", ""Сервер"", ""НаСервере"", ""НаСервере"", ""ВнешнееСоединение"", ""ВнешнееСоединение"" ,""ТолстыйКлиентОбычноеПриложение"", ""ТолстыйКлиентОбычноеПриложение"", ""ТолстыйКлиентУправляемоеПриложение"",""ТолстыйКлиентУправляемоеПриложение"", ""ТонкийКлиент"", ""ТонкийКлиент"", ""ВебКлиент"", ""ВебКлиент"", ""МобильноеПриложениеКлиент"", ""МобильноеПриложениеКлиент"", ""МобильноеПриложениеСервер"", ""МобильноеПриложениеСервер"", ""МобильныйКлиент"", ""МобильныйКлиент"", ""МобильныйАвтономныйСервер"", ""МобильныйАвтономныйСервер""> Тогда
+<?>
+#КонецЕсли"}
+},
+{0,
+{"#Если (заглушка)",0,0,"#Если","#Если Сервер И НЕ Сервер Тогда
+<?>
+#КонецЕсли"}
+},
+{0,
+{"#Если (заглушка)",0,0,"№Если","#Если Сервер И НЕ Сервер Тогда
+<?>
+#КонецЕсли"}
+},
+{0,
+{"#Если (заглушка)",0,0,"Заглушка","#Если Сервер И НЕ Сервер Тогда
+<?>
+#КонецЕсли"}
+},
+{0,
+{"#Если (серверный модуль)",0,0,"#Если","#Если Сервер Или ТолстыйКлиентОбычноеПриложение Или ВнешнееСоединение Тогда
+<?>
+#КонецЕсли"}
+},
+{0,
+{"#Если (серверный модуль)",0,0,"№Если","#Если Сервер Или ТолстыйКлиентОбычноеПриложение Или ВнешнееСоединение Тогда
+<?>
+#КонецЕсли"}
+},
+{0,
+{"#Вставка",0,0,"#Вста[вка]","#Вставка
+<?>
+#КонецВставки"}
+},
+{0,
+{"#Вставка",0,0,"№Вста[вка]","#Вставка
+<?>
+#КонецВставки"}
+},
+{0,
+{"#Удаление",0,0,"#Удал[ение]","#Удаление
+<?>
+#КонецУдаления"}
+},
+{0,
+{"#Удаление",0,0,"№Удал[ение]","#Удаление
+<?>
+#КонецУдаления"}
+}
+},
+{8,
+{"Управляющие",1,0,"",""},
+{0,
+{"Если",0,0,"Если","Если <?> Тогда
+	
+КонецЕсли;"}
+},
+{0,
+{"ИначеЕсли",0,0,"ИначеЕсли","ИначеЕсли <?> Тогда"}
+},
+{0,
+{"Пока",0,0,"Пока","Пока <?> Цикл
+	
+КонецЦикла;"}
+},
+{0,
+{"Для",0,0,"Для","Для <?""Счетчик (включая начальное значение)""> По <?""Ограничение""> Цикл
+	<?>
+КонецЦикла;"}
+},
+{0,
+{"Для Каждого",0,0,"Для[ Каждого]","Для Каждого <?""Переменная""> Из <?""Коллекция""> Цикл
+	<?>
+КонецЦикла;"}
+},
+{0,
+{"Попытка",0,0,"Попы[тка]","Попытка
+	<?>
+Исключение
+	//ОписаниеОшибки()
+КонецПопытки;"}
+},
+{9,
+{"Процедура",1,0,"",""},
+{0,
+{"Процедура",0,0,"Проц[едура]","Процедура <?>()
+	
+КонецПроцедуры"}
+},
+{0,
+{"Процедура (с параметрами)",0,0,"Проц[едура]","Процедура <?""Имя процедуры"">(<?""Параметры"">)
+	
+	<?>
+	
+КонецПроцедуры"}
+},
+{0,
+{"Процедура (полная)",0,0,"Проц[едура]","<?""Выберите директиву компиляции"", ВыборВарианта, ""(без директивы)"", ""//"", ""НаКлиенте"", ""&НаКлиенте"", ""НаСервере"", ""&НаСервере"", ""НаКлиентеНаСервере (для модуля команды)"", ""&НаКлиентеНаСервере"", ""НаСервереБезКонтекста (для модуля формы)"", ""&НаСервереБезКонтекста"", ""НаКлиентеНаСервереБезКонтекста (для модуля формы)"", ""&НаКлиентеНаСервереБезКонтекста"">
+Процедура <?""Имя процедуры"">(<?""Параметры"">)<?""Экспортная процедура"", ВыборВарианта, ""Экспортная"", "" Экспорт"", ""Не экспортная"", """">
+	
+	<?>
+	
+КонецПроцедуры"}
+},
+{0,
+{"Процедура (полная с комментарием)",0,0,"Проц[едура]","//TODO: <Описание процедуры>
+//
+// Параметры:
+//  <Параметр1>  - <Тип.Вид> - <описание параметра>
+//                 <продолжение описания параметра>
+//  <Параметр2>  - <Тип.Вид> - <описание параметра>
+//                 <продолжение описания параметра>
+//
+<?""Выберите директиву компиляции"", ВыборВарианта, ""(без директивы)"", ""//"", ""НаКлиенте"", ""&НаКлиенте"", ""НаСервере"", ""&НаСервере"", ""НаКлиентеНаСервере (для модуля команды)"", ""&НаКлиентеНаСервере"", ""НаСервереБезКонтекста (для модуля формы)"", ""&НаСервереБезКонтекста"", ""НаКлиентеНаСервереБезКонтекста (для модуля формы)"", ""&НаКлиентеНаСервереБезКонтекста"">
+Процедура <?""Имя процедуры"">(<?""Параметры"">)<?""Экспортная процедура"", ВыборВарианта, ""Экспортная"", "" Экспорт"", ""Не экспортная"", """">
+	
+	<?>
+	
+КонецПроцедуры"}
+},
+{0,
+{"Процедура НаКлиенте",0,0,"Проц[едура]","&НаКлиенте
+Процедура <?>()
+	
+КонецПроцедуры"}
+},
+{0,
+{"Процедура НаСервере",0,0,"Проц[едура]","&НаСервере
+Процедура <?>()
+	
+КонецПроцедуры"}
+},
+{0,
+{"Процедура НаСервереБезКонтекста (модуль формы)",0,0,"Проц[едура]","&НаСервереБезКонтекста
+Процедура <?>()
+	
+КонецПроцедуры"}
+},
+{0,
+{"Процедура НаКлиентеНаСервереБезКонтекста (модуль формы)",0,0,"Проц[едура]","&НаКлиентеНаСервереБезКонтекста
+Процедура <?>()
+	
+КонецПроцедуры"}
+},
+{0,
+{"Процедура НаКлиентеНаСервере (модуль команды)",0,0,"Проц[едура]","&НаКлиентеНаСервере
+Процедура <?>()
+	
+КонецПроцедуры"}
+}
+},
+{9,
+{"Функция",1,0,"",""},
+{0,
+{"Функция",0,0,"Функ[ция]","Функция <?>()
+	
+КонецФункции"}
+},
+{0,
+{"Функция (с параметрами)",0,0,"Функ[ция]","Функция <?""Имя функции"">(<?""Параметры"">)
+	
+	Результат = Неопределено;
+	
+	<?>
+	
+	Возврат Результат;
+	
+КонецФункции"}
+},
+{0,
+{"Функция (полная)",0,0,"Функ[ция]","<?""Выберите директиву компиляции"", ВыборВарианта, ""(без директивы)"", ""//"", ""НаКлиенте"", ""&НаКлиенте"", ""НаСервере"", ""&НаСервере"", ""НаКлиентеНаСервере (для модуля команды)"", ""&НаКлиентеНаСервере"", ""НаСервереБезКонтекста (для модуля формы)"", ""&НаСервереБезКонтекста"", ""НаКлиентеНаСервереБезКонтекста (для модуля формы)"", ""&НаКлиентеНаСервереБезКонтекста"">
+Функция <?""Имя функции"">(<?""Параметры"">)<?""Экспортная фукнция"", ВыборВарианта, ""Экспортная"", "" Экспорт"", ""Не экспортная"", """">
+	
+	Результат = Неопределено;
+	
+	<?>
+	
+	Возврат Результат;
+	
+КонецФункции"}
+},
+{0,
+{"Функция (полная с комментарием)",0,0,"Функ[ция]","//TODO: <Описание функции>
+//
+// Параметры:
+//  <Параметр1>  - <Тип.Вид> - <описание параметра>
+//                 <продолжение описания параметра>
+//  <Параметр2>  - <Тип.Вид> - <описание параметра>
+//                 <продолжение описания параметра>
+//
+// Возвращаемое значение:
+//   <Тип.Вид>   - <описание возвращаемого значения>
+//
+<?""Выберите директиву компиляции"", ВыборВарианта, ""(без директивы)"", ""//"", ""НаКлиенте"", ""&НаКлиенте"", ""НаСервере"", ""&НаСервере"", ""НаКлиентеНаСервере (для модуля команды)"", ""&НаКлиентеНаСервере"", ""НаСервереБезКонтекста (для модуля формы)"", ""&НаСервереБезКонтекста"", ""НаКлиентеНаСервереБезКонтекста (для модуля формы)"", ""&НаКлиентеНаСервереБезКонтекста"">
+Функция <?""Имя функции"">(<?""Параметры"">)<?""Экспортная фукнция"", ВыборВарианта, ""Экспортная"", "" Экспорт"", ""Не экспортная"", """">
+	
+	Результат = Неопределено;
+	
+	<?>
+	
+	Возврат Результат;
+	
+КонецФункции"}
+},
+{0,
+{"Функция НаКлиенте",0,0,"Функ[ция]","&НаКлиенте
+Функция <?>()
+	
+КонецФункции"}
+},
+{0,
+{"Функция НаСервере",0,0,"Функ[ция]","&НаСервере
+Функция <?>()
+	
+КонецФункции"}
+},
+{0,
+{"Функция НаСервереБезКонтекста (модуль формы)",0,0,"Функ[ция]","&НаСервереБезКонтекста
+Функция <?>()
+	
+КонецФункции"}
+},
+{0,
+{"Функция НаКлиентеНаСервереБезКонтекста (модуль формы)",0,0,"Функ[ция]","&НаКлиентеНаСервереБезКонтекста
+Функция <?>()
+	
+КонецФункции"}
+},
+{0,
+{"Функция НаКлиентеНаСервере (модуль команды)",0,0,"Функ[ция]","&НаКлиентеНаСервере
+Функция <?>()
+	
+КонецФункции"}
+}
+}
+},
+{12,
+{"Запросы",1,0,"",""},
+{0,
+{"Запрос с конструктором",0,0,"Запрос=","Запрос = Новый Запрос;
+Запрос.Текст = 
+""<?"""", ТекстЗапроса>"";
+
+<?>Запрос.УстановитьПараметр("""", );
+РезультатЗапроса = Запрос.Выполнить();
+"}
+},
+{0,
+{"Запрос вручную",0,0,"Запрос=","Запрос = Новый Запрос;
+Запрос.Текст = 
+""ВЫБРАТЬ
+|	<?>
+|
+|
+|
+|
+|
+|
+|
+|"";
+
+Запрос.УстановитьПараметр("""", );
+РезультатЗапроса = Запрос.Выполнить();
+"}
+},
+{0,
+{"Запрос с конструктором с обработкой результата",0,0,"Запрос=","Запрос = Новый Запрос;
+Запрос.Текст = 
+""<?"""", ТекстЗапроса>"";
+
+Запрос.УстановитьПараметр("""", );
+РезультатЗапроса = Запрос.Выполнить();
+
+Если РезультатЗапроса.Пустой() Тогда
+	Возврат; //Продолжить|Прервать
+КонецЕсли;
+
+Выборка = РезультатЗапроса.Выбрать();
+Пока Выборка.Следующий() Цикл
+	
+	<?>
+	
+КонецЦикла;
+"}
+},
+{0,
+{"Запрос без конструктора с обработкой результата",0,0,"Запрос=","Запрос = Новый Запрос;
+Запрос.Текст = 
+""<?>"";
+
+Запрос.УстановитьПараметр("""", );
+РезультатЗапроса = Запрос.Выполнить();
+
+Если РезультатЗапроса.Пустой() Тогда
+	Возврат; //Продолжить|Прервать
+КонецЕсли;
+
+Выборка = РезультатЗапроса.Выбрать();
+Пока Выборка.Следующий() Цикл
+	
+	
+	
+КонецЦикла;
+"}
+},
+{0,
+{"Документ",0,0,"Документ.","Документ.<?"""", ОбъектМетаданных, ""Документ"", ""Документ.ТабличнаяЧасть"">"}
+},
+{0,
+{"Справочник",0,0,"Справочник.","Справочник.<?"""", ОбъектМетаданных, ""Справочник"", ""Справочник.ТабличнаяЧасть"">"}
+},
+{0,
+{"РегистрСведений",0,0,"Рег[истрСведений.]","РегистрСведений.<?"""", ОбъектМетаданных, ""РегистрСведений""><?"""", ВыборВарианта, ""Основная таблица"", ""<?>"", ""СрезПервых"", "".СрезПервых(<?>)"", ""СрезПоследних"", "".СрезПоследних(<?>)"">"}
+},
+{0,
+{"РегистрНакопления",0,0,"Рег[истрНакопления.]","РегистрНакопления.<?"""", ОбъектМетаданных, ""РегистрНакопления""><?"""", ВыборВарианта, ""Основная таблица"", ""<?>"", ""Остатки"", "".Остатки(<?>)"", ""Обороты"", "".Обороты(<?>)"", ""ОстаткиИОбороты"", "".ОстаткиИОбороты(<?>)"">"}
+},
+{0,
+{"РегистрБухгалтерии",0,0,"Рег[истрБухгалтерии.]","РегистрБухгалтерии.<?"""", ОбъектМетаданных, ""РегистрБухгалтерии""><?"""", ВыборВарианта, ""Основная таблица"", ""<?>"", ""Субконто"", "".Субконто"", ""ДвиженияССубконто"", "".ДвиженияССубконто(<?>)"", ""Остатки"", "".Остатки(<?>)"", ""Обороты"", "".Обороты(<?>)"", ""ОстаткиИОбороты"", "".ОстаткиИОбороты(<?>)"", ""ОборотыДтКт"", "".ОборотыДтКт(<?>)"">"}
+},
+{0,
+{"РегистрРасчета",0,0,"Рег[истрРасчета.]","РегистрРасчета.<?"""", ОбъектМетаданных, ""РегистрРасчета"", ""РегистрРасчета.Перерасчет"">"}
+},
+{0,
+{"ЛЕВОЕ СОЕДИНЕНИЕ",0,0,"ЛЕВОЕ","ЛЕВОЕ СОЕДИНЕНИЕ"}
+},
+{0,
+{"ПРАВОЕ СОЕДИНЕНИЕ",0,0,"ПРАВОЕ","ПРАВОЕ СОЕДИНЕНИЕ"}
+}
+},
+{3,
+{"Общие объекты",1,0,"",""},
+{7,
+{"Табличный документ",1,0,"",""},
+{0,
+{"ТабДок (создать новый)",0,0,"ТабДок=","ТабДок = Новый ТабличныйДокумент;
+<?>"}
+},
+{0,
+{"ТабДок (элемент обычной формы)",0,0,"ТабДок=","ТабДок = ЭлементыФормы.<?""Имя элемента"">;
+<?>"}
+},
+{0,
+{"ТабДок (элемент управляемой формы)",0,0,"ТабДок=","ТабДок = Элементы.<?""Имя элемента"">;
+<?>"}
+},
+{0,
+{"ТабДок (шаблон отчета)",0,0,"ТабДок=","ТабДок = Новый ТабличныйДокумент;
+ТабДок.ОтображатьГруппировки = Истина;
+ТабДок.ОтображатьЗаголовки = Ложь;
+ТабДок.ОтображатьСетку = Ложь;
+ТабДок.ТолькоПросмотр = Истина;
+ТабДок.Защита = Ложь;
+
+<?>
+
+ТабДок.Показать(""<Заголовок>"");"}
+},
+{0,
+{"Область табличного документа",0,0,"Обл=","Обл<?""Имя области""> = <?>.ПолучитьОбласть(""<?""Имя области"">"");"}
+},
+{0,
+{"Область табличного документа с выводом",0,0,"Обл=","Обл<?""Имя области""> = ТабДок.ПолучитьОбласть(""<?""Имя области"">"");
+Обл<?""Имя области"">.Параметры.<ИмяПараметра> = <ЗначениеПараметра>;
+ТабДок.Вывести(Обл<?""Имя области"">);
+<?>"}
+},
+{0,
+{"Макет",0,0,"Макет=","Макет = ПолучитьМакет(""Макет"");"}
+}
+},
+{3,
+{"Сообщение пользователю",1,0,"",""},
+{0,
+{"Сообщение пользователю",0,0,"Сооб[щение]","Сообщение = Новый СообщениеПользователю;
+Сообщение.Текст = НСтр(""<?>"");
+Сообщение.Сообщить();"}
+},
+{0,
+{"Сообщение пользователю с привязкой к реквизитам",0,0,"Сооб[щение]","Сообщение = Новый СообщениеПользователю;
+Сообщение.Текст = НСтр(""<?>"");
+Сообщение.Поле = """"; //имя реквизита
+Сообщение.УстановитьДанные(); //Ссылка на объект ИБ
+Сообщение.Сообщить();"}
+},
+{0,
+{"Сообщение пользователю с описанием",0,0,"Сооб[щение]","Сообщение = Новый СообщениеПользователю;
+Сообщение.Текст = НСтр("""");
+
+//Поле – строка, имя элемента объекта, с которым связывается сообщение:
+// Реквизит шапки (проверка заполнения реквизита) – имя реквизита: Сообщение.Поле = «Поставщик»;
+// Табличная часть (проверка наличия строк ТЧ) – имя табличной части: Сообщение.Поле = «Товары»;
+// Реквизит табличной части – Сообщение.Поле = «Товары[N].Цена», где N – индекс строки (первая = 0)
+Сообщение.Поле = """";
+
+//УстановитьДаныне(Объект) – передается объект, реквизиты которого проверяются (например, ЭтотОбъект);
+// если проверяется реквизит формы, то метод не вызывается (привязка не нужна), а сообщение должно
+// формироваться в обработчике ОбработкаПроверкиЗаполненияНаСервере()
+Сообщение.УстановитьДанные(ЭтотОбъект);
+
+//КлючДанных – ссылка на объект, форма которого будет открыта по щелчку на сообщении
+//ПутьКДанным – строка, имя основного реквизита формы, который содержит ссылку на КлючДанных
+// Если сообщение привязано не к основному реквизиту, тогда не заполняется (достаточно заполнить Поле)
+Сообщение.КлючДанных = Объект.Ссылка;
+Сообщение.ПутьКДанным = ""Объект"";
+Сообщение.Сообщить();
+"}
+}
+},
+{4,
+{"Блокировки",1,0,"",""},
+{0,
+{"Блокировка РегистрНакопления",0,0,"Блокир[овка=]","Блокировка = Новый БлокировкаДанных;
+ЭлементБлокировки = Блокировка.Добавить(""РегистрНакопления.<?"""", РегистрНакопления>"");
+ЭлементБлокировки.Режим = <?"""", ВыборВарианта, ""РежимБлокировкиДанных.Исключительный"", ""РежимБлокировкиДанных.Исключительный"", ""РежимБлокировкиДанных.Разделяемый"", ""РежимБлокировкиДанных.Разделяемый"">;
+//ЭлементБлокировки.ИсточникДанных = <?>;
+//ЭлементБлокировки.ИспользоватьИзИсточникаДанных("""", """");
+//ЭлементБлокировки.УстановитьЗначение("""", );
+Блокировка.Заблокировать();"}
+},
+{0,
+{"Блокировка РегистрБухгалтерии",0,0,"Блокир[овка=]","Блокировка = Новый БлокировкаДанных;
+ЭлементБлокировки = Блокировка.Добавить(""РегистрБухгалтерии.<?"""", РегистрБухгалтерии>"");
+ЭлементБлокировки.Режим = <?"""", ВыборВарианта, ""РежимБлокировкиДанных.Исключительный"", ""РежимБлокировкиДанных.Исключительный"", ""РежимБлокировкиДанных.Разделяемый"", ""РежимБлокировкиДанных.Разделяемый"">;
+//ЭлементБлокировки.УстановитьЗначение(""Период"", Новый Диапазон( , ));
+//ЭлементБлокировки.УстановитьЗначение(""Счет"", );
+Блокировка.Заблокировать(); 
+"}
+},
+{0,
+{"Блокировка РегистрСведений",0,0,"Блокир[овка=]","Блокировка = Новый БлокировкаДанных;
+ЭлементБлокировки = Блокировка.Добавить(""РегистрСведений.<?"""", РегистрСведений>"");
+ЭлементБлокировки.Режим = <?"""", ВыборВарианта, ""РежимБлокировкиДанных.Исключительный"", ""РежимБлокировкиДанных.Исключительный"", ""РежимБлокировкиДанных.Разделяемый"", ""РежимБлокировкиДанных.Разделяемый"">;
+//ЭлементБлокировки.ИсточникДанных = <?>;
+//ЭлементБлокировки.ИспользоватьИзИсточникаДанных("""", """");
+//ЭлементБлокировки.УстановитьЗначение("""", );
+Блокировка.Заблокировать(); 
+"}
+},
+{0,
+{"Блокировка РегистрРасчета",0,0,"Блокир[овка=]","Блокировка = Новый БлокировкаДанных;
+ЭлементБлокировки = Блокировка.Добавить(""РегистрРасчета.<?"""", РегистрРасчета>"");
+ЭлементБлокировки.Режим = <?"""", ВыборВарианта, ""РежимБлокировкиДанных.Исключительный"", ""РежимБлокировкиДанных.Исключительный"", ""РежимБлокировкиДанных.Разделяемый"", ""РежимБлокировкиДанных.Разделяемый"">;
+//ЭлементБлокировки.ИсточникДанных = <?>;
+//ЭлементБлокировки.ИспользоватьИзИсточникаДанных("""", """");
+//ЭлементБлокировки.УстановитьЗначение("""", );
+Блокировка.Заблокировать(); 
+"}
+}
+}
+},
+{16,
+{"Раскладка клавиатуры",1,0,"",""},
+{0,
+{">",0,0,"Ю",">"}
+},
+{0,
+{"<",0,0,"Б","<"}
+},
+{0,
+{"<>",0,0,"БЮ","<>"}
+},
+{0,
+{"<=",0,0,"Б=","<="}
+},
+{0,
+{">=",0,0,"Ю=",">="}
+},
+{0,
+{"ЕстьТгдд",0,0,"ЕстьТгдд","ЕСТЬNULL(<?>"}
+},
+{0,
+{"NULL",0,0,"тгдд","NULL"}
+},
+{0,
+{"[]",0,0,"хъ","[<?>]"}
+},
+{0,
+{"|",0,0,"\ ","|  <?>"}
+},
+{0,
+{"'",0,0,"ээ","'<?>'"}
+},
+{0,
+{"&",0,0,"? ","&<?>"}
+},
+{0,
+{"WebЦвета",0,0,"цуицвета","WebЦвета<?>"}
+},
+{0,
+{"?НаКлиенте",0,0,"?НаКли[енте]","&НаКлиенте"}
+},
+{0,
+{"?НаСервере",0,0,"?НаСер[вере]","&НаСервере"}
+},
+{0,
+{"?НаСервереБезКонтекста",0,0,"?НаСер[вереБезКонтекста]","&НаСервереБезКонтекста"}
+},
+{0,
+{"?НаКлиентеНаСервереБезКонтекста",0,0,"?НаКли[ентеНаСервереБезКонтекста]","&НаКлиентеНаСервереБезКонтекста"}
+}
+},
+{29,
+{"Универсальные коллекции значений",1,0,"",""},
+{0,
+{"Массив",0,0,"Массив=","Массив = Новый Массив(<?>);"}
+},
+{0,
+{"Массив",0,0,"Коллек[ция]","Массив = Новый Массив(<?>);"}
+},
+{0,
+{"Массив (создать и добавить)",0,0,"Массив=","<?""Имя переменной""> = Новый Массив;
+<?""Имя переменной"">.Добавить(<?>);"}
+},
+{0,
+{"Массив (создать и добавить)",0,0,"Коллек[ция]","<?""Имя переменной""> = Новый Массив;
+<?""Имя переменной"">.Добавить(<?>);"}
+},
+{0,
+{"Соответствие",0,0,"Соответствие=","Соответствие = Новый Соответствие;
+<?>"}
+},
+{0,
+{"Соответствие",0,0,"Коллек[ция]","Соответствие = Новый Соответствие;
+<?>"}
+},
+{0,
+{"Соответствие (создать и добавить)",0,0,"Соответствие=","<?""Имя переменной""> = Новый Соответствие;
+<?""Имя переменной"">.Вставить(<?>, );"}
+},
+{0,
+{"Соответствие (создать и добавить)",0,0,"Коллек[ция]","<?""Имя переменной""> = Новый Соответствие;
+<?""Имя переменной"">.Вставить(<?>, );"}
+},
+{0,
+{"Список значений",0,0,"СЗ=","СЗ = Новый СписокЗначений;
+<?>"}
+},
+{0,
+{"Список значений",0,0,"Коллек[ция]","СЗ = Новый СписокЗначений;
+<?>"}
+},
+{0,
+{"Список значений (создать и добавить)",0,0,"СЗ=","<?""Имя переменной""> = Новый СписокЗначений;
+<?""Имя переменной"">.Добавить(<?>, ""<Представление>"", <Пометка>, <Картинка>);"}
+},
+{0,
+{"Список значений (создать и добавить)",0,0,"Коллек[ция]","<?""Имя переменной""> = Новый СписокЗначений;
+<?""Имя переменной"">.Добавить(<?>, ""<Представление>"", <Пометка>, <Картинка>);"}
+},
+{0,
+{"Структура",0,0,"Структура=","Структура = Новый Структура;
+<?>"}
+},
+{0,
+{"Структура",0,0,"Коллек[ция]","Структура = Новый Структура;
+<?>"}
+},
+{0,
+{"Структура (создать и добавить)",0,0,"Структура=","<?""Имя переменной""> = Новый Структура;
+<?""Имя переменной"">.Вставить(""<?>"", );"}
+},
+{0,
+{"Структура (создать и добавить)",0,0,"Коллек[ция]","<?""Имя переменной""> = Новый Структура;
+<?""Имя переменной"">.Вставить(""<?>"", );"}
+},
+{0,
+{"Структура (создать конструктором)",0,0,"Структура=","<?""Имя переменной""> = Новый Структура(""<?>"", );"}
+},
+{0,
+{"Структура (создать конструктором)",0,0,"Коллек[ция]","<?""Имя переменной""> = Новый Структура(""<?>"", );"}
+},
+{0,
+{"Структура (проверка свойства)",0,0,"Структура=","Если <?""Имя переменной"">.Свойство(""<Ключ>"", <ИскомоеЗначение>) Тогда
+	<?>
+КонецЕсли;"}
+},
+{0,
+{"Структура (проверка свойства)",0,0,"Коллек[ция]","Если <?""Имя переменной"">.Свойство(""<Ключ>"", <ИскомоеЗначение>) Тогда
+	<?>
+КонецЕсли;"}
+},
+{0,
+{"ТЗ",0,0,"ТЗ=","ТЗ = Новый ТаблицаЗначений;
+<?>"}
+},
+{0,
+{"ТЗ",0,0,"Коллек[ция]","ТЗ = Новый ТаблицаЗначений;
+<?>"}
+},
+{0,
+{"ТЗ (создать и добавить колонку)",0,0,"ТЗ=","<?""Имя переменной""> = Новый ТаблицаЗначений;
+<?""Имя переменной"">.Колонки.Добавить(""<?>"", );"}
+},
+{0,
+{"ТЗ (создать и добавить колонку)",0,0,"Коллек[ция]","<?""Имя переменной""> = Новый ТаблицаЗначений;
+<?""Имя переменной"">.Колонки.Добавить(""<?>"", );"}
+},
+{0,
+{"ДеревоЗначений",0,0,"Дерево=","ДеревоЗначений = Новый ДеревоЗначений;
+<?>"}
+},
+{0,
+{"ДеревоЗначений",0,0,"ДеревоЗначений=","ДеревоЗначений = Новый ДеревоЗначений;
+<?>"}
+},
+{0,
+{"ДеревоЗначений",0,0,"Коллек[ция]","ДеревоЗначений = Новый ДеревоЗначений;
+<?>"}
+},
+{0,
+{"Ключ и значение (обход коллекции)",0,0,"Ключ=","Для Каждого КлючЗначение Из <?""Имя переменной""> Цикл
+	
+	Ключ = КлючЗначение.Ключ;
+	Значение = КлючЗначение.Значение;
+	
+КонецЦикла;"}
+},
+{0,
+{"Ключ и значение (обход коллекции)",0,0,"Коллек[ция]","Для Каждого КлючЗначение Из <?""Имя переменной""> Цикл
+	
+	Ключ = КлючЗначение.Ключ;
+	Значение = КлючЗначение.Значение;
+	
+КонецЦикла;"}
+}
+},
+{9,
+{"Прикладные объекты",1,0,"",""},
+{0,
+{"Значение перечисления",0,0,"Переч[исления.]","Перечисления.<?"""", ЗначениеПеречисления>"}
+},
+{0,
+{"ВыборСчетаДт",0,0,"СчетДт=","СчетДт = <?"""", ПланСчетовПредопределенныеДанные>;"}
+},
+{0,
+{"ВыборСчетаКт",0,0,"СчетКт=","СчетКт = <?"""", ПланСчетовПредопределенныеДанные>;"}
+},
+{0,
+{"Движение",0,0,"Движение=","Движение = Движения<?>
+Движение.Период = Дата;"}
+},
+{0,
+{"СубконтоДт",0,0,"СубконтоДт","СубконтоДт[<?"""", ПланВидовХарактеристикПредопределенныеДанные>] = <?>;"}
+},
+{0,
+{"СубконтоКт",0,0,"СубконтоКт","СубконтоКт[<?"""", ПланВидовХарактеристикПредопределенныеДанные>] = <?>;"}
+},
+{0,
+{"Граница",0,0,"Граница=","Граница = Новый Граница(<?>, <?"""", ВыборВарианта, ""ВидГраницы.Включая"", ""ВидГраницы.Включая"", ""ВидГраницы.Исключая"", ""ВидГраницы.Исключая"">);"}
+},
+{2,
+{"ВидДвижения",1,0,"",""},
+{0,
+{"РегистрыНакопления",0,0,"ВидД[вижения=]","ВидДвижения = <?"""", ВыборВарианта, ""Приход"", ""ВидДвиженияНакопления.Приход"", ""Расход"", ""ВидДвиженияНакопления.Расход"">;"}
+},
+{0,
+{"РегистрыБухгалтерии",0,0,"ВидД[вижения=]","ВидДвижения = <?"""", ВыборВарианта, ""Дебет"", ""ВидДвиженияБухгалтерии.Дебет"", ""Кредит"", ""ВидДвиженияБухгалтерии.Кредит"">;"}
+}
+},
+{5,
+{"Записи регистров",1,0,"",""},
+{0,
+{"РегистрСведений",0,0,"НаборЗаписей=","НаборЗаписей = РегистрыСведений.<?"""", РегистрСведений>.СоздатьНаборЗаписей();"}
+},
+{0,
+{"РегистрНакопления",0,0,"НаборЗаписей=","НаборЗаписей = РегистрыНакопления.<?"""", РегистрНакопления>.СоздатьНаборЗаписей();
+НаборЗаписей.Отбор.Регистратор.Установить(<?>);
+НаборЗаписей.Прочитать();"}
+},
+{0,
+{"РегистрБухгалтерии",0,0,"НаборЗаписей=","НаборЗаписей = РегистрыБухгалтерии.<?"""", РегистрБухгалтерии>.СоздатьНаборЗаписей();
+НаборЗаписей.Отбор.Регистратор.Установить(<?>);
+НаборЗаписей.Прочитать();"}
+},
+{0,
+{"РегистрРасчета",0,0,"НаборЗаписей=","НаборЗаписей = РегистрыРасчета.<?"""", РегистрРасчета>.СоздатьНаборЗаписей();
+НаборЗаписей.Отбор.Регистратор.Установить(<?>);
+НаборЗаписей.Прочитать();"}
+},
+{0,
+{"ЗаписьРегистраРасчетов",0,0,"Запись=","Запись = Движения.<?"""", РегистрРасчета>.Добавить();
+Запись.ПериодРегистрации = Дата;
+Запись.ПериодДействияНачало = ;
+Запись.ПериодДействияКонец = ;
+Запись.Сторно = Ложь;
+Запись.Сотрудник = ;
+Запись.Подразделение = ;
+Запись.График = ;
+Запись.Параметр = ;
+Запись.БазовыйПериодНачало = ;
+Запись.БазовыйПериодКонец = ;"}
+}
+}
+},
+{6,
+{"Диалоговые",1,0,"",""},
+{0,
+{"НастройкаПериода",0,0,"НастройкаПер[иода=]","НастройкаПериода = Новый НастройкаПериода;
+НастройкаПериода.УстановитьПериод(НачПериода, ?(КонПериода='0001-01-01', КонПериода, КонецДня(КонПериода)));
+НастройкаПериода.РедактироватьКакИнтервал = Истина;
+НастройкаПериода.РедактироватьКакПериод = Истина;
+НастройкаПериода.ВариантНастройки = ВариантНастройкиПериода.Период;
+Если НастройкаПериода.Редактировать() Тогда
+	НачПериода = НастройкаПериода.ПолучитьДатуНачала();
+	КонПериода = НастройкаПериода.ПолучитьДатуОкончания();
+КонецЕсли;
+"}
+},
+{0,
+{"Диалог выбора файла",0,0,"ВыборФайла=","ДиалогВыбораФайла = Новый ДиалогВыбораФайла(РежимДиалогаВыбораФайла.Сохранение);
+//ДиалогВыбораФайла.Каталог = ""%HOMEPATH%"";
+//ДиалогВыбораФайла.ПолноеИмяФайла = """";
+ДиалогВыбораФайла.МножественныйВыбор = Ложь;
+ДиалогВыбораФайла.Заголовок = НСтр(""ru = 'Выбор файла'"");
+ДиалогВыбораФайла.Фильтр = ""Текстовые файлы(*.txt)|*.txt|Все файлы (*.*)|*.*"";
+ДиалогВыбораФайла.ИндексФильтра = 0;
+
+Если ДиалогВыбораФайла.Выбрать() Тогда
+	ПеременнаяПутьКФайлу = ДиалогВыбораФайла.ПолноеИмяФайла;
+КонецЕсли;
+"}
+},
+{3,
+{"Предупреждение",1,0,"",""},
+{0,
+{"Предупреждение",0,0,"Пр[едупреждение]","ПоказатьПредупреждение(,<?>, 60);"}
+},
+{0,
+{"Предупреждение",0,0,"ПоказатьПр[едупреждение]","ПоказатьПредупреждение(,<?>, 60);"}
+},
+{0,
+{"Предупреждение c обработкой оповещения",0,0,"ПоказатьПр[едупреждение]","ОписаниеОповещения = Новый ОписаниеОповещения(""<?""Имя процедуры обработчика"">"", ЭтотОбъект);
+ПоказатьПредупреждение(ОписаниеОповещения, <?>, 60);
+
+//Вынести в отдельную процедуру
+&НаКлиенте
+Процедура <?""Имя процедуры обработчика"">(ДополнительныеПараметры) Экспорт
+	
+КонецПроцедуры
+"}
+}
+},
+{6,
+{"Вопрос",1,0,"",""},
+{0,
+{"Вопрос",0,0,"Ответ=","ОписаниеОповещения = Новый ОписаниеОповещения(""<?""Имя процедуры обработчика"">"", ЭтотОбъект);
+ПоказатьВопрос(ОписаниеОповещения, ""<?""Текст вопроса"">"",<?""Режим диалога вопрос"", ВыборВарианта, ""ДаНет"", ""РежимДиалогаВопрос.ДаНет"", ""ДаНетОтмена"", ""РежимДиалогаВопрос.ДаНетОтмена"", ""ОК"", ""РежимДиалогаВопрос.ОК"", ""ОКОтмена"", ""РежимДиалогаВопрос.ОКОтмена"", ""ПовторитьОтмена"", ""РежимДиалогаВопрос.ПовторитьОтмена"", ""ПрерватьПовторитьПропустить"", ""РежимДиалогаВопрос.ПрерватьПовторитьПропустить"">, 60);
+
+<?> 
+//Вынести в отдельную процедуру
+&НаКлиенте
+Процедура <?""Имя процедуры обработчика"">(РезультатВопроса, ДополнительныеПараметры) Экспорт
+	
+КонецПроцедуры
+"}
+},
+{0,
+{"Вопрос",0,0,"ПоказатьВо[прос]","ОписаниеОповещения = Новый ОписаниеОповещения(""<?""Имя процедуры обработчика"">"", ЭтотОбъект);
+ПоказатьВопрос(ОписаниеОповещения, ""<?""Текст вопроса"">"",<?""Режим диалога вопрос"", ВыборВарианта, ""ДаНет"", ""РежимДиалогаВопрос.ДаНет"", ""ДаНетОтмена"", ""РежимДиалогаВопрос.ДаНетОтмена"", ""ОК"", ""РежимДиалогаВопрос.ОК"", ""ОКОтмена"", ""РежимДиалогаВопрос.ОКОтмена"", ""ПовторитьОтмена"", ""РежимДиалогаВопрос.ПовторитьОтмена"", ""ПрерватьПовторитьПропустить"", ""РежимДиалогаВопрос.ПрерватьПовторитьПропустить"">, 60);
+
+<?> 
+//Вынести в отдельную процедуру
+&НаКлиенте
+Процедура <?""Имя процедуры обработчика"">(РезультатВопроса, ДополнительныеПараметры) Экспорт
+	
+КонецПроцедуры
+"}
+},
+{0,
+{"Вопрос",0,0,"Воп[рос]","ОписаниеОповещения = Новый ОписаниеОповещения(""<?""Имя процедуры обработчика"">"", ЭтотОбъект);
+ПоказатьВопрос(ОписаниеОповещения, ""<?""Текст вопроса"">"",<?""Режим диалога вопрос"", ВыборВарианта, ""ДаНет"", ""РежимДиалогаВопрос.ДаНет"", ""ДаНетОтмена"", ""РежимДиалогаВопрос.ДаНетОтмена"", ""ОК"", ""РежимДиалогаВопрос.ОК"", ""ОКОтмена"", ""РежимДиалогаВопрос.ОКОтмена"", ""ПовторитьОтмена"", ""РежимДиалогаВопрос.ПовторитьОтмена"", ""ПрерватьПовторитьПропустить"", ""РежимДиалогаВопрос.ПрерватьПовторитьПропустить"">, 60);
+
+<?> 
+//Вынести в отдельную процедуру
+&НаКлиенте
+Процедура <?""Имя процедуры обработчика"">(РезультатВопроса, ДополнительныеПараметры) Экспорт
+	
+КонецПроцедуры
+"}
+},
+{0,
+{"Вопрос с анализом результата",0,0,"Ответ=","ОписаниеОповещения = Новый ОписаниеОповещения(""<?""Имя процедуры обработчика"">"", ЭтотОбъект);
+ПоказатьВопрос(ОписаниеОповещения, ""<?""Текст вопроса"">"",<?""Режим диалога вопрос"", ВыборВарианта, ""ДаНет"", ""РежимДиалогаВопрос.ДаНет"", ""ДаНетОтмена"", ""РежимДиалогаВопрос.ДаНетОтмена"", ""ОК"", ""РежимДиалогаВопрос.ОК"", ""ОКОтмена"", ""РежимДиалогаВопрос.ОКОтмена"", ""ПовторитьОтмена"", ""РежимДиалогаВопрос.ПовторитьОтмена"", ""ПрерватьПовторитьПропустить"", ""РежимДиалогаВопрос.ПрерватьПовторитьПропустить"">, 60);
+
+<?>
+//Вынести в отдельную процедуру
+&НаКлиенте
+Процедура <?""Имя процедуры обработчика"">(РезультатВопроса, ДополнительныеПараметры) Экспорт
+	
+	Если РезультатВопроса <?"""", ВыборВарианта, ""Равен"", ""="", ""Не равен"", ""<>""> <?""Код возврата диалога"", ВыборВарианта, ""Да"", ""КодВозвратаДиалога.Да"", ""Нет"", ""КодВозвратаДиалога.Нет"", ""ОК"", ""КодВозвратаДиалога.ОК"", ""Отмена"", ""КодВозвратаДиалога.Отмена"", ""Повторить"", ""КодВозвратаДиалога.Повторить"", ""Прервать"", ""КодВозвратаДиалога.Прервать"", ""Пропустить"", ""КодВозвратаДиалога.Пропустить"", ""Тайаут"", ""КодВозвратаДиалога.Таймаут""> Тогда
+		
+	КонецЕсли;
+	
+КонецПроцедуры
+"}
+},
+{0,
+{"Вопрос с анализом результата",0,0,"ПоказатьВо[прос]","ОписаниеОповещения = Новый ОписаниеОповещения(""<?""Имя процедуры обработчика"">"", ЭтотОбъект);
+ПоказатьВопрос(ОписаниеОповещения, ""<?""Текст вопроса"">"",<?""Режим диалога вопрос"", ВыборВарианта, ""ДаНет"", ""РежимДиалогаВопрос.ДаНет"", ""ДаНетОтмена"", ""РежимДиалогаВопрос.ДаНетОтмена"", ""ОК"", ""РежимДиалогаВопрос.ОК"", ""ОКОтмена"", ""РежимДиалогаВопрос.ОКОтмена"", ""ПовторитьОтмена"", ""РежимДиалогаВопрос.ПовторитьОтмена"", ""ПрерватьПовторитьПропустить"", ""РежимДиалогаВопрос.ПрерватьПовторитьПропустить"">, 60);
+
+<?>
+//Вынести в отдельную процедуру
+&НаКлиенте
+Процедура <?""Имя процедуры обработчика"">(РезультатВопроса, ДополнительныеПараметры) Экспорт
+	
+	Если РезультатВопроса <?"""", ВыборВарианта, ""Равен"", ""="", ""Не равен"", ""<>""> <?""Код возврата диалога"", ВыборВарианта, ""Да"", ""КодВозвратаДиалога.Да"", ""Нет"", ""КодВозвратаДиалога.Нет"", ""ОК"", ""КодВозвратаДиалога.ОК"", ""Отмена"", ""КодВозвратаДиалога.Отмена"", ""Повторить"", ""КодВозвратаДиалога.Повторить"", ""Прервать"", ""КодВозвратаДиалога.Прервать"", ""Пропустить"", ""КодВозвратаДиалога.Пропустить"", ""Тайаут"", ""КодВозвратаДиалога.Таймаут""> Тогда
+		
+	КонецЕсли;
+	
+КонецПроцедуры
+"}
+},
+{0,
+{"Вопрос с анализом результата",0,0,"Воп[рос]","ОписаниеОповещения = Новый ОписаниеОповещения(""<?""Имя процедуры обработчика"">"", ЭтотОбъект);
+ПоказатьВопрос(ОписаниеОповещения, ""<?""Текст вопроса"">"",<?""Режим диалога вопрос"", ВыборВарианта, ""ДаНет"", ""РежимДиалогаВопрос.ДаНет"", ""ДаНетОтмена"", ""РежимДиалогаВопрос.ДаНетОтмена"", ""ОК"", ""РежимДиалогаВопрос.ОК"", ""ОКОтмена"", ""РежимДиалогаВопрос.ОКОтмена"", ""ПовторитьОтмена"", ""РежимДиалогаВопрос.ПовторитьОтмена"", ""ПрерватьПовторитьПропустить"", ""РежимДиалогаВопрос.ПрерватьПовторитьПропустить"">, 60);
+
+<?>
+//Вынести в отдельную процедуру
+&НаКлиенте
+Процедура <?""Имя процедуры обработчика"">(РезультатВопроса, ДополнительныеПараметры) Экспорт
+	
+	Если РезультатВопроса <?"""", ВыборВарианта, ""Равен"", ""="", ""Не равен"", ""<>""> <?""Код возврата диалога"", ВыборВарианта, ""Да"", ""КодВозвратаДиалога.Да"", ""Нет"", ""КодВозвратаДиалога.Нет"", ""ОК"", ""КодВозвратаДиалога.ОК"", ""Отмена"", ""КодВозвратаДиалога.Отмена"", ""Повторить"", ""КодВозвратаДиалога.Повторить"", ""Прервать"", ""КодВозвратаДиалога.Прервать"", ""Пропустить"", ""КодВозвратаДиалога.Пропустить"", ""Тайаут"", ""КодВозвратаДиалога.Таймаут""> Тогда
+		
+	КонецЕсли;
+	
+КонецПроцедуры
+"}
+}
+},
+{2,
+{"НачатьПомещениеФайла",1,0,"",""},
+{0,
+{"ПоместитьФайл",0,0,"ПоместитьФ[айл]","ОписаниеОповещения = Новый ОписаниеОповещения(""<?""Имя процедуры обработчика"">"", ЭтотОбъект);
+НачатьПомещениеФайла(ОписаниеОповещения, , ,Истина, УникальныйИдентификатор);
+
+<?>
+//Вынести в отдельную процедуру
+&НаКлиенте
+Процедура <?""Имя процедуры обработчика"">(Результат, Адрес, ВыбранноеИмяФайла, ДополнительныеПараметры) Экспорт
+	
+КонецПроцедуры
+"}
+},
+{0,
+{"ПоместитьФайл",0,0,"НачатьПо[мещениеФайла]","ОписаниеОповещения = Новый ОписаниеОповещения(""<?""Имя процедуры обработчика"">"", ЭтотОбъект);
+НачатьПомещениеФайла(ОписаниеОповещения, , ,Истина, УникальныйИдентификатор);
+
+<?>
+//Вынести в отдельную процедуру
+&НаКлиенте
+Процедура <?""Имя процедуры обработчика"">(Результат, Адрес, ВыбранноеИмяФайла, ДополнительныеПараметры) Экспорт
+	
+КонецПроцедуры
+"}
+}
+},
+{7,
+{"Открыть форму (упраляемая)",1,0,"",""},
+{0,
+{"Основная форма нового объекта",0,0,"ОткрытьФ[орму]","ОткрытьФорму(""Справочник.<?"""", ОбъектМетаданных, ""Справочник"">.ОсновнаяФорма"");"}
+},
+{0,
+{"Основная форма новой группы",0,0,"ОткрытьФ[орму]","Параметры = Новый Структура(""ЭтоГруппа"", Истина);
+ОткрытьФорму(""Справочник.<?"""", ОбъектМетаданных, ""Справочник"">.ФормаГруппы"", Параметры);"}
+},
+{0,
+{"Основная форма списка или выбора",0,0,"ОткрытьФ[орму]","ОткрытьФорму(""Справочник.<?"""", ОбъектМетаданных, ""Справочник"">.<?"""", ВыборВарианта, ""ФормаСписка"", ""ФормаСписка"", ""ФормаВыбора"", ""ФормаВыбора"", ""ФормаВыбораГруппы"", ""ФормаВыбораГруппы"">"");"}
+},
+{0,
+{"Произвольная форма",0,0,"ОткрытьФ[орму]","ОткрытьФорму(""Справочник.<?"""", ОбъектМетаданных, ""Справочник"">.Форма.<?>"");"}
+},
+{0,
+{"Основная форма существующего объекта",0,0,"ОткрытьФ[орму]","Параметры = Новый Структура(""Ключ"", <?><СсылкаНаЭлементСправочника>);
+ОткрытьФорму(""Справочник.<?"""", ОбъектМетаданных, ""Справочник"">.ФормаОбъекта"", Параметры);"}
+},
+{0,
+{"Форма списка с позиуционированием на элементе",0,0,"ОткрытьФ[орму]","Параметры = Новый Структура(""ТекущаяСтрока"", <?><СсылкаНаЭлементСправочника>);
+ОткрытьФорму(""Справочник.<?"""", ОбъектМетаданных, ""Справочник"">.ФормаСписка"", Параметры);"}
+},
+{0,
+{"Список подчиненного справочника с отбором по владельцу",0,0,"ОткрытьФ[орму]","УсловияОтбора = Новый Структура(""Владелец"", <?><СсылкаНаВладельца>);
+Параметры = Новый Структура(""Отбор"", УсловияОтбора);
+ОткрытьФорму(""Справочник.<?"""", ОбъектМетаданных, ""Справочник"">.ФормаСписка"", Параметры);"}
+}
+}
+},
+{23,
+{"Сокращения",1,0,"",""},
+{0,
+{"НачалоМесяца",0,0,"НМ","НачалоМесяца(<?>)"}
+},
+{0,
+{"КонецМесяца",0,0,"КМ","КонецМесяца(<?>)"}
+},
+{0,
+{"НачалоДня",0,0,"НД","НачалоДня(<?>)"}
+},
+{0,
+{"КонецДня",0,0,"КД","КонецДня(<?>)"}
+},
+{0,
+{"ТекущаяДата",0,0,"ТД","ТекущаяДата()<?>"}
+},
+{0,
+{"ТекущаяДатаСеанса",0,0,"ТД[С]","ТекущаяДатаСеанса()<?>"}
+},
+{0,
+{"ПериодДействияНачало",0,0,"ПДН","ПериодДействияНачало"}
+},
+{0,
+{"ПериодДействияКонец",0,0,"ПДК","ПериодДействияКонец"}
+},
+{0,
+{"БазовыйПериодНачало",0,0,"БПН","БазовыйПериодНачало"}
+},
+{0,
+{"БазовыйПериодКонец",0,0,"БПК","БазовыйПериодКонец"}
+},
+{0,
+{"ПланыВидовХарактеристик",0,0,"ПВХ","<?"""", ПланВидовХарактеристикПредопределенныеДанные>"}
+},
+{0,
+{"ПланыВидовРасчета",0,0,"ПВР","<?"""", ПланВидовРасчетаПредопределенныеДанные>"}
+},
+{0,
+{"ДобавитьМесяц",0,0,"ДМ","ДобавитьМесяц(<?>,)"}
+},
+{0,
+{"Неопределено",0,0,"Неоп[ределено]","Неопределено"}
+},
+{0,
+{"УстановитьПараметр",0,0,"УП","УстановитьПараметр(""<?>"",);"}
+},
+{0,
+{"Контрагент",0,0,"Конт[рагент]","Контрагент"}
+},
+{0,
+{"Номенклатура",0,0,"Номе[нклатура]","Номенклатура"}
+},
+{0,
+{"Количество",0,0,"Коли[чество]","Количество"}
+},
+{0,
+{"Стоимость",0,0,"Стои[мость]","Стоимость"}
+},
+{0,
+{"УстановитьЗначениеПараметра",0,0,"УЗП","УстановитьЗначениеПараметра(""<?>"",);"}
+},
+{0,
+{"МоментВремени",0,0,"МВ","МоментВремени()"}
+},
+{0,
+{"ЗаполнитьЗначенияСвойств",0,0,"ЗЗС","ЗаполнитьЗначенияСвойств(<?>)"}
+},
+{0,
+{"ЗначениеЗаполнено",0,0,"ЗЗ","ЗначениеЗаполнено(<?>)"}
+}
+},
+{11,
+{"Прочие",1,0,"",""},
+{0,
+{"Формат",0,0,"Формат","Формат(<?>, ""<?, ФорматнаяСтрока>"")"}
+},
+{0,
+{"Конструктор описания типов",0,1,"","<?""Конструктор описания типов"", КонструкторОписанияТипов>"}
+},
+{0,
+{"Проверка типа",0,1,"","Если ТипЗнч(<?""Выражение для проверки типа"">) = Тип(""<?""Выберите тип"", ВыборТипа>"") Тогда
+
+	<?>
+
+КонецЕсли;"}
+},
+{0,
+{"Шрифт",0,0,"Шрифт=","// КОНСТРУКТОР     Имя шрифта, Размер, Жирный, Наклонный, Подчеркнутый, Зачеркнутый
+Шрифт = Новый Шрифт(   <?>       ,       ,       ,          ,             ,            );"}
+},
+{0,
+{"ЧислоПрописью (Рубль, Россия)",0,0,"Число[Прописью]","ЧислоПрописью(<?>, ""Л = ru_RU; ДП = Истина"", ""рубль, рубля, рублей, м, копейка, копейки, копеек, ж, 2"");"}
+},
+{0,
+{"ЧислоПрописью (Доллар, США)",0,0,"Число[Прописью]","ЧислоПрописью(<?>, ""Л = en_US; ДП = Истина"", ""dollar, dollars, cent, cents, 2"");"}
+},
+{0,
+{"ЧислоПрописью (Евро, Германия)",0,0,"Число[Прописью]","ЧислоПрописью(<?>, ""Л = de_DE; ДП = Истина"", ""EURO, EURO, М, Cent, Cent, M, 2"");"}
+},
+{0,
+{"ЧислоПрописью (Роны, Румыния)",0,0,"Число[Прописью]","ЧислоПрописью(<?>, ""Л = ro_RO; ДП = Истина"", ""leu, lei, M, ban, bani, W, 2"");"}
+},
+{0,
+{"Выборка",0,0,"Выборка=","Выборка = <?>.Выбрать();
+Пока Выборка.Следующий() Цикл
+	
+КонецЦикла;"}
+},
+{0,
+{"НСтр RU",0,0,"НСтр","НСтр(""ru='<?>'"", ""ru"")"}
+},
+{0,
+{"НСтр RU EN",0,0,"НСтр","НСтр(""ru = '<?>...'; en = '...'"")"}
+}
+},
+{4,
+{"СКД - альфа версия",1,0,"",""},
+{6,
+{"НаборыДанных",1,0,"",""},
+{0,
+{"СхемаКомпоновки",0,0,"СКД=","СхемаКомпоновки = Новый СхемаКомпоновкиДанных;"}
+},
+{0,
+{"ИсточникДанныхСКД",0,0,"Источник[ДанныхСКД]=","ИсточникДанных = СхемаКомпоновки.ИсточникиДанных.Добавить();
+ИсточникДанных.Имя = ""local"";
+ИсточникДанных.ТипИсточникаДанных = ""local"";
+"}
+},
+{0,
+{"Набор данных Запрос",0,0,"НаборД[анных=]","НаборДанных = СхемаКомпоновки.НаборыДанных.Добавить(Тип(""НаборДанныхЗапросСхемыКомпоновкиДанных""));
+НаборДанных.Имя = ""НаборДанных1"";
+НаборДанных.ИсточникДанных = ИсточникДанных.Имя;
+НаборДанных.Запрос = <?>;
+"}
+},
+{0,
+{"Набор данных Объект",0,0,"НаборД[анных=]","НаборДанных = СхемаКомпоновки.НаборыДанных.Добавить(Тип(""НаборДанныхОбъектСхемыКомпоновкиДанных""));
+НаборДанных.Имя = ""НаборДанных1"";
+НаборДанных.ИсточникДанных = ИсточникДанных.Имя;
+НаборДанных.ИмяОбъекта = <?>;
+"}
+},
+{0,
+{"Набор данных Объединение",0,0,"НаборД[анных=]","НаборДанных = СхемаКомпоновки.НаборыДанных.Добавить(Тип(""НаборДанныхОбъединениеСхемыКомпоновкиДанных""));
+НаборДанных.Имя = ""НаборДанных1"";
+НаборДанных.Элементы = <?>;
+"}
+},
+{0,
+{"ПолеСКД",0,0,"ПолеСКД=","ПолеСКД = НаборДанных.Поля.Добавить(Тип(""ПолеНабораДанныхСхемыКомпоновкиДанных""));
+ПолеСКД.Поле = ""<?>"";
+ПолеСКД.ПутьКДанным = ""<?>"";
+ПолеСКД.Роль.Измерение = Истина;
+"}
+}
+},
+{1,
+{"Ресурсы",1,0,"",""},
+{0,
+{"РесурсСКД",0,0,"РесурсСКД=","РесурсСКД = СхемаКомпоновки.ПоляИтога.Добавить();
+РесурсСКД.ПутьКДанным = ""<?>""; 
+РесурсСКД.Выражение = ""Сумма(<?>)"";"}
+}
+},
+{1,
+{"Параметры",1,0,"",""},
+{0,
+{"ПараметрСКД",0,0,"ПараметрСКД=","ПараметрСКД = СхемаКомпоновки.Параметры.Добавить(); //Разные параметры надо описывать разными переменными!
+ПараметрСКД.Имя = <?""Имя параметра"">;
+ПараметрСКД.Заголовок = <?""Имя параметра"">;
+ПараметрСКД.ТипЗначения = <?""Конструктор описания типов"", КонструкторОписанияТипов>;
+ПараметрСКД.ВключатьВДоступныеПоля = Истина;
+ПараметрСКД.Использование = ИспользованиеПараметраКомпоновкиДанных.Авто;
+"}
+}
+},
+{10,
+{"Настройки",1,0,"",""},
+{0,
+{"НастройкиСКД Новый вариант",0,0,"НастройкиСКД=","НастройкиСКД = СхемаКомпоновки.ВариантыНастроек.Добавить();"}
+},
+{0,
+{"НастройкиСКД Настройки по умолчанию",0,0,"НастройкиСКД=","НастройкиСКД = СхемаКомпоновки.НастройкиПоУмолчанию;
+"}
+},
+{0,
+{"ГруппировкаСКД - новая группировка в корень",0,0,"ГруппировкаСКД=","ГруппировкаСКД = НастройкиСКД.Структура.Добавить(Тип(""<?"""", ВыборВарианта, ""Группировка"", ""ГруппировкаКомпоновкиДанных"", ""Таблица"", ""ТаблицаКомпоновкиДанных"">""));
+ГруппировкаСКД.Использование = Истина;
+ПолеГруппировки = ГруппировкаСКД.ПоляГруппировки.Элементы.Добавить(Тип(""ПолеГруппировкиКомпоновкиДанных""));
+ПолеГруппировки.Использование = Истина;
+ПолеГруппировки.Поле = Новый ПолеКомпоновкиДанных(""<?""Введите имя поля"">"");
+"}
+},
+{0,
+{"ГруппировкаСКД - вложенная группировка",0,0,"ГруппировкаСКД=","ГруппировкаСКД = ГруппировкаСКД.Структура.Добавить(Тип(""<?"""", ВыборВарианта, ""Группировка"", ""ГруппировкаКомпоновкиДанных"", ""Таблица"", ""ТаблицаКомпоновкиДанных"">""));
+ГруппировкаСКД.Использование = Истина;
+ПолеГруппировки = ГруппировкаСКД.ПоляГруппировки.Элементы.Добавить(Тип(""ПолеГруппировкиКомпоновкиДанных""));
+ПолеГруппировки.Использование = Истина;
+ПолеГруппировки.Поле = Новый ПолеКомпоновкиДанных(""<?""Введите имя поля"">"");
+"}
+},
+{0,
+{"ВыбранноеПолеСКД - АвтоПоле",0,0,"ВыбранноеПолеСКД=","ВыбранноеПолеСКД = ГруппировкаСКД.Выбор.Элементы.Добавить(Тип(""АвтоВыбранноеПолеКомпоновкиДанных""));
+ВыбранноеПолеСКД.Использование = Истина;
+"}
+},
+{0,
+{"ВыбранноеПолеСКД - Произольное поле",0,0,"ВыбранноеПолеСКД=","ВыбранноеПолеСКД = ГруппировкаСКД.Выбор.Элементы.Добавить(Новый ПолеКомпоновкиДанных(""<?""Введите имя поля"">""));
+ВыбранноеПолеСКД.Использование = Истина;
+"}
+},
+{0,
+{"ПолеСортировкиСКД - Авто",0,0,"ПолеСортировкиСКД=","ПолеСортировки = НастройкиСКД.Порядок.Элементы.Добавить(Тип(""АвтоЭлементПорядкаКомпоновкиДанных""));
+ПолеСортировки.Использование = Истина;
+"}
+},
+{0,
+{"ПолеСортировкиСКД - Произольное поле",0,0,"ПолеСортировкиСКД=","ПолеСортировки = НастройкиСКД.Порядок.Элементы.Добавить(Новый ПолеКомпоновкиДанных(""<?""Введите имя поля"">""));
+ПолеСортировки.Использование = Истина;
+"}
+},
+{0,
+{"ЗначениеПараметраСКД",0,0,"","ЗначениеПараметраСКД = НастройкиСКД.ПараметрыДанных.Элементы.Добавить();
+ЗначениеПараметраСКД.Использование = Истина;
+ЗначениеПараметраСКД.Параметр = Новый ПараметрКомпоновкиДанных(""<?""Имя параметра"">"");
+ЗначениеПараметраСКД.Значение = <?""Значение параметра"">;"}
+},
+{0,
+{"ОтборСКД",0,0,"","ЭлементОтбора = Настройки.Отбор.Элементы.Добавить(Тип(""ЭлементОтбораКомпоновкиДанных""));
+ЭлементОтбора.Использование = Истина;
+ЭлементОтбора.ЛевоеЗначение = Новый ПолеКомпоновкиДанных(""<?""Введите имя отбора"">"");
+ЭлементОтбора.ВидСравнения = ВидСравненияКомпоновкиДанных.Равно;
+ЭлементОтбора.ПравоеЗначение = <?""Укажите значение отбора"">;
+"}
+}
+}
+}
+}
+}
+}
