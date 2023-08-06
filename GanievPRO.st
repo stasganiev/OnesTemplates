@@ -1,17 +1,31 @@
 ﻿{1,
 {4,
-{"Ganiev.PRO (v8.3.1.5 from 01 Aug 2023)",1,0,"",""},
+{"Ganiev.PRO (v8.3.2.3 from 06 Aug 2023)",1,0,"",""},
 {0,
 {"Ваши предложения по улучшению / Your suggestions for improvement",0,0,"","// Есть мысли по развитию шаблонов? Пишите на e-mail: stas@ganiev.pro или в Telegram: @stas_ganiev
 
-// If you have a things about improvements, text me please: stas@ganiev.pro"}
+// If you have a things about improvements, text me please on e-mail: stas@ganiev.pro or on Telegram: @stas_ganiev"}
 },
 {0,
 {"Описание и история изменений / Description and versions history",0,0,"","// Шаблоны для работы в конфигураторе с системами 1С:Предприятие версии 8.3
-// Последнюю версию шаблонов всегда можно найти тут: 1c.chistov.pro
+// Последнюю версию шаблонов всегда можно найти тут: https://github.com/stasganiev/OnesTemplates
 // С уважением, Стас Ганиев (@stas_ganiev)
 
-#Область 2023_07
+#Область 2023_08_06
+	// (версия 8.3.2 от 06.08.2023)
+	// Для подстановки символа ""&"" дополнительно добавлен сниппет ""??""
+	// Разделы ""Набор записей"" и ""Запись"" перенесены в группу ""Прикладные объекты""
+	// Создана группа ""Общие объекты"", в которую перенесены группы ""Табличный документ"", ""Сообщение пользователю"" и ""Блокировки""
+	// Восстановлены пропущенные разделы ""Расширения"", ""Асинхронные вызовы"" и ""Полезняшки"" из первоисточника
+	// Для всех шаблонов расширений добавлен общий сниппет ""Расш[ирение]""
+	// Добавлено сокращение БиблиотекаКартинок (БК)
+	// Для Описания оповещения добавлен сниппет ""Оповещ[ение]""
+	// Для асинхронных процедур и функций добавлен сниппеты ""Асинх[Процедура]"" и ""Асинх[Функция]"", без пробела. Варианты с пробелом сохранены для обратной совместимости
+	// Исправлены выявленные ошибки
+#КонецОбласти
+
+#Область 2023_08_01
+	// (версия 8.3.1 от 01.08.2023)
 	// За основу комплекта шаблонов взята последняя версия разработки от Павла Чистова (с)
 	// Устранены неоднозначности результата в рзных версиях одного шаблона; исправлены мелкие опечатки
 	// Реализована английская версия для всех шаблонов
@@ -30,7 +44,7 @@
 #КонецОбласти
 "}
 },
-{11,
+{14,
 {"EN",1,0,"",""},
 {4,
 {"Comments and regions",1,0,"",""},
@@ -288,7 +302,7 @@ EndProcedure
 }
 }
 },
-{6,
+{4,
 {"Preprocessor commands",1,0,"",""},
 {0,
 {"#If",0,0,"#If","#If <?"""", VariantChoice, ""Client"", ""Client"", ""AtClient"", ""AtClient"", ""Server"", ""Server"", ""AtServer"", ""AtServer"", ""ThinClient"", ""ThinClient"", ""WebClient"", ""WebClient"", ""MobileAppClient"", ""MobileAppClient"", ""MobileAppServer"", ""MobileAppServer"", ""MobileClient"", ""MobileClient"", ""MobileStandaloneServer"", ""MobileStandaloneServer"", ""ThickClientManagedApplication"", ""ThickClientManagedApplication"", ""ThickClientOrdinaryApplication"", ""ThickClientOrdinaryApplication"", ""ExternalConnection"", ""ExternalConnection""> Then
@@ -309,20 +323,10 @@ EndProcedure
 {"#If (server module)",0,0,"#If","#If Server Or ThickClientOrdinaryApplication Or ExternalConnection Then
 <?>
 #EndIf"}
-},
-{0,
-{"#Insert",0,0,"#Ins[ert]","#Insert
-<?>
-#EndInsert"}
-},
-{0,
-{"#Delete",0,0,"#Del[ete]","#Delete
-<?>
-#EndDelete"}
 }
 },
 {8,
-{"Managing",1,0,"",""},
+{"Managed",1,0,"",""},
 {0,
 {"If",0,0,"If","If <?> Then
 	
@@ -970,16 +974,13 @@ If FileDialog.Choose() Then
 EndIf;
 "}
 },
-{3,
-{"DoMessageBox",1,0,"",""},
+{2,
+{"Message box",1,0,"",""},
 {0,
-{"DoMessageBox",0,0,"DoMes[sageBox]","ShowMessageBox(,<?>, 60);"}
+{"Message box",0,0,"ShowM[essageBox]","ShowMessageBox(,<?>, 60);"}
 },
 {0,
-{"DoMessageBox",0,0,"ShowMes[sageBox]","ShowMessageBox(,<?>, 60);"}
-},
-{0,
-{"DoMessageBox with callback",0,0,"ShowMes[sageBox]","CallbackDescription = New CallbackDescription(""<?""Callback procedure name"">"", ThisObject);
+{"Message box with callback",0,0,"ShowM[essageBox]","CallbackDescription = New CallbackDescription(""<?""Callback procedure name"">"", ThisObject);
 ShowMessageBox(CallbackDescription, <?>, 60);
 
 //Take it to a separate procedure
@@ -990,10 +991,10 @@ EndProcedure
 "}
 }
 },
-{6,
-{"DoQueryBox",1,0,"",""},
+{8,
+{"Question",1,0,"",""},
 {0,
-{"DoQueryBox",0,0,"Ответ=","CallbackDescription = New CallbackDescription(""<?""Callback procedure name"">"", ThisObject);
+{"Question",0,0,"Answer=","CallbackDescription = New CallbackDescription(""<?""Callback procedure name"">"", ThisObject);
 ShowQueryBox(CallbackDescription, ""<?""Question text"">"",<?""Question dialog mode"", VariantChoice, ""YesNo"", ""QuestionDialogMode.YesNo"", ""YesNoCancel"", ""QuestionDialogMode.YesNoCancel"", ""OK"", ""QuestionDialogMode.OK"", ""OKCancel"", ""QuestionDialogMode.OKCancel"", ""RetryCancel"", ""QuestionDialogMode.RetryCancel"", ""AbortRetryIgnore"", ""QuestionDialogMode.AbortRetryIgnore"">, 60);
 
 <?>
@@ -1005,7 +1006,7 @@ EndProcedure
 "}
 },
 {0,
-{"DoQueryBox",0,0,"ПоказатьВо[прос]","CallbackDescription = New CallbackDescription(""<?""Callback procedure name"">"", ThisObject);
+{"Question",0,0,"ShowQ[ueryBox]","CallbackDescription = New CallbackDescription(""<?""Callback procedure name"">"", ThisObject);
 ShowQueryBox(CallbackDescription, ""<?""Question text"">"",<?""Question dialog mode"", VariantChoice, ""YesNo"", ""QuestionDialogMode.YesNo"", ""YesNoCancel"", ""QuestionDialogMode.YesNoCancel"", ""OK"", ""QuestionDialogMode.OK"", ""OKCancel"", ""QuestionDialogMode.OKCancel"", ""RetryCancel"", ""QuestionDialogMode.RetryCancel"", ""AbortRetryIgnore"", ""QuestionDialogMode.AbortRetryIgnore"">, 60);
 
 <?>
@@ -1017,7 +1018,7 @@ EndProcedure
 "}
 },
 {0,
-{"DoQueryBox",0,0,"Воп[рос]","CallbackDescription = New CallbackDescription(""<?""Callback procedure name"">"", ThisObject);
+{"Question",0,0,"Ques[tion]","CallbackDescription = New CallbackDescription(""<?""Callback procedure name"">"", ThisObject);
 ShowQueryBox(CallbackDescription, ""<?""Question text"">"",<?""Question dialog mode"", VariantChoice, ""YesNo"", ""QuestionDialogMode.YesNo"", ""YesNoCancel"", ""QuestionDialogMode.YesNoCancel"", ""OK"", ""QuestionDialogMode.OK"", ""OKCancel"", ""QuestionDialogMode.OKCancel"", ""RetryCancel"", ""QuestionDialogMode.RetryCancel"", ""AbortRetryIgnore"", ""QuestionDialogMode.AbortRetryIgnore"">, 60);
 
 <?>
@@ -1029,7 +1030,7 @@ EndProcedure
 "}
 },
 {0,
-{"Question with result analysis",0,0,"Ответ=","CallbackDescription = New CallbackDescription(""<?""Callback procedure name"">"", ThisObject);
+{"Question",0,0,"DoQuery[Box]","CallbackDescription = New CallbackDescription(""<?""Callback procedure name"">"", ThisObject);
 ShowQueryBox(CallbackDescription, ""<?""Question text"">"",<?""Question dialog mode"", VariantChoice, ""YesNo"", ""QuestionDialogMode.YesNo"", ""YesNoCancel"", ""QuestionDialogMode.YesNoCancel"", ""OK"", ""QuestionDialogMode.OK"", ""OKCancel"", ""QuestionDialogMode.OKCancel"", ""RetryCancel"", ""QuestionDialogMode.RetryCancel"", ""AbortRetryIgnore"", ""QuestionDialogMode.AbortRetryIgnore"">, 60);
 
 <?>
@@ -1037,7 +1038,19 @@ ShowQueryBox(CallbackDescription, ""<?""Question text"">"",<?""Question dialog m
 &AtClient
 Procedure <?""Callback procedure name"">(QuetyResult, AdditionalParameters) Export
 	
-	If QuetyResult <?"""", VariantChoice, ""Equal"", ""="", ""Not equal"", ""<>""> <?""Question dialog mode"", VariantChoice, ""Yes"", ""DialogReturnCode.Yes"", ""No"", ""DialogReturnCode.No"", ""OK"", ""DialogReturnCode.OK"", ""Cancel"", ""DialogReturnCode.Cancel"", ""Retry"", ""DialogReturnCode.Retry"", ""Abort"", ""DialogReturnCode.Abort"", ""Ignore"", ""DialogReturnCode.Ignore"", ""Timeout"", ""DialogReturnCode.Timeout""> Then
+EndProcedure
+"}
+},
+{0,
+{"Question with result analysis",0,0,"Answer=","CallbackDescription = New CallbackDescription(""<?""Callback procedure name"">"", ThisObject);
+ShowQueryBox(CallbackDescription, ""<?""Question text"">"",<?""Question dialog mode"", VariantChoice, ""YesNo"", ""QuestionDialogMode.YesNo"", ""YesNoCancel"", ""QuestionDialogMode.YesNoCancel"", ""OK"", ""QuestionDialogMode.OK"", ""OKCancel"", ""QuestionDialogMode.OKCancel"", ""RetryCancel"", ""QuestionDialogMode.RetryCancel"", ""AbortRetryIgnore"", ""QuestionDialogMode.AbortRetryIgnore"">, 60);
+
+<?>
+//Take it to a separate procedure
+&AtClient
+Procedure <?""Callback procedure name"">(QuetyResult, AdditionalParameters) Export
+	
+	If QuetyResult <?"""", VariantChoice, ""Equal"", ""="", ""Not equal"", ""<>""> <?""Dialog return code"", VariantChoice, ""Yes"", ""DialogReturnCode.Yes"", ""No"", ""DialogReturnCode.No"", ""OK"", ""DialogReturnCode.OK"", ""Cancel"", ""DialogReturnCode.Cancel"", ""Retry"", ""DialogReturnCode.Retry"", ""Abort"", ""DialogReturnCode.Abort"", ""Ignore"", ""DialogReturnCode.Ignore"", ""Timeout"", ""DialogReturnCode.Timeout""> Then
 		
 	EndIf;
 	
@@ -1045,7 +1058,7 @@ EndProcedure
 "}
 },
 {0,
-{"Question with result analysis",0,0,"ПоказатьВо[прос]","CallbackDescription = New CallbackDescription(""<?""Callback procedure name"">"", ThisObject);
+{"Question with result analysis",0,0,"ShowQ[ueryBox]","CallbackDescription = New CallbackDescription(""<?""Callback procedure name"">"", ThisObject);
 ShowQueryBox(CallbackDescription, ""<?""Question text"">"",<?""Question dialog mode"", VariantChoice, ""YesNo"", ""QuestionDialogMode.YesNo"", ""YesNoCancel"", ""QuestionDialogMode.YesNoCancel"", ""OK"", ""QuestionDialogMode.OK"", ""OKCancel"", ""QuestionDialogMode.OKCancel"", ""RetryCancel"", ""QuestionDialogMode.RetryCancel"", ""AbortRetryIgnore"", ""QuestionDialogMode.AbortRetryIgnore"">, 60);
 
 <?>
@@ -1053,7 +1066,7 @@ ShowQueryBox(CallbackDescription, ""<?""Question text"">"",<?""Question dialog m
 &AtClient
 Procedure <?""Callback procedure name"">(QuetyResult, AdditionalParameters) Export
 	
-	If QuetyResult <?"""", VariantChoice, ""Equal"", ""="", ""Not equal"", ""<>""> <?""Question dialog mode"", VariantChoice, ""Yes"", ""DialogReturnCode.Yes"", ""No"", ""DialogReturnCode.No"", ""OK"", ""DialogReturnCode.OK"", ""Cancel"", ""DialogReturnCode.Cancel"", ""Retry"", ""DialogReturnCode.Retry"", ""Abort"", ""DialogReturnCode.Abort"", ""Ignore"", ""DialogReturnCode.Ignore"", ""Timeout"", ""DialogReturnCode.Timeout""> Then
+	If QuetyResult <?"""", VariantChoice, ""Equal"", ""="", ""Not equal"", ""<>""> <?""Dialog return code"", VariantChoice, ""Yes"", ""DialogReturnCode.Yes"", ""No"", ""DialogReturnCode.No"", ""OK"", ""DialogReturnCode.OK"", ""Cancel"", ""DialogReturnCode.Cancel"", ""Retry"", ""DialogReturnCode.Retry"", ""Abort"", ""DialogReturnCode.Abort"", ""Ignore"", ""DialogReturnCode.Ignore"", ""Timeout"", ""DialogReturnCode.Timeout""> Then
 		
 	EndIf;
 	
@@ -1061,7 +1074,7 @@ EndProcedure
 "}
 },
 {0,
-{"Question with result analysis",0,0,"Воп[рос]","CallbackDescription = New CallbackDescription(""<?""Callback procedure name"">"", ThisObject);
+{"Question with result analysis",0,0,"Ques[tion]","CallbackDescription = New CallbackDescription(""<?""Callback procedure name"">"", ThisObject);
 ShowQueryBox(CallbackDescription, ""<?""Question text"">"",<?""Question dialog mode"", VariantChoice, ""YesNo"", ""QuestionDialogMode.YesNo"", ""YesNoCancel"", ""QuestionDialogMode.YesNoCancel"", ""OK"", ""QuestionDialogMode.OK"", ""OKCancel"", ""QuestionDialogMode.OKCancel"", ""RetryCancel"", ""QuestionDialogMode.RetryCancel"", ""AbortRetryIgnore"", ""QuestionDialogMode.AbortRetryIgnore"">, 60);
 
 <?>
@@ -1069,7 +1082,23 @@ ShowQueryBox(CallbackDescription, ""<?""Question text"">"",<?""Question dialog m
 &AtClient
 Procedure <?""Callback procedure name"">(QuetyResult, AdditionalParameters) Export
 	
-	If QuetyResult <?"""", VariantChoice, ""Equal"", ""="", ""Not equal"", ""<>""> <?""Question dialog mode"", VariantChoice, ""Yes"", ""DialogReturnCode.Yes"", ""No"", ""DialogReturnCode.No"", ""OK"", ""DialogReturnCode.OK"", ""Cancel"", ""DialogReturnCode.Cancel"", ""Retry"", ""DialogReturnCode.Retry"", ""Abort"", ""DialogReturnCode.Abort"", ""Ignore"", ""DialogReturnCode.Ignore"", ""Timeout"", ""DialogReturnCode.Timeout""> Then
+	If QuetyResult <?"""", VariantChoice, ""Equal"", ""="", ""Not equal"", ""<>""> <?""Dialog return code"", VariantChoice, ""Yes"", ""DialogReturnCode.Yes"", ""No"", ""DialogReturnCode.No"", ""OK"", ""DialogReturnCode.OK"", ""Cancel"", ""DialogReturnCode.Cancel"", ""Retry"", ""DialogReturnCode.Retry"", ""Abort"", ""DialogReturnCode.Abort"", ""Ignore"", ""DialogReturnCode.Ignore"", ""Timeout"", ""DialogReturnCode.Timeout""> Then
+		
+	EndIf;
+	
+EndProcedure
+"}
+},
+{0,
+{"Question with result analysis",0,0,"DoQuery[Box]","CallbackDescription = New CallbackDescription(""<?""Callback procedure name"">"", ThisObject);
+ShowQueryBox(CallbackDescription, ""<?""Question text"">"",<?""Question dialog mode"", VariantChoice, ""YesNo"", ""QuestionDialogMode.YesNo"", ""YesNoCancel"", ""QuestionDialogMode.YesNoCancel"", ""OK"", ""QuestionDialogMode.OK"", ""OKCancel"", ""QuestionDialogMode.OKCancel"", ""RetryCancel"", ""QuestionDialogMode.RetryCancel"", ""AbortRetryIgnore"", ""QuestionDialogMode.AbortRetryIgnore"">, 60);
+
+<?>
+//Take it to a separate procedure
+&AtClient
+Procedure <?""Callback procedure name"">(QuetyResult, AdditionalParameters) Export
+	
+	If QuetyResult <?"""", VariantChoice, ""Equal"", ""="", ""Not equal"", ""<>""> <?""Dialog return code"", VariantChoice, ""Yes"", ""DialogReturnCode.Yes"", ""No"", ""DialogReturnCode.No"", ""OK"", ""DialogReturnCode.OK"", ""Cancel"", ""DialogReturnCode.Cancel"", ""Retry"", ""DialogReturnCode.Retry"", ""Abort"", ""DialogReturnCode.Abort"", ""Ignore"", ""DialogReturnCode.Ignore"", ""Timeout"", ""DialogReturnCode.Timeout""> Then
 		
 	EndIf;
 	
@@ -1122,7 +1151,7 @@ OpenForm(""Catalog.<?"""", MetadataObject, ""Catalog"">.ListForm"", Parameters);
 }
 }
 },
-{26,
+{27,
 {"Abbreviation",1,0,"",""},
 {0,
 {"BegOfMonth",0,0,"BM","BegOfMonth(<?>)"}
@@ -1201,6 +1230,9 @@ OpenForm(""Catalog.<?"""", MetadataObject, ""Catalog"">.ListForm"", Parameters);
 },
 {0,
 {"ValueIsFilled",0,0,"VF","ValueIsFilled(<?>)"}
+},
+{0,
+{"PictureLib",0,0,"PL","PictureLib"}
 }
 },
 {12,
@@ -1249,9 +1281,649 @@ EndDo;"}
 {0,
 {"NStr EN RU",0,0,"NStr","NStr(""ru = '<?>...'; en = '...'"")"}
 }
+},
+{6,
+{"Extensions",1,0,"",""},
+{0,
+{"#Insert (extensions)",0,0,"#Ins[ert]","#Insert
+<?>
+#EndInsert"}
+},
+{0,
+{"#Delete (extensions)",0,0,"#Del[ete]","#Delete
+<?>
+#EndDelete"}
+},
+{0,
+{"Extension #Insert",0,0,"Ext[ension]","#Вставка
+<?>
+#КонецВставки"}
+},
+{0,
+{"Extension #Delete",0,0,"Ext[ension]","#Удаление
+<?>
+#КонецУдаления"}
+},
+{5,
+{"Procedure",1,0,"",""},
+{0,
+{"Extension &Before",0,0,"Proc[edure]","&Before(""<?""Procedure name"">"")
+Procedure <?""Procedure name"">()
+	
+	<?>
+	
+EndProcedure"}
+},
+{0,
+{"Extension &After",0,0,"Proc[edure]","&After(""<?""Procedure name"">"")
+Procedure <?""Procedure name"">()
+	
+	<?>
+	
+EndProcedure"}
+},
+{0,
+{"Extension &Around",0,0,"Proc[edure]","&Around(""<?""Procedure name"">"")
+Procedure <?""Procedure name"">()
+	
+	<?>
+	//ProceedWithCall();
+	
+EndProcedure"}
+},
+{0,
+{"Extension &ChangeAndValidate",0,0,"Proc[edure]","&ChangeAndValidate(""<?""Procedure name"">"")
+Procedure PREFIX_<?""Procedure name"">()
+	
+	<?>
+	
+EndProcedure"}
+},
+{0,
+{"Extension Procedure",0,0,"Ext[ension]","<?""Option"", VariantChoice, ""Before"", ""&Before"", ""After"", ""&After"", ""Around"", ""&Around"", ""Change and validate"", ""&ChangeAndValidate"">(""<?""Procedure name"">"")
+Procedure PREFIX_<?""Procedure name"">()
+	
+	<?>
+	//ProceedWithCall(); (for &Around)
+	
+EndProcedure"}
 }
 },
-{12,
+{5,
+{"Function",1,0,"",""},
+{0,
+{"Extension &Before",0,0,"Func[tion]","&Before(""<?""Function name"">"")
+Function <?""Function name"">()
+	
+	<?>
+	Return Undefined;
+	
+EndFunction"}
+},
+{0,
+{"Extension &After",0,0,"Func[tion]","&After(""<?""Function name"">"")
+Function <?""Function name"">()
+	
+	<?>
+	Return Undefined;
+	
+EndFunction"}
+},
+{0,
+{"Extension &Around",0,0,"Func[tion]","&Around(""<?""Function name"">"")
+Function <?""Function name"">()
+	
+	<?>
+	Return ProceedWithCall();
+	
+EndFunction"}
+},
+{0,
+{"Extension &ChangeAndValidate",0,0,"Func[tion]","&ChangeAndValidate(""<?""Function name"">"")
+Function PREFIX_<?""Function name"">()
+	
+	<?>
+	Return Undefined;
+	
+EndFunction"}
+},
+{0,
+{"Extension Function",0,0,"Ext[ension]","<?""Option"", VariantChoice, ""Before"", ""&Before"", ""After"", ""&After"", ""Around"", ""&Around"", ""Change and validate"", ""&ChangeAndValidate"">(""<?""Function name"">"")
+Function PREFIX_<?""Function name"">()
+	
+	<?>
+	Return Undefined; //Return ProceedWithCall(); (for &Around)
+	
+EndFunction"}
+}
+}
+},
+{5,
+{"Asynchronous calls",1,0,"",""},
+{5,
+{"Callback and promise",1,0,"",""},
+{0,
+{"Callback description",0,0,"Call[back]","CallbackDescription = New CallbackDescription(""<?""Procedure name"">"", ThisObject);
+<?>"}
+},
+{0,
+{"Callback description (handler description)",0,0,"Call[back]","CallbackDescription = New CallbackDescription(""<?""Procedure name"">"", ThisObject);
+
+//==========Take it to a separate procedure========
+//
+//The list of arguments depends on the context of the call!
+//&AtClient
+//Procedure <?""Procedure name"">(AdditionalParameters) Export
+//	
+//EndProcedure"}
+},
+{0,
+{"Callback description with error handling",0,0,"Call[back]","CallbackDescription = New CallbackDescription(""<?""Procedure name"">"", ThisObject, ,""<?""Procedure name"">ErrorHandling"", ThisObject);
+<?>"}
+},
+{0,
+{"Callback description with error handling (handler description)",0,0,"Call[back]","CallbackDescription = New CallbackDescription(""<?""Procedure name"">"", ThisObject, ,""<?""Procedure name"">ErrorHandling"", ThisObject);
+
+
+//==========Take it to a separate procedure========
+//
+//The list of arguments depends on the context of the call!
+//&AtClient
+//Procedure <?""Procedure name"">(AdditionalParameters) Export
+//	
+//EndProcedure
+
+//&AtClient
+//Procedure <?""Procedure name"">ErrorHandling(AdditionalParameters) Export
+//	
+//EndProcedure"}
+},
+{0,
+{"Promise",0,0,"Prom[ise=]","Promise = Await <?>;"}
+}
+},
+{18,
+{"Procedure",1,0,"",""},
+{0,
+{"Async Procedure",0,0,"Proc[edure]","Async Procedure <?>()
+	
+EndProcedure"}
+},
+{0,
+{"Async Procedure",0,0,"Async[Procedure]","Async Procedure <?>()
+	
+EndProcedure"}
+},
+{0,
+{"Async Procedure (with parameters)",0,0,"Proc[edure]","Async Procedure <?""Procedure name"">(<?""Parameters"">)
+	
+	<?>
+	
+EndProcedure"}
+},
+{0,
+{"Async Procedure (with parameters)",0,0,"Async[Procedure]","Async Procedure <?""Procedure name"">(<?""Parameters"">)
+	
+	<?>
+	
+EndProcedure"}
+},
+{0,
+{"Async Procedure (full version)",0,0,"Proc[edure]","<?""Choice the kind of context"", VariantChoice, ""(Empty)"", """", ""AtClient"", ""&AtClient"", ""AtServer"", ""&AtServer"", ""AtClientAtServer (command module)"", ""&AtClientAtServer"", ""AtServerNoContext (form's module)"", ""&AtServerNoContext"", ""AtClientAtServerNoContext (form's module)"", ""&AtClientAtServerNoContext"">
+Async Procedure <?""Procedure name"">(<?""Parameters"">)<?""Exporting procedure"", VariantChoice, ""Exporting"", "" Export"", ""No exporting"", """">
+	
+	<?>
+	
+EndProcedure"}
+},
+{0,
+{"Async Procedure (full version)",0,0,"Async[Procedure]","<?""Choice the kind of context"", VariantChoice, ""(Empty)"", """", ""AtClient"", ""&AtClient"", ""AtServer"", ""&AtServer"", ""AtClientAtServer (command module)"", ""&AtClientAtServer"", ""AtServerNoContext (form's module)"", ""&AtServerNoContext"", ""AtClientAtServerNoContext (form's module)"", ""&AtClientAtServerNoContext"">
+Async Procedure <?""Procedure name"">(<?""Parameters"">)<?""Exporting procedure"", VariantChoice, ""Exporting"", "" Export"", ""No exporting"", """">
+	
+	<?>
+	
+EndProcedure"}
+},
+{0,
+{"Async Procedure (full version with comment)",0,0,"Proc[edure]","//TODO: <Procedure description>
+//
+// Parameters:
+//  <Parameter1>  - <Type.Kind> - <parameter description>
+//                 <further description>
+//  <Parameter2>  - <Type.Kind> - <parameter description>
+//                 <further description>
+//
+<?""Choice the kind of context"", VariantChoice, ""(Empty)"", ""//"", ""AtClient"", ""&AtClient"", ""AtServer"", ""&AtServer"", ""AtClientAtServer (command module)"", ""&AtClientAtServer"", ""AtServerNoContext (form's module)"", ""&AtServerNoContext"", ""AtClientAtServerNoContext (form's module)"", ""&AtClientAtServerNoContext"">
+Async Procedure <?""Procedure name"">(<?""Parameters"">)<?""Exporting procedure"", VariantChoice, ""Exporting"", "" Export"", ""No exporting"", """">
+	
+	<?>
+	
+EndProcedure"}
+},
+{0,
+{"Async Procedure (full version with comment)",0,0,"Async[Procedure]","//TODO: <Procedure description>
+//
+// Parameters:
+//  <Parameter1>  - <Type.Kind> - <parameter description>
+//                 <further description>
+//  <Parameter2>  - <Type.Kind> - <parameter description>
+//                 <further description>
+//
+<?""Choice the kind of context"", VariantChoice, ""(Empty)"", ""//"", ""AtClient"", ""&AtClient"", ""AtServer"", ""&AtServer"", ""AtClientAtServer (command module)"", ""&AtClientAtServer"", ""AtServerNoContext (form's module)"", ""&AtServerNoContext"", ""AtClientAtServerNoContext (form's module)"", ""&AtClientAtServerNoContext"">
+Async Procedure <?""Procedure name"">(<?""Parameters"">)<?""Exporting procedure"", VariantChoice, ""Exporting"", "" Export"", ""No exporting"", """">
+	
+	<?>
+	
+EndProcedure"}
+},
+{0,
+{"Async Procedure AtClient",0,0,"Proc[edure]","&AtClient
+Async Procedure <?>()
+	
+EndProcedure"}
+},
+{0,
+{"Async Procedure AtClient",0,0,"Async[Procedure]","&AtClient
+Async Procedure <?>()
+	
+EndProcedure"}
+},
+{0,
+{"Async Procedure AtServer",0,0,"Proc[edure]","&AtServer
+Async Procedure <?>()
+	
+EndProcedure"}
+},
+{0,
+{"Async Procedure AtServer",0,0,"Async[Procedure]","&AtServer
+Async Procedure <?>()
+	
+EndProcedure"}
+},
+{0,
+{"Async Procedure AtServerNoContext (form's module)",0,0,"Proc[edure]","&AtServerNoContext
+Async Procedure <?>()
+	
+EndProcedure"}
+},
+{0,
+{"Async Procedure AtServerNoContext (form's module)",0,0,"Async[Procedure]","&AtServerNoContext
+Async Procedure <?>()
+	
+EndProcedure"}
+},
+{0,
+{"Async Procedure AtClientAtServerNoContext (form's module)",0,0,"Proc[edure]","&AtClientAtServerNoContext
+Async Procedure <?>()
+	
+EndProcedure"}
+},
+{0,
+{"Async Procedure AtClientAtServerNoContext (form's module)",0,0,"Async[Procedure]","&AtClientAtServerNoContext
+Async Procedure <?>()
+	
+EndProcedure"}
+},
+{0,
+{"Async Procedure AtClientAtServer (command module)",0,0,"Proc[edure]","&AtClientAtServer
+Async Procedure <?>()
+	
+EndProcedure"}
+},
+{0,
+{"Async Procedure AtClientAtServer (command module)",0,0,"Async[Procedure]","&AtClientAtServer
+Async Procedure <?>()
+	
+EndProcedure"}
+}
+},
+{18,
+{"Function",1,0,"",""},
+{0,
+{"Async Function",0,0,"Func[tion]","Async Function <?>()
+	
+EndFunction"}
+},
+{0,
+{"Async Function",0,0,"Async[Function]","Async Function <?>()
+	
+EndFunction"}
+},
+{0,
+{"Async Function (with parameters)",0,0,"Func[tion]","Async Function <?""Function name"">(<?""Parameters"">)
+	
+	Result = Undefined;
+	
+	<?>
+	
+	Return Result;
+	
+EndFunction"}
+},
+{0,
+{"Async Function (with parameters)",0,0,"Async[Function]","Async Function <?""Function name"">(<?""Parameters"">)
+	
+	Result = Undefined;
+	
+	<?>
+	
+	Return Result;
+	
+EndFunction"}
+},
+{0,
+{"Async Function (full version)",0,0,"Func[tion]","<?""Choice the kind of context"", VariantChoice, ""(Empty)"", """", ""AtClient"", ""&AtClient"", ""AtServer"", ""&AtServer"", ""AtClientAtServer (command module)"", ""&AtClientAtServer"", ""AtServerNoContext (form's module)"", ""&AtServerNoContext"", ""AtClientAtServerNoContext (form's module)"", ""&AtClientAtServerNoContext"">
+Async Function <?""Function name"">(<?""Parameters"">)<?""Exporting function"", VariantChoice, ""Exporting"", "" Export"", ""No exporting"", """">
+	
+	Result = Undefined;
+	
+	<?>
+	
+	Return Result;
+	
+EndFunction"}
+},
+{0,
+{"Async Function (full version)",0,0,"Async[Function]","<?""Choice the kind of context"", VariantChoice, ""(Empty)"", """", ""AtClient"", ""&AtClient"", ""AtServer"", ""&AtServer"", ""AtClientAtServer (command module)"", ""&AtClientAtServer"", ""AtServerNoContext (form's module)"", ""&AtServerNoContext"", ""AtClientAtServerNoContext (form's module)"", ""&AtClientAtServerNoContext"">
+Async Function <?""Function name"">(<?""Parameters"">)<?""Exporting function"", VariantChoice, ""Exporting"", "" Export"", ""No exporting"", """">
+	
+	Result = Undefined;
+	
+	<?>
+	
+	Return Result;
+	
+EndFunction"}
+},
+{0,
+{"Async Function (full version with comment)",0,0,"Func[tion]","//TODO: <Function description>
+//
+// Parameters:
+//  <Parameter1>  - <Type.Kind> - <parameter description>
+//                 <further description>
+//  <Parameter2>  - <Type.Kind> - <parameter description>
+//                 <further description>
+//
+// Returns:
+//
+// <Type.Kind> - <description>
+//
+<?""Choice the kind of context"", VariantChoice, ""(Empty)"", ""//"", ""AtClient"", ""&AtClient"", ""AtServer"", ""&AtServer"", ""AtClientAtServer (command module)"", ""&AtClientAtServer"", ""AtServerNoContext (form's module)"", ""&AtServerNoContext"", ""AtClientAtServerNoContext (form's module)"", ""&AtClientAtServerNoContext"">
+Async Function <?""Function name"">(<?""Parameters"">)<?""Exporting function"", VariantChoice, ""Exporting"", "" Export"", ""No exporting"", """">
+	
+	Result = Undefined;
+	
+	<?>
+	
+	Return Result;
+	
+EndFunction"}
+},
+{0,
+{"Async Function (full version with comment)",0,0,"Async[Function]","//TODO: <Function description>
+//
+// Parameters:
+//  <Parameter1>  - <Type.Kind> - <parameter description>
+//                 <further description>
+//  <Parameter2>  - <Type.Kind> - <parameter description>
+//                 <further description>
+//
+// Returns:
+//
+// <Type.Kind> - <description>
+//
+<?""Choice the kind of context"", VariantChoice, ""(Empty)"", ""//"", ""AtClient"", ""&AtClient"", ""AtServer"", ""&AtServer"", ""AtClientAtServer (command module)"", ""&AtClientAtServer"", ""AtServerNoContext (form's module)"", ""&AtServerNoContext"", ""AtClientAtServerNoContext (form's module)"", ""&AtClientAtServerNoContext"">
+Async Function <?""Function name"">(<?""Parameters"">)<?""Exporting function"", VariantChoice, ""Exporting"", "" Export"", ""No exporting"", """">
+	
+	Result = Undefined;
+	
+	<?>
+	
+	Return Result;
+	
+EndFunction"}
+},
+{0,
+{"Async Function AtClient",0,0,"Func[tion]","&AtClient
+Async Function <?>()
+	
+EndFunction"}
+},
+{0,
+{"Async Function AtClient",0,0,"Async[Function]","&AtClient
+Async Function <?>()
+	
+EndFunction"}
+},
+{0,
+{"Async Function AtServer",0,0,"Func[tion]","&AtServer
+Async Function <?>()
+	
+EndFunction"}
+},
+{0,
+{"Async Function AtServer",0,0,"Async[Function]","&AtServer
+Async Function <?>()
+	
+EndFunction"}
+},
+{0,
+{"Async Function AtServerNoContext (form's module)",0,0,"Func[tion]","&AtServerNoContext
+Async Function <?>()
+	
+EndFunction"}
+},
+{0,
+{"Async Function AtServerNoContext (form's module)",0,0,"Async[Function]","&AtServerNoContext
+Async Function <?>()
+	
+EndFunction"}
+},
+{0,
+{"Async Function AtClientAtServerNoContext (form's module)",0,0,"Func[tion]","&AtClientAtServerNoContext
+Async Function <?>()
+	
+EndFunction"}
+},
+{0,
+{"Async Function AtClientAtServerNoContext (form's module)",0,0,"Async[Function]","&AtClientAtServerNoContext
+Async Function <?>()
+	
+EndFunction"}
+},
+{0,
+{"Async Function AtClientAtServer (command module)",0,0,"Func[tion]","&AtClientAtServer
+Async Function <?>()
+	
+EndFunction"}
+},
+{0,
+{"Async Function AtClientAtServer (command module)",0,0,"Async[Function]","&AtClientAtServer
+Async Function <?>()
+	
+EndFunction"}
+}
+},
+{8,
+{"Question",1,0,"",""},
+{0,
+{"Async Question",0,0,"Answer=","Answer = Await DoQueryBoxAsync(""<?""Question text"">"",<?""Question dialog mode"", VariantChoice, ""YesNo"", ""QuestionDialogMode.YesNo"", ""YesNoCancel"", ""QuestionDialogMode.YesNoCancel"", ""OK"", ""QuestionDialogMode.OK"", ""OKCancel"", ""QuestionDialogMode.OKCancel"", ""RetryCancel"", ""QuestionDialogMode.RetryCancel"", ""AbortRetryIgnore"", ""QuestionDialogMode.AbortRetryIgnore"">, 60);"}
+},
+{0,
+{"Async Question",0,0,"ShowQ[ueryBox]","Answer = Await DoQueryBoxAsync(""<?""Question text"">"",<?""Question dialog mode"", VariantChoice, ""YesNo"", ""QuestionDialogMode.YesNo"", ""YesNoCancel"", ""QuestionDialogMode.YesNoCancel"", ""OK"", ""QuestionDialogMode.OK"", ""OKCancel"", ""QuestionDialogMode.OKCancel"", ""RetryCancel"", ""QuestionDialogMode.RetryCancel"", ""AbortRetryIgnore"", ""QuestionDialogMode.AbortRetryIgnore"">, 60);"}
+},
+{0,
+{"Async Question",0,0,"Ques[tion]","Answer = Await DoQueryBoxAsync(""<?""Question text"">"",<?""Question dialog mode"", VariantChoice, ""YesNo"", ""QuestionDialogMode.YesNo"", ""YesNoCancel"", ""QuestionDialogMode.YesNoCancel"", ""OK"", ""QuestionDialogMode.OK"", ""OKCancel"", ""QuestionDialogMode.OKCancel"", ""RetryCancel"", ""QuestionDialogMode.RetryCancel"", ""AbortRetryIgnore"", ""QuestionDialogMode.AbortRetryIgnore"">, 60);"}
+},
+{0,
+{"Async Question",0,0,"DoQuery[Box]","Answer = Await DoQueryBoxAsync(""<?""Question text"">"",<?""Question dialog mode"", VariantChoice, ""YesNo"", ""QuestionDialogMode.YesNo"", ""YesNoCancel"", ""QuestionDialogMode.YesNoCancel"", ""OK"", ""QuestionDialogMode.OK"", ""OKCancel"", ""QuestionDialogMode.OKCancel"", ""RetryCancel"", ""QuestionDialogMode.RetryCancel"", ""AbortRetryIgnore"", ""QuestionDialogMode.AbortRetryIgnore"">, 60);"}
+},
+{0,
+{"Async Question with result analysis",0,0,"Answer=","Answer = Await DoQueryBoxAsync(""<?""Question text"">"",<?""Question dialog mode"", VariantChoice, ""YesNo"", ""QuestionDialogMode.YesNo"", ""YesNoCancel"", ""QuestionDialogMode.YesNoCancel"", ""OK"", ""QuestionDialogMode.OK"", ""OKCancel"", ""QuestionDialogMode.OKCancel"", ""RetryCancel"", ""QuestionDialogMode.RetryCancel"", ""AbortRetryIgnore"", ""QuestionDialogMode.AbortRetryIgnore"">, 60);
+
+If Answer <?"""", VariantChoice, ""Equal"", ""="", ""Not equal"", ""<>""> <?""Dialog return code"", VariantChoice, ""Yes"", ""DialogReturnCode.Yes"", ""No"", ""DialogReturnCode.No"", ""OK"", ""DialogReturnCode.OK"", ""Cancel"", ""DialogReturnCode.Cancel"", ""Retry"", ""DialogReturnCode.Retry"", ""Abort"", ""DialogReturnCode.Abort"", ""Ignore"", ""DialogReturnCode.Ignore"", ""Timeout"", ""DialogReturnCode.Timeout""> Then
+	
+EndIf;"}
+},
+{0,
+{"Async Question with result analysis",0,0,"ShowQ[ueryBox]","Answer = Await DoQueryBoxAsync(""<?""Question text"">"",<?""Question dialog mode"", VariantChoice, ""YesNo"", ""QuestionDialogMode.YesNo"", ""YesNoCancel"", ""QuestionDialogMode.YesNoCancel"", ""OK"", ""QuestionDialogMode.OK"", ""OKCancel"", ""QuestionDialogMode.OKCancel"", ""RetryCancel"", ""QuestionDialogMode.RetryCancel"", ""AbortRetryIgnore"", ""QuestionDialogMode.AbortRetryIgnore"">, 60);
+
+If Answer <?"""", VariantChoice, ""Equal"", ""="", ""Not equal"", ""<>""> <?""Dialog return code"", VariantChoice, ""Yes"", ""DialogReturnCode.Yes"", ""No"", ""DialogReturnCode.No"", ""OK"", ""DialogReturnCode.OK"", ""Cancel"", ""DialogReturnCode.Cancel"", ""Retry"", ""DialogReturnCode.Retry"", ""Abort"", ""DialogReturnCode.Abort"", ""Ignore"", ""DialogReturnCode.Ignore"", ""Timeout"", ""DialogReturnCode.Timeout""> Then
+	
+EndIf;"}
+},
+{0,
+{"Async Question with result analysis",0,0,"Ques[tion]","Answer = Await DoQueryBoxAsync(""<?""Question text"">"",<?""Question dialog mode"", VariantChoice, ""YesNo"", ""QuestionDialogMode.YesNo"", ""YesNoCancel"", ""QuestionDialogMode.YesNoCancel"", ""OK"", ""QuestionDialogMode.OK"", ""OKCancel"", ""QuestionDialogMode.OKCancel"", ""RetryCancel"", ""QuestionDialogMode.RetryCancel"", ""AbortRetryIgnore"", ""QuestionDialogMode.AbortRetryIgnore"">, 60);
+
+If Answer <?"""", VariantChoice, ""Equal"", ""="", ""Not equal"", ""<>""> <?""Dialog return code"", VariantChoice, ""Yes"", ""DialogReturnCode.Yes"", ""No"", ""DialogReturnCode.No"", ""OK"", ""DialogReturnCode.OK"", ""Cancel"", ""DialogReturnCode.Cancel"", ""Retry"", ""DialogReturnCode.Retry"", ""Abort"", ""DialogReturnCode.Abort"", ""Ignore"", ""DialogReturnCode.Ignore"", ""Timeout"", ""DialogReturnCode.Timeout""> Then
+	
+EndIf;"}
+},
+{0,
+{"Async Question with result analysis",0,0,"DoQuery[Box]","Answer = Await DoQueryBoxAsync(""<?""Question text"">"",<?""Question dialog mode"", VariantChoice, ""YesNo"", ""QuestionDialogMode.YesNo"", ""YesNoCancel"", ""QuestionDialogMode.YesNoCancel"", ""OK"", ""QuestionDialogMode.OK"", ""OKCancel"", ""QuestionDialogMode.OKCancel"", ""RetryCancel"", ""QuestionDialogMode.RetryCancel"", ""AbortRetryIgnore"", ""QuestionDialogMode.AbortRetryIgnore"">, 60);
+
+If Answer <?"""", VariantChoice, ""Equal"", ""="", ""Not equal"", ""<>""> <?""Dialog return code"", VariantChoice, ""Yes"", ""DialogReturnCode.Yes"", ""No"", ""DialogReturnCode.No"", ""OK"", ""DialogReturnCode.OK"", ""Cancel"", ""DialogReturnCode.Cancel"", ""Retry"", ""DialogReturnCode.Retry"", ""Abort"", ""DialogReturnCode.Abort"", ""Ignore"", ""DialogReturnCode.Ignore"", ""Timeout"", ""DialogReturnCode.Timeout""> Then
+	
+EndIf;"}
+}
+},
+{2,
+{"Put the file in temporary storage",1,0,"",""},
+{0,
+{"Put file",0,1,"","&AtClient
+Procedure PutFileCommand(Command)
+	
+	DialogParameters = New PutFilesDialogParameters;
+	DialogParameters.Title = ""BeginPutFileToServer"";
+	DialogParameters.MultipleChoice = True;
+	DialogParameters.Filter = ""All files|*.*"";
+	//NStr(""en = 'Excel (*.XLS, *.xlsx)|*.XLS;*.xlsx|'; ru = 'Файл таблицы Excel (*.XLS, *.xlsx)|*.XLS;*.xlsx|'"");
+	//NStr(""en = 'Text (*.txt)|*.txt|'; ru = 'текстовый файл (*.txt)|*.txt|'"");
+	FinishCallback = New CallbackDescription(""FinishCallback"", ThisObject);
+	ProgressCallback = New CallbackDescription(""ProgressCallback"", ThisObject);
+	BeforCallback = New CallbackDescription(""BeforCallback"", ThisObject);
+	BeginPutFileToServer(FinishCallback, ProgressCallback, BeforCallback, , DialogParameters);
+	
+EndProcedure
+
+&AtClient
+Procedure FinishCallback(FilePuttingDescription, AdditionalParameters) Export
+	
+	Message(""File putting process "" + ?(FilePuttingDescription.FilePuttingCanceled, ""was canceled"", ""has done successfully""));
+	Message(""Address in the temporary storage: "" + FilePuttingDescription.Address);
+	Message(""File name: "" + FilePuttingDescription.FileRef.Name);
+	Message(""File size (bites): "" + FilePuttingDescription.FileRef.Size());
+	
+EndProcedure
+
+&AtClient
+Procedure ProgressCallback(FilePutting, HasPut, Cancel, AdditionalParameters) Export
+	Status(""File "" + FilePutting.Name, HasPut, ""File size is "" + FilePutting.Size() + "" bites"", PictureLib.Document);
+EndProcedure
+
+&AtClient
+Procedure BeforCallback(FilePutting, Cancel, AdditionalParameters) Export
+	Message(""Putting file is "" + FilePutting.Name + "", size is "" + FilePutting.Size());
+EndProcedure"}
+},
+{0,
+{"Put file Async",0,1,"","&AtClient
+Async Procedure PutFileCommand(Command)
+	
+	DialogParameters = New PutFilesDialogParameters;
+	DialogParameters.Title = ""BeginPutFileToServer"";
+	DialogParameters.MultipleChoice = True;
+	DialogParameters.Filter = ""All files|*.*"";
+	//NStr(""en = 'Excel (*.XLS, *.xlsx)|*.XLS;*.xlsx|'; ru = 'Файл таблицы Excel (*.XLS, *.xlsx)|*.XLS;*.xlsx|'"");
+	//NStr(""en = 'Text (*.txt)|*.txt|'; ru = 'текстовый файл (*.txt)|*.txt|'"");
+	ProgressCallback = New CallbackDescription(""ProgressCallback"", ThisObject);
+	BeforCallback = New CallbackDescription(""BeforCallback"", ThisObject);
+	FilePuttingDescription = Await BeginPutFileToServer(ProgressCallback, BeforCallback, , DialogParameters);
+	If FilePuttingDescription = Undefined Then
+		Return;
+	EndIf;
+	
+	Message(""File putting process "" + ?(FilePuttingDescription.FilePuttingCanceled, ""was canceled"", ""has done successfully""));
+	Message(""Address in the temporary storage: "" + FilePuttingDescription.Address);
+	Message(""File name: "" + FilePuttingDescription.FileRef.Name);
+	Message(""File size (bites): "" + FilePuttingDescription.FileRef.Size());
+	
+EndProcedure
+
+&AtClient
+Procedure ProgressCallback(PuttingFile, HasPut, Cancel, AdditionalParameters) Export
+	Message(""File "" + PuttingFile.Имя, HasPut, ""File size is "" + PuttingFile.Size() + "" bites"", PictureLib.Document);
+EndProcedure
+
+&AtClient
+Procedure BeforCallback(PuttingFile, Cancel, AdditionalParameters) Export
+	Message(""Putting file is "" + PuttingFile.Name + "", size is "" + PuttingFile.Size());
+EndProcedure"}
+}
+}
+},
+{1,
+{"Useful things",1,0,"",""},
+{0,
+{"Data import from Excel Async",0,0,"","&AtClient
+Async Procedure PutFileCommand(Command)
+	
+	DialogParameters = New PutFilesDialogParameters;
+	DialogParameters.Title = ""BeginPutFileToServer"";
+	DialogParameters.MultipleChoice = True;
+	DialogParameters.Filter = NStr(""en = 'Excel (*.XLS, *.xlsx)|*.XLS;*.xlsx|'; ru = 'Файл таблицы Excel (*.XLS, *.xlsx)|*.XLS;*.xlsx|'"");
+	ProgressCallback = New CallbackDescription(""ProgressCallback"", ThisObject);
+	BeforCallback = New CallbackDescription(""BeforCallback"", ThisObject);
+	FilePuttingDescription = Await PutFileToServerAsync(ProgressCallback, BeforCallback, , DialogParameters);
+	If FilePuttingDescription = Undefined Then
+		Return;
+	EndIf;
+	
+	Message(""File putting process "" + ?(FilePuttingDescription.FilePuttingCanceled, ""was canceled"", ""has done successfully""));
+	Message(""Address in the temporary storage: "" + FilePuttingDescription.Address);
+	Message(""File name: "" + FilePuttingDescription.FileRef.Name);
+	Message(""File size (bites): "" + FilePuttingDescription.FileRef.Size());
+	
+	ProcessUploadedFile(FilePuttingDescription.Address);
+	
+EndProcedure
+
+&AtServerNoContext
+Procedure ProcessUploadedFile(Address)
+	
+	FileOnDisk = GetTempFileName(""xlsx"");
+	FileData = GetFromTempStorage(Address);
+	FileData.Write(FileOnDisk);
+	
+	TablDoc = New ТабличныйДокумент;
+	TablDoc.Read(FileOnDisk, SpreadsheetDocumentValuesReadingMode.Value);
+	
+	QueryBuilder = New QueryBuilder;
+	QueryBuilder.DataSource = New DataSourceDescription(TablDoc.InputArea(""List1"")); // List1 is name of Excel list
+	QueryBuilder.Execute();
+	// The first row of file have to contaned are columns names
+	// Also important what are types of cells are there
+	TSStrings = QueryBuilder.Result.Unload(); // Automaticly getting the table of values
+	
+	For Each TSString In TSStrings Do
+		// Getting data
+	EndDo;
+	
+EndProcedure
+
+&AtClient
+Procedure ProgressCallback(PuttingFile, HasPut, Cancel, AdditionalParameters) Export
+	Message(""File "" + PuttingFile.Имя, HasPut, ""File size is "" + PuttingFile.Size() + "" bites"", PictureLib.Document);
+EndProcedure
+
+&AtClient
+Procedure BeforCallback(PuttingFile, Cancel, AdditionalParameters) Export
+	Message(""Putting file is "" + PuttingFile.Name + "", size is "" + PuttingFile.Size());
+EndProcedure"}
+}
+}
+},
+{15,
 {"RU",1,0,"",""},
 {4,
 {"Комментарии и области",1,0,"",""},
@@ -1508,7 +2180,7 @@ EndDo;"}
 }
 }
 },
-{11,
+{7,
 {"Инструкции препроцессору",1,0,"",""},
 {0,
 {"#Если",0,0,"#Если","#Если <?"""", ВыборВарианта, ""Клиент"", ""Клиент"", ""НаКлиенте"", ""НаКлиенте"", ""Сервер"", ""Сервер"", ""НаСервере"", ""НаСервере"", ""ВнешнееСоединение"", ""ВнешнееСоединение"" ,""ТолстыйКлиентОбычноеПриложение"", ""ТолстыйКлиентОбычноеПриложение"", ""ТолстыйКлиентУправляемоеПриложение"",""ТолстыйКлиентУправляемоеПриложение"", ""ТонкийКлиент"", ""ТонкийКлиент"", ""ВебКлиент"", ""ВебКлиент"", ""МобильноеПриложениеКлиент"", ""МобильноеПриложениеКлиент"", ""МобильноеПриложениеСервер"", ""МобильноеПриложениеСервер"", ""МобильныйКлиент"", ""МобильныйКлиент"", ""МобильныйАвтономныйСервер"", ""МобильныйАвтономныйСервер""> Тогда
@@ -1544,26 +2216,6 @@ EndDo;"}
 {"#Если (серверный модуль)",0,0,"№Если","#Если Сервер Или ТолстыйКлиентОбычноеПриложение Или ВнешнееСоединение Тогда
 <?>
 #КонецЕсли"}
-},
-{0,
-{"#Вставка",0,0,"#Вста[вка]","#Вставка
-<?>
-#КонецВставки"}
-},
-{0,
-{"#Вставка",0,0,"№Вста[вка]","#Вставка
-<?>
-#КонецВставки"}
-},
-{0,
-{"#Удаление",0,0,"#Удал[ение]","#Удаление
-<?>
-#КонецУдаления"}
-},
-{0,
-{"#Удаление",0,0,"№Удал[ение]","#Удаление
-<?>
-#КонецУдаления"}
 }
 },
 {8,
@@ -1967,7 +2619,7 @@ EndDo;"}
 }
 }
 },
-{16,
+{17,
 {"Раскладка клавиатуры",1,0,"",""},
 {0,
 {">",0,0,"Ю",">"}
@@ -2001,6 +2653,9 @@ EndDo;"}
 },
 {0,
 {"&",0,0,"? ","&<?>"}
+},
+{0,
+{"&",0,0,"??","&<?>"}
 },
 {0,
 {"WebЦвета",0,0,"цуицвета","WebЦвета<?>"}
@@ -2403,7 +3058,7 @@ EndDo;"}
 }
 }
 },
-{23,
+{24,
 {"Сокращения",1,0,"",""},
 {0,
 {"НачалоМесяца",0,0,"НМ","НачалоМесяца(<?>)"}
@@ -2469,10 +3124,13 @@ EndDo;"}
 {"МоментВремени",0,0,"МВ","МоментВремени()"}
 },
 {0,
-{"ЗаполнитьЗначенияСвойств",0,0,"ЗЗС","ЗаполнитьЗначенияСвойств(<?>)"}
+{"ЗаполнитьЗначенияСвойств",0,0,"ЗЗ[С]","ЗаполнитьЗначенияСвойств(<?>)"}
 },
 {0,
 {"ЗначениеЗаполнено",0,0,"ЗЗ","ЗначениеЗаполнено(<?>)"}
+},
+{0,
+{"БиблиотекаКартинок",0,0,"БК","БиблиотекаКартинок"}
 }
 },
 {11,
@@ -2517,6 +3175,688 @@ EndDo;"}
 },
 {0,
 {"НСтр RU EN",0,0,"НСтр","НСтр(""ru = '<?>...'; en = '...'"")"}
+}
+},
+{8,
+{"Расширения",1,0,"",""},
+{0,
+{"#Вставка (расширения)",0,0,"#Вста[вка]","#Вставка
+<?>
+#КонецВставки"}
+},
+{0,
+{"#Вставка (расширения)",0,0,"№Вста[вка]","#Вставка
+<?>
+#КонецВставки"}
+},
+{0,
+{"#Удаление (расширения)",0,0,"#Удал[ение]","#Удаление
+<?>
+#КонецУдаления"}
+},
+{0,
+{"#Удаление (расширения)",0,0,"№Удал[ение]","#Удаление
+<?>
+#КонецУдаления"}
+},
+{0,
+{"Расширение #Вставка",0,0,"Расш[ирение]","#Вставка
+<?>
+#КонецВставки"}
+},
+{0,
+{"Расширение #Удаление",0,0,"Расш[ирение]","#Удаление
+<?>
+#КонецУдаления"}
+},
+{5,
+{"Процедура",1,0,"",""},
+{0,
+{"Расширение &Перед",0,0,"Проц[едура]","&Перед(""<?""Имя процедуры"">"")
+Процедура <?""Имя процедуры"">()
+	
+	<?>
+	
+КонецПроцедуры"}
+},
+{0,
+{"Расширение &После",0,0,"Проц[едура]","&После(""<?""Имя процедуры"">"")
+Процедура <?""Имя процедуры"">()
+	
+	<?>
+	
+КонецПроцедуры"}
+},
+{0,
+{"Расширение &Вместо",0,0,"Проц[едура]","&Вместо(""<?""Имя процедуры"">"")
+Процедура <?""Имя процедуры"">()
+	
+	<?>
+	//ПродолжитьВызов();
+	
+КонецПроцедуры"}
+},
+{0,
+{"Расширение &ИзменениеИКонтроль",0,0,"Проц[едура]","&ИзменениеИКонтроль(""<?""Имя процедуры"">"")
+Процедура ПРЕФИКС_<?""Имя процедуры"">()
+	
+	<?>
+	
+КонецПроцедуры"}
+},
+{0,
+{"Расширение Процедура",0,0,"Расш[ирение]","<?""Вариант расширения"", ВыборВарианта, ""Перед"", ""&Перед"", ""После"", ""&После"", ""Вместо"", ""&Вместо"", ""Изменение и контроль"", ""&ИзменениеИКонтроль"">(""<?""Имя процедуры"">"")
+Процедура ПРЕФИКС_<?""Имя процедуры"">()
+	
+	<?>
+	//ПродолжитьВызов(); (для &Вместо)
+	
+КонецПроцедуры"}
+}
+},
+{5,
+{"Функция",1,0,"",""},
+{0,
+{"Расширение &Перед",0,0,"Функ[ция]","&Перед(""<?""Имя функции"">"")
+Функция <?""Имя Функции"">()
+	
+	<?>
+	Возврат Неопределено;
+	
+Конецфункции"}
+},
+{0,
+{"Расширение &После",0,0,"Функ[ция]","&После(""<?""Имя функции"">"")
+Функция <?""Имя функции"">()
+	
+	<?>
+	Возврат Неопределено;
+	
+Конецфункции"}
+},
+{0,
+{"Расширение &Вместо",0,0,"Функ[ция]","&Вместо(""<?""Имя функции"">"")
+Функция <?""Имя функции"">()
+	
+	<?>
+	Возврат ПродолжитьВызов();
+	
+Конецфункции"}
+},
+{0,
+{"Расширение &ИзменениеИКонтроль",0,0,"Проц[едура]","&ИзменениеИКонтроль(""<?""Имя функции"">"")
+Функция ПРЕФИКС_<?""Имя функции"">()
+	
+	<?>
+	Возврат Неопределено;
+	
+Конецфункции"}
+},
+{0,
+{"Расширение Функция",0,0,"Расш[ирение]","<?""Вариант расширения"", ВыборВарианта, ""Перед"", ""&Перед"", ""После"", ""&После"", ""Вместо"", ""&Вместо"", ""Изменение и контроль"", ""&ИзменениеИКонтроль"">(""<?""Имя функции"">"")
+Функция ПРЕФИКС_<?""Имя функции"">()
+	
+	<?>
+	Возврат Неопределено; //Возврат ПродолжитьВызов(); (для &Вместо)
+	
+Конецфункции"}
+}
+}
+},
+{5,
+{"Асинхронные вызовы",1,0,"",""},
+{9,
+{"Оповещение и обещание",1,0,"",""},
+{0,
+{"Описание оповещения",0,0,"Опис[ание]","ОписаниеОповещения = Новый ОписаниеОповещения(""<?""Имя процедуры"">"", ЭтотОбъект);
+<?>"}
+},
+{0,
+{"Описание оповещения",0,0,"Оповещ[ение]","ОписаниеОповещения = Новый ОписаниеОповещения(""<?""Имя процедуры"">"", ЭтотОбъект);
+<?>"}
+},
+{0,
+{"Описание оповещения (с описанием обработчика)",0,0,"Опис[ание]","ОписаниеОповещения = Новый ОписаниеОповещения(""<?""Имя процедуры"">"", ЭтотОбъект);
+
+//==========Вынести в отдельную процедуру========
+//
+//Список аргументов зависит от контекста вызова!
+//&НаКлиенте
+//Процедура <?""Имя процедуры"">(ДополнительныеПараметры) Экспорт
+//	
+//КонецПроцедуры"}
+},
+{0,
+{"Описание оповещения (с описанием обработчика)",0,0,"Оповещ[ение]","ОписаниеОповещения = Новый ОписаниеОповещения(""<?""Имя процедуры"">"", ЭтотОбъект);
+
+//==========Вынести в отдельную процедуру========
+//
+//Список аргументов зависит от контекста вызова!
+//&НаКлиенте
+//Процедура <?""Имя процедуры"">(ДополнительныеПараметры) Экспорт
+//	
+//КонецПроцедуры"}
+},
+{0,
+{"Описание оповещения с обработчиком ошибки",0,0,"Опис[ание]","ОписаниеОповещения = Новый ОписаниеОповещения(""<?""Имя процедуры"">"", ЭтотОбъект, ,""<?""Имя процедуры"">ОбработкаОшибки"", ЭтотОбъект);
+<?>"}
+},
+{0,
+{"Описание оповещения с обработчиком ошибки",0,0,"Оповещ[ение]","ОписаниеОповещения = Новый ОписаниеОповещения(""<?""Имя процедуры"">"", ЭтотОбъект, ,""<?""Имя процедуры"">ОбработкаОшибки"", ЭтотОбъект);
+<?>"}
+},
+{0,
+{"Описание оповещения с обработчиком ошибки (с описанем обработчика)",0,0,"Опис[ание]","ОписаниеОповещения = Новый ОписаниеОповещения(""<?""Имя процедуры"">"", ЭтотОбъект, ,""<?""Имя процедуры"">ОбработкаОшибки"", ЭтотОбъект);
+
+//==========Вынести в отдельную процедуру========
+//
+//Список аргументов зависит от контекста вызова!
+//&НаКлиенте
+//Процедура <?""Имя процедуры"">(ДополнительныеПараметры) Экспорт
+//	
+//КонецПроцедуры
+
+//&НаКлиенте
+//Процедура <?""Имя процедуры"">ОбработкаОшибки(ДополнительныеПараметры) Экспорт
+//	
+//КонецПроцедуры"}
+},
+{0,
+{"Описание оповещения с обработчиком ошибки (с описанем обработчика)",0,0,"Оповещ[ение]","ОписаниеОповещения = Новый ОписаниеОповещения(""<?""Имя процедуры"">"", ЭтотОбъект, ,""<?""Имя процедуры"">ОбработкаОшибки"", ЭтотОбъект);
+
+//==========Вынести в отдельную процедуру========
+//
+//Список аргументов зависит от контекста вызова!
+//&НаКлиенте
+//Процедура <?""Имя процедуры"">(ДополнительныеПараметры) Экспорт
+//	
+//КонецПроцедуры
+
+//&НаКлиенте
+//Процедура <?""Имя процедуры"">ОбработкаОшибки(ДополнительныеПараметры) Экспорт
+//	
+//КонецПроцедуры"}
+},
+{0,
+{"Обещание",0,0,"Обещ[ание=]","Обещание = Ждать <?>;"}
+}
+},
+{19,
+{"Процедура",1,0,"",""},
+{0,
+{"Асинх Процедура",0,0,"Проц[едура]","Асинх Процедура <?>()
+	
+КонецПроцедуры"}
+},
+{0,
+{"Асинх Процедура",0,0,"Асинх[ Процедура]","Асинх Процедура <?>()
+	
+КонецПроцедуры"}
+},
+{0,
+{"Асинх Процедура",0,0,"Асинх[Процедура]","Асинх Процедура <?>()
+	
+КонецПроцедуры"}
+},
+{0,
+{"Асинх Процедура (с параметрами)",0,0,"Проц[едура]","Асинх Процедура <?""Имя процедуры"">(<?""Параметры"">)
+	
+	<?>
+	
+КонецПроцедуры"}
+},
+{0,
+{"Асинх Процедура (с параметрами)",0,0,"Асинх[Процедура]","Асинх Процедура <?""Имя процедуры"">(<?""Параметры"">)
+	
+	<?>
+	
+КонецПроцедуры"}
+},
+{0,
+{"Асинх Процедура (полная)",0,0,"Проц[едура]","<?""Выберите директиву компиляции"", ВыборВарианта, ""(без директивы)"", ""//"", ""НаКлиенте"", ""&НаКлиенте"", ""НаСервере"", ""&НаСервере"", ""НаКлиентеНаСервере (для модуля команды)"", ""&НаКлиентеНаСервере"", ""НаСервереБезКонтекста (для модуля формы)"", ""&НаСервереБезКонтекста"", ""НаКлиентеНаСервереБезКонтекста (для модуля формы)"", ""&НаКлиентеНаСервереБезКонтекста"">
+Асинх Процедура <?""Имя процедуры"">(<?""Параметры"">)<?""Экспортная процедура"", ВыборВарианта, ""Экспортная"", "" Экспорт"", ""Не экспортная"", """">
+	
+	<?>
+	
+КонецПроцедуры"}
+},
+{0,
+{"Асинх Процедура (полная)",0,0,"Асинх[Процедура]","<?""Выберите директиву компиляции"", ВыборВарианта, ""(без директивы)"", ""//"", ""НаКлиенте"", ""&НаКлиенте"", ""НаСервере"", ""&НаСервере"", ""НаКлиентеНаСервере (для модуля команды)"", ""&НаКлиентеНаСервере"", ""НаСервереБезКонтекста (для модуля формы)"", ""&НаСервереБезКонтекста"", ""НаКлиентеНаСервереБезКонтекста (для модуля формы)"", ""&НаКлиентеНаСервереБезКонтекста"">
+Асинх Процедура <?""Имя процедуры"">(<?""Параметры"">)<?""Экспортная процедура"", ВыборВарианта, ""Экспортная"", "" Экспорт"", ""Не экспортная"", """">
+	
+	<?>
+	
+КонецПроцедуры"}
+},
+{0,
+{"Асинх Процедура (полная с комментарием)",0,0,"Проц[едура]","//TODO: <Описание процедуры>
+//
+// Параметры:
+//  <Параметр1>  - <Тип.Вид> - <описание параметра>
+//                 <продолжение описания параметра>
+//  <Параметр2>  - <Тип.Вид> - <описание параметра>
+//                 <продолжение описания параметра>
+//
+<?""Выберите директиву компиляции"", ВыборВарианта, ""(без директивы)"", ""//"", ""НаКлиенте"", ""&НаКлиенте"", ""НаСервере"", ""&НаСервере"", ""НаКлиентеНаСервере (для модуля команды)"", ""&НаКлиентеНаСервере"", ""НаСервереБезКонтекста (для модуля формы)"", ""&НаСервереБезКонтекста"", ""НаКлиентеНаСервереБезКонтекста (для модуля формы)"", ""&НаКлиентеНаСервереБезКонтекста"">
+Асинх Процедура <?""Имя процедуры"">(<?""Параметры"">)<?""Экспортная процедура"", ВыборВарианта, ""Экспортная"", "" Экспорт"", ""Не экспортная"", """">
+	
+	<?>
+	
+КонецПроцедуры"}
+},
+{0,
+{"Асинх Процедура (полная с комментарием)",0,0,"Асинх[Процедура]","//TODO: <Описание процедуры>
+//
+// Параметры:
+//  <Параметр1>  - <Тип.Вид> - <описание параметра>
+//                 <продолжение описания параметра>
+//  <Параметр2>  - <Тип.Вид> - <описание параметра>
+//                 <продолжение описания параметра>
+//
+<?""Выберите директиву компиляции"", ВыборВарианта, ""(без директивы)"", ""//"", ""НаКлиенте"", ""&НаКлиенте"", ""НаСервере"", ""&НаСервере"", ""НаКлиентеНаСервере (для модуля команды)"", ""&НаКлиентеНаСервере"", ""НаСервереБезКонтекста (для модуля формы)"", ""&НаСервереБезКонтекста"", ""НаКлиентеНаСервереБезКонтекста (для модуля формы)"", ""&НаКлиентеНаСервереБезКонтекста"">
+Асинх Процедура <?""Имя процедуры"">(<?""Параметры"">)<?""Экспортная процедура"", ВыборВарианта, ""Экспортная"", "" Экспорт"", ""Не экспортная"", """">
+	
+	<?>
+	
+КонецПроцедуры"}
+},
+{0,
+{"Асинх Процедура НаКлиенте",0,0,"Проц[едура]","&НаКлиенте
+Асинх Процедура <?>()
+	
+КонецПроцедуры"}
+},
+{0,
+{"Асинх Процедура НаКлиенте",0,0,"Асинх[Процедура]","&НаКлиенте
+Асинх Процедура <?>()
+	
+КонецПроцедуры"}
+},
+{0,
+{"Асинх Процедура НаСервере",0,0,"Проц[едура]","&НаСервере
+Асинх Процедура <?>()
+	
+КонецПроцедуры"}
+},
+{0,
+{"Асинх Процедура НаСервере",0,0,"Асинх[Процедура]","&НаСервере
+Асинх Процедура <?>()
+	
+КонецПроцедуры"}
+},
+{0,
+{"Асинх Процедура НаСервереБезКонтекста (модуль формы)",0,0,"Проц[едура]","&НаСервереБезКонтекста
+Асинх Процедура <?>()
+	
+КонецПроцедуры"}
+},
+{0,
+{"Асинх Процедура НаСервереБезКонтекста (модуль формы)",0,0,"Асинх[Процедура]","&НаСервереБезКонтекста
+Асинх Процедура <?>()
+	
+КонецПроцедуры"}
+},
+{0,
+{"Асинх Процедура НаКлиентеНаСервереБезКонтекста (модуль формы)",0,0,"Проц[едура]","&НаКлиентеНаСервереБезКонтекста
+Асинх Процедура <?>()
+	
+КонецПроцедуры"}
+},
+{0,
+{"Асинх Процедура НаКлиентеНаСервереБезКонтекста (модуль формы)",0,0,"Асинх[Процедура]","&НаКлиентеНаСервереБезКонтекста
+Асинх Процедура <?>()
+	
+КонецПроцедуры"}
+},
+{0,
+{"Асинх Процедура НаКлиентеНаСервере (модуль команды)",0,0,"Проц[едура]","&НаКлиентеНаСервере
+Асинх Процедура <?>()
+	
+КонецПроцедуры"}
+},
+{0,
+{"Асинх Процедура НаКлиентеНаСервере (модуль команды)",0,0,"Асинх[Процедура]","&НаКлиентеНаСервере
+Асинх Процедура <?>()
+	
+КонецПроцедуры"}
+}
+},
+{19,
+{"Функция",1,0,"",""},
+{0,
+{"Асинх Функция",0,0,"Функ[ция]","Асинх Функция <?>()
+	
+КонецФункции"}
+},
+{0,
+{"Асинх Функция",0,0,"Асинх[ Функция]","Асинх Функция <?>()
+	
+КонецФункции"}
+},
+{0,
+{"Асинх Функция",0,0,"Асинх[Функция]","Асинх Функция <?>()
+	
+КонецФункции"}
+},
+{0,
+{"Асинх Функция (с параметрами)",0,0,"Функ[ция]","Асинх Функция <?""Имя функции"">(<?""Параметры"">)
+	
+	Результат = Неопределено;
+	
+	<?>
+	
+	Возврат Результат;
+	
+КонецФункции"}
+},
+{0,
+{"Асинх Функция (с параметрами)",0,0,"Асинх[Функция]","Асинх Функция <?""Имя функции"">(<?""Параметры"">)
+	
+	Результат = Неопределено;
+	
+	<?>
+	
+	Возврат Результат;
+	
+КонецФункции"}
+},
+{0,
+{"Асинх Функция (полная)",0,0,"Функ[ция]","<?""Выберите директиву компиляции"", ВыборВарианта, ""(без директивы)"", ""//"", ""НаКлиенте"", ""&НаКлиенте"", ""НаСервере"", ""&НаСервере"", ""НаКлиентеНаСервере (для модуля команды)"", ""&НаКлиентеНаСервере"", ""НаСервереБезКонтекста (для модуля формы)"", ""&НаСервереБезКонтекста"", ""НаКлиентеНаСервереБезКонтекста (для модуля формы)"", ""&НаКлиентеНаСервереБезКонтекста"">
+Асинх Функция <?""Имя функции"">(<?""Параметры"">)<?""Экспортная фукнция"", ВыборВарианта, ""Экспортная"", "" Экспорт"", ""Не экспортная"", """">
+	
+	Результат = Неопределено;
+	
+	<?>
+	
+	Возврат Результат;
+	
+КонецФункции"}
+},
+{0,
+{"Асинх Функция (полная)",0,0,"Асинх[Функция]","<?""Выберите директиву компиляции"", ВыборВарианта, ""(без директивы)"", ""//"", ""НаКлиенте"", ""&НаКлиенте"", ""НаСервере"", ""&НаСервере"", ""НаКлиентеНаСервере (для модуля команды)"", ""&НаКлиентеНаСервере"", ""НаСервереБезКонтекста (для модуля формы)"", ""&НаСервереБезКонтекста"", ""НаКлиентеНаСервереБезКонтекста (для модуля формы)"", ""&НаКлиентеНаСервереБезКонтекста"">
+Асинх Функция <?""Имя функции"">(<?""Параметры"">)<?""Экспортная фукнция"", ВыборВарианта, ""Экспортная"", "" Экспорт"", ""Не экспортная"", """">
+	
+	Результат = Неопределено;
+	
+	<?>
+	
+	Возврат Результат;
+	
+КонецФункции"}
+},
+{0,
+{"Асинх Функция (полная с комментарием)",0,0,"Функ[ция]","//TODO: <Описание функции>
+//
+// Параметры:
+//  <Параметр1>  - <Тип.Вид> - <описание параметра>
+//                 <продолжение описания параметра>
+//  <Параметр2>  - <Тип.Вид> - <описание параметра>
+//                 <продолжение описания параметра>
+//
+// Возвращаемое значение:
+//   <Тип.Вид>   - <описание возвращаемого значения>
+//
+<?""Выберите директиву компиляции"", ВыборВарианта, ""(без директивы)"", ""//"", ""НаКлиенте"", ""&НаКлиенте"", ""НаСервере"", ""&НаСервере"", ""НаКлиентеНаСервере (для модуля команды)"", ""&НаКлиентеНаСервере"", ""НаСервереБезКонтекста (для модуля формы)"", ""&НаСервереБезКонтекста"", ""НаКлиентеНаСервереБезКонтекста (для модуля формы)"", ""&НаКлиентеНаСервереБезКонтекста"">
+Асинх Функция <?""Имя функции"">(<?""Параметры"">)<?""Экспортная фукнция"", ВыборВарианта, ""Экспортная"", "" Экспорт"", ""Не экспортная"", """">
+	
+	Результат = Неопределено;
+	
+	<?>
+	
+	Возврат Результат;
+	
+КонецФункции"}
+},
+{0,
+{"Асинх Функция (полная с комментарием)",0,0,"Асинх[Функция]","//TODO: <Описание функции>
+//
+// Параметры:
+//  <Параметр1>  - <Тип.Вид> - <описание параметра>
+//                 <продолжение описания параметра>
+//  <Параметр2>  - <Тип.Вид> - <описание параметра>
+//                 <продолжение описания параметра>
+//
+// Возвращаемое значение:
+//   <Тип.Вид>   - <описание возвращаемого значения>
+//
+<?""Выберите директиву компиляции"", ВыборВарианта, ""(без директивы)"", ""//"", ""НаКлиенте"", ""&НаКлиенте"", ""НаСервере"", ""&НаСервере"", ""НаКлиентеНаСервере (для модуля команды)"", ""&НаКлиентеНаСервере"", ""НаСервереБезКонтекста (для модуля формы)"", ""&НаСервереБезКонтекста"", ""НаКлиентеНаСервереБезКонтекста (для модуля формы)"", ""&НаКлиентеНаСервереБезКонтекста"">
+Асинх Функция <?""Имя функции"">(<?""Параметры"">)<?""Экспортная фукнция"", ВыборВарианта, ""Экспортная"", "" Экспорт"", ""Не экспортная"", """">
+	
+	Результат = Неопределено;
+	
+	<?>
+	
+	Возврат Результат;
+	
+КонецФункции"}
+},
+{0,
+{"Асинх Функция НаКлиенте",0,0,"Функ[ция]","&НаКлиенте
+Асинх Функция <?>()
+	
+КонецФункции"}
+},
+{0,
+{"Асинх Функция НаКлиенте",0,0,"Асинх[Функция]","&НаКлиенте
+Асинх Функция <?>()
+	
+КонецФункции"}
+},
+{0,
+{"Асинх Функция НаСервере",0,0,"Функ[ция]","&НаСервере
+Асинх Функция <?>()
+	
+КонецФункции"}
+},
+{0,
+{"Асинх Функция НаСервере",0,0,"Асинх[Функция]","&НаСервере
+Асинх Функция <?>()
+	
+КонецФункции"}
+},
+{0,
+{"Асинх Функция НаСервереБезКонтекста",0,0,"Функ[ция]","&НаСервереБезКонтекста
+Асинх Функция <?>()
+	
+КонецФункции"}
+},
+{0,
+{"Асинх Функция НаСервереБезКонтекста",0,0,"Асинх[Функция]","&НаСервереБезКонтекста
+Асинх Функция <?>()
+	
+КонецФункции"}
+},
+{0,
+{"Асинх Функция НаКлиентеНаСервереБезКонтекста (только модули упр.форм)",0,0,"Функ[ция]","&НаКлиентеНаСервереБезКонтекста
+Асинх Функция <?>()
+	
+КонецФункции"}
+},
+{0,
+{"Асинх Функция НаКлиентеНаСервереБезКонтекста (только модули упр.форм)",0,0,"Асинх[Функция]","&НаКлиентеНаСервереБезКонтекста
+Асинх Функция <?>()
+	
+КонецФункции"}
+},
+{0,
+{"Асинх Функция НаКлиентеНаСервере (только модули команд)",0,0,"Функ[ция]","&НаКлиентеНаСервере
+Асинх Функция <?>()
+	
+КонецФункции"}
+},
+{0,
+{"Асинх Функция НаКлиентеНаСервере (только модули команд)",0,0,"Асинх[Функция]","&НаКлиентеНаСервере
+Асинх Функция <?>()
+	
+КонецФункции"}
+}
+},
+{6,
+{"Вопрос",1,0,"",""},
+{0,
+{"Асинх Вопрос",0,0,"Ответ=","Ответ = Ждать ВопросАсинх(""<?""Текст вопроса"">"",<?""Режим диалога вопрос"", ВыборВарианта, ""ДаНет"", ""РежимДиалогаВопрос.ДаНет"", ""ДаНетОтмена"", ""РежимДиалогаВопрос.ДаНетОтмена"", ""ОК"", ""РежимДиалогаВопрос.ОК"", ""ОКОтмена"", ""РежимДиалогаВопрос.ОКОтмена"", ""ПовторитьОтмена"", ""РежимДиалогаВопрос.ПовторитьОтмена"", ""ПрерватьПовторитьПропустить"", ""РежимДиалогаВопрос.ПрерватьПовторитьПропустить"">, 60);"}
+},
+{0,
+{"Асинх Вопрос",0,0,"ПоказатьВо[прос]","Ответ = Ждать ВопросАсинх(""<?""Текст вопроса"">"",<?""Режим диалога вопрос"", ВыборВарианта, ""ДаНет"", ""РежимДиалогаВопрос.ДаНет"", ""ДаНетОтмена"", ""РежимДиалогаВопрос.ДаНетОтмена"", ""ОК"", ""РежимДиалогаВопрос.ОК"", ""ОКОтмена"", ""РежимДиалогаВопрос.ОКОтмена"", ""ПовторитьОтмена"", ""РежимДиалогаВопрос.ПовторитьОтмена"", ""ПрерватьПовторитьПропустить"", ""РежимДиалогаВопрос.ПрерватьПовторитьПропустить"">, 60);"}
+},
+{0,
+{"Асинх Вопрос",0,0,"Воп[рос]","Ответ = Ждать ВопросАсинх(""<?""Текст вопроса"">"",<?""Режим диалога вопрос"", ВыборВарианта, ""ДаНет"", ""РежимДиалогаВопрос.ДаНет"", ""ДаНетОтмена"", ""РежимДиалогаВопрос.ДаНетОтмена"", ""ОК"", ""РежимДиалогаВопрос.ОК"", ""ОКОтмена"", ""РежимДиалогаВопрос.ОКОтмена"", ""ПовторитьОтмена"", ""РежимДиалогаВопрос.ПовторитьОтмена"", ""ПрерватьПовторитьПропустить"", ""РежимДиалогаВопрос.ПрерватьПовторитьПропустить"">, 60);"}
+},
+{0,
+{"Асинх Вопрос с анализом результата",0,0,"Ответ=","Ответ = Ждать ВопросАсинх(""<?""Текст вопроса"">"",<?""Режим диалога вопрос"", ВыборВарианта, ""ДаНет"", ""РежимДиалогаВопрос.ДаНет"", ""ДаНетОтмена"", ""РежимДиалогаВопрос.ДаНетОтмена"", ""ОК"", ""РежимДиалогаВопрос.ОК"", ""ОКОтмена"", ""РежимДиалогаВопрос.ОКОтмена"", ""ПовторитьОтмена"", ""РежимДиалогаВопрос.ПовторитьОтмена"", ""ПрерватьПовторитьПропустить"", ""РежимДиалогаВопрос.ПрерватьПовторитьПропустить"">, 60);
+
+Если Ответ <?"""", ВыборВарианта, ""Равен"", ""="", ""Не равен"", ""<>""> <?""Код возврата диалога"", ВыборВарианта, ""Да"", ""КодВозвратаДиалога.Да"", ""Нет"", ""КодВозвратаДиалога.Нет"", ""ОК"", ""КодВозвратаДиалога.ОК"", ""Отмена"", ""КодВозвратаДиалога.Отмена"", ""Повторить"", ""КодВозвратаДиалога.Повторить"", ""Прервать"", ""КодВозвратаДиалога.Прервать"", ""Пропустить"", ""КодВозвратаДиалога.Пропустить"", ""Тайаут"", ""КодВозвратаДиалога.Таймаут""> Тогда
+	
+КонецЕсли;"}
+},
+{0,
+{"Асинх Вопрос с анализом результата",0,0,"ПоказатьВо[прос]","Ответ = Ждать ВопросАсинх(""<?""Текст вопроса"">"",<?""Режим диалога вопрос"", ВыборВарианта, ""ДаНет"", ""РежимДиалогаВопрос.ДаНет"", ""ДаНетОтмена"", ""РежимДиалогаВопрос.ДаНетОтмена"", ""ОК"", ""РежимДиалогаВопрос.ОК"", ""ОКОтмена"", ""РежимДиалогаВопрос.ОКОтмена"", ""ПовторитьОтмена"", ""РежимДиалогаВопрос.ПовторитьОтмена"", ""ПрерватьПовторитьПропустить"", ""РежимДиалогаВопрос.ПрерватьПовторитьПропустить"">, 60);
+
+Если Ответ <?"""", ВыборВарианта, ""Равен"", ""="", ""Не равен"", ""<>""> <?""Код возврата диалога"", ВыборВарианта, ""Да"", ""КодВозвратаДиалога.Да"", ""Нет"", ""КодВозвратаДиалога.Нет"", ""ОК"", ""КодВозвратаДиалога.ОК"", ""Отмена"", ""КодВозвратаДиалога.Отмена"", ""Повторить"", ""КодВозвратаДиалога.Повторить"", ""Прервать"", ""КодВозвратаДиалога.Прервать"", ""Пропустить"", ""КодВозвратаДиалога.Пропустить"", ""Тайаут"", ""КодВозвратаДиалога.Таймаут""> Тогда
+	
+КонецЕсли;"}
+},
+{0,
+{"Асинх Вопрос с анализом результата",0,0,"Воп[рос]","Ответ = Ждать ВопросАсинх(""<?""Текст вопроса"">"",<?""Режим диалога вопрос"", ВыборВарианта, ""ДаНет"", ""РежимДиалогаВопрос.ДаНет"", ""ДаНетОтмена"", ""РежимДиалогаВопрос.ДаНетОтмена"", ""ОК"", ""РежимДиалогаВопрос.ОК"", ""ОКОтмена"", ""РежимДиалогаВопрос.ОКОтмена"", ""ПовторитьОтмена"", ""РежимДиалогаВопрос.ПовторитьОтмена"", ""ПрерватьПовторитьПропустить"", ""РежимДиалогаВопрос.ПрерватьПовторитьПропустить"">, 60);
+
+Если Ответ <?"""", ВыборВарианта, ""Равен"", ""="", ""Не равен"", ""<>""> <?""Код возврата диалога"", ВыборВарианта, ""Да"", ""КодВозвратаДиалога.Да"", ""Нет"", ""КодВозвратаДиалога.Нет"", ""ОК"", ""КодВозвратаДиалога.ОК"", ""Отмена"", ""КодВозвратаДиалога.Отмена"", ""Повторить"", ""КодВозвратаДиалога.Повторить"", ""Прервать"", ""КодВозвратаДиалога.Прервать"", ""Пропустить"", ""КодВозвратаДиалога.Пропустить"", ""Тайаут"", ""КодВозвратаДиалога.Таймаут""> Тогда
+	
+КонецЕсли;"}
+}
+},
+{2,
+{"Помещение файла во временное хранилище",1,0,"",""},
+{0,
+{"Поместить файл",0,1,"","&НаКлиенте
+Процедура ПоместитьФайлКоманда(Команда)
+	
+	ПараметрыДиалога = Новый ПараметрыДиалогаПомещенияФайлов;
+	ПараметрыДиалога.Заголовок = ""НачатьПомещениеФайлаНаСервер"";
+	ПараметрыДиалога.МножественныйВыбор = Истина;
+	ПараметрыДиалога.Фильтр = ""Все файлы|*.*"";
+	//НСтр(""en = 'Excel (*.XLS, *.xlsx)|*.XLS;*.xlsx|'; ru = 'Файл таблицы Excel (*.XLS, *.xlsx)|*.XLS;*.xlsx|'"");
+	//НСтр(""en = 'Text (*.txt)|*.txt|'; ru = 'текстовый файл (*.txt)|*.txt|'"");
+	ЗавершениеОбратныйВызов = Новый ОписаниеОповещения(""ЗавершениеОбратныйВызов"", ЭтотОбъект);
+	ПрогрессОбратныйВызов = Новый ОписаниеОповещения(""ПрогрессОбратныйВызов"", ЭтотОбъект);
+	ПередНачаломОбратныйВызов = Новый ОписаниеОповещения(""ПередНачаломОбратныйВызов"", ЭтотОбъект);
+	НачатьПомещениеФайлаНаСервер(ЗавершениеОбратныйВызов, ПрогрессОбратныйВызов, ПередНачаломОбратныйВызов, , ПараметрыДиалога);
+	
+КонецПроцедуры
+
+&НаКлиенте
+Процедура ЗавершениеОбратныйВызов(ОписаниеПомещенногоФайла, ДополнительныеПараметры) Экспорт
+	
+	Сообщить(""Помещение файла "" + ?(ОписаниеПомещенногоФайла.ПомещениеФайлаОтменено, ""отменено"", ""выполнено успешно""));
+	Сообщить(""Адрес во временном хранилище: "" + ОписаниеПомещенногоФайла.Адрес);
+	Сообщить(""Имя файла: "" + ОписаниеПомещенногоФайла.СсылкаНаФайл.Имя);
+	Сообщить(""Размер файла, байт: "" + ОписаниеПомещенногоФайла.СсылкаНаФайл.Размер());
+	
+КонецПроцедуры
+
+&НаКлиенте
+Процедура ПрогрессОбратныйВызов(ПомещаемыйФайл, Помещено, ОтказОтПомещенияФайла, ДополнительныеПараметры) Экспорт
+	Состояние(""Файл "" + ПомещаемыйФайл.Имя, Помещено, ""Файл имеет размер "" + ПомещаемыйФайл.Размер() + "" байт"", БиблиотекаКартинок.Документ);
+КонецПроцедуры
+
+&НаКлиенте
+Процедура ПередНачаломОбратныйВызов(ПомещаемыйФайл, ОтказОтПомещенияФайла, ДополнительныеПараметры) Экспорт
+	Сообщить(""Помещаемый файл - "" + ПомещаемыйФайл.Имя + "", размер = "" + ПомещаемыйФайл.Размер());
+КонецПроцедуры"}
+},
+{0,
+{"Поместить файл Асинх",0,1,"","&НаКлиенте
+Асинх Процедура ПоместитьФайлКоманда(Команда)
+	
+	ПараметрыДиалога = Новый ПараметрыДиалогаПомещенияФайлов;
+	ПараметрыДиалога.Заголовок = ""НачатьПомещениеФайлаНаСервер"";
+	ПараметрыДиалога.МножественныйВыбор = Истина;
+	ПараметрыДиалога.Фильтр = ""Все файлы|*.*"";
+	//НСтр(""en = 'Excel (*.XLS, *.xlsx)|*.XLS;*.xlsx|'; ru = 'Файл таблицы Excel (*.XLS, *.xlsx)|*.XLS;*.xlsx|'"");
+	//НСтр(""en = 'Text (*.txt)|*.txt|'; ru = 'текстовый файл (*.txt)|*.txt|'"");
+	ПрогрессОбратныйВызов = Новый ОписаниеОповещения(""ПрогрессОбратныйВызов"", ЭтотОбъект);
+	ПередНачалоОбратныйВызов = Новый ОписаниеОповещения(""ПередНачалоОбратныйВызов"", ЭтотОбъект);
+	ОписаниеПомещенногоФайла = Ждать НачатьПомещениеФайлаНаСервер(ПрогрессОбратныйВызов, ПередНачалоОбратныйВызов, , ПараметрыДиалога);
+	Если ОписаниеПомещенногоФайла = Неопределено Тогда
+		Возврат;
+	КонецЕсли;
+	
+	Сообщить(""Помещение файла "" + ?(ОписаниеПомещенногоФайла.ПомещениеФайлаОтменено, ""отменено"", ""выполнено успешно""));
+	Сообщить(""Адрес во временном хранилище: "" + ОписаниеПомещенногоФайла.Адрес);
+	Сообщить(""Имя файла: "" + ОписаниеПомещенногоФайла.СсылкаНаФайл.Имя);
+	Сообщить(""Размер файла, байт: "" + ОписаниеПомещенногоФайла.СсылкаНаФайл.Размер());
+	
+КонецПроцедуры
+
+&НаКлиенте
+Процедура ПрогрессОбратныйВызов(ПомещаемыйФайл, Помещено, ОтказОтПомещенияФайла, ДополнительныеПараметры) Экспорт
+	Состояние(""Файл "" + ПомещаемыйФайл.Имя, Помещено, ""Файл имеет размер "" + ПомещаемыйФайл.Размер() + "" байт"", БиблиотекаКартинок.Документ);
+КонецПроцедуры
+
+&НаКлиенте
+Процедура ПередНачалоОбратныйВызов(ПомещаемыйФайл, ОтказОтПомещенияФайла, ДополнительныеПараметры) Экспорт
+	Сообщить(""Помещаемый файл - "" + ПомещаемыйФайл.Имя + "", размер = "" + ПомещаемыйФайл.Размер());
+КонецПроцедуры"}
+}
+}
+},
+{1,
+{"Полезняшки",1,0,"",""},
+{0,
+{"Загрузка данных из Excel Асинх",0,0,"","&НаКлиенте
+Асинх Процедура ПоместитьФайлКоманда(Команда)
+	
+	ПараметрыДиалога = Новый ПараметрыДиалогаПомещенияФайлов;
+	ПараметрыДиалога.Заголовок = ""НачатьПомещениеФайлаНаСервер"";
+	ПараметрыДиалога.МножественныйВыбор = Истина;
+	ПараметрыДиалога.Фильтр = НСтр(""en = 'Excel (*.XLS, *.xlsx)|*.XLS;*.xlsx|'; ru = 'Файл таблицы Excel (*.XLS, *.xlsx)|*.XLS;*.xlsx|'"");
+	ПрогрессОбратныйВызов = Новый ОписаниеОповещения(""ПрогрессОбратныйВызов"", ЭтотОбъект);
+	ПередНачаломОбратныйВызов = Новый ОписаниеОповещения(""ПередНачаломОбратныйВызов"", ЭтотОбъект);
+	ОписаниеПомещенногоФайла = Ждать ПоместитьФайлНаСерверАсинх(ПрогрессОбратныйВызов, ПередНачаломОбратныйВызов, , ПараметрыДиалога);
+	Если ОписаниеПомещенногоФайла = Неопределено Тогда
+		Возврат;
+	КонецЕсли;
+	
+	Сообщить(""Помещение файла "" + ?(ОписаниеПомещенногоФайла.ПомещениеФайлаОтменено, ""отменено"", ""выполнено успешно""));
+	Сообщить(""Адрес во временном хранилище: "" + ОписаниеПомещенногоФайла.Адрес);
+	Сообщить(""Имя файла: "" + ОписаниеПомещенногоФайла.СсылкаНаФайл.Имя);
+	Сообщить(""Размер файла, байт: "" + ОписаниеПомещенногоФайла.СсылкаНаФайл.Размер());
+	
+	ОбработатьЗагруженныйФайл(ОписаниеПомещенногоФайла.Адрес);
+	
+КонецПроцедуры
+
+&НаСервереБезКонтекста
+Процедура ОбработатьЗагруженныйФайл(Адрес)
+	
+	ФайлНаДиске = ПолучитьИмяВременногоФайла(""xlsx"");
+	ДанныеФайла = ПолучитьИзВременногоХранилища(Адрес);
+	ДанныеФайла.Записать(ФайлНаДиске);
+	
+	ТабДок = Новый ТабличныйДокумент;
+	ТабДок.Прочитать(ФайлНаДиске, СпособЧтенияЗначенийТабличногоДокумента.Значение);
+	
+	ПостроительЗапроса = Новый ПостроительЗапроса;
+	ПостроительЗапроса.ИсточникДанных = Новый ОписаниеИсточникаДанных(ТабДок.Область(""Лист1"")); // Здесь Лист1 - название листа экселя.
+	ПостроительЗапроса.Выполнить();
+	// В файле первой строчкой должны идти названия колонок. Если этого не будет, то построитель не вернет ТЗ, т.к. не будут заданы имена колонок.
+	// Также нужно смотреть на типы ячеек файла. Типизация нормально отрабатывает, если заданы соответствующие типы. Иначе ""10.08.2017"" в экселе - это строка, а не дата.
+	СтрокиТЗ = ПостроительЗапроса.Результат.Выгрузить(); // Выполняем запрос к источнику данных, автоматически выбирая все поля и получаем таблицу значений
+	
+	Для каждого СтрокаТЗ Из СтрокиТЗ Цикл
+		// Полученные данные
+	КонецЦикла;
+	
+КонецПроцедуры
+
+&НаКлиенте
+Процедура ПрогрессОбратныйВызов(ПомещаемыйФайл, Помещено, ОтказОтПомещенияФайла, ДополнительныеПараметры) Экспорт
+	Состояние(""Файл "" + ПомещаемыйФайл.Имя, Помещено, ""Файл имеет размер "" + ПомещаемыйФайл.Размер() + "" байт"", БиблиотекаКартинок.Документ);
+КонецПроцедуры
+
+&НаКлиенте
+Процедура ПередНачаломОбратныйВызов(ПомещаемыйФайл, ОтказОтПомещенияФайла, ДополнительныеПараметры) Экспорт
+	Сообщить(""Помещаемый файл - "" + ПомещаемыйФайл.Имя + "", размер = "" + ПомещаемыйФайл.Размер());
+КонецПроцедуры"}
 }
 },
 {4,
