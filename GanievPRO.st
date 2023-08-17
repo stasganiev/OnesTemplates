@@ -1,6 +1,6 @@
 ﻿{1,
 {4,
-{"Ganiev.PRO (v8.3.3.4 from 17 Aug 2023)",1,0,"",""},
+{"Ganiev.PRO (v8.3.3.5 from 17 Aug 2023)",1,0,"",""},
 {0,
 {"Ваши предложения по улучшению / Your suggestions for improvement",0,0,"","// Есть мысли по развитию шаблонов? Пишите на e-mail: stas@ganiev.pro или в Telegram: @stas_ganiev
 
