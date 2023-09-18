@@ -7,7 +7,7 @@
 // If you have a things about improvements, text me please on e-mail: stas@ganiev.pro or on Telegram: @stas_ganiev"}
 },
 {0,
-{"Описание и история изменений / Description and versions history",0,0,"","// Шаблоны для работы в конфигураторе с системами 1С:Предприятие версии 8.3
+{"Описание и история изменений / Description and versions history",0,0,"","// Шаблоны кода для работы в конфигураторе 1С:Предприятие 8.3
 // Последнюю версию шаблонов всегда можно найти тут: https://github.com/stasganiev/OnesTemplates
 // С уважением, Стас Ганиев (@stas_ganiev)
 
