@@ -1,5 +1,4 @@
-# OnesTemplates
-`Шаблоны кода для работы в конфигураторе 1С:Предприятие 8.3`
+# OnesTemplates - шаблоны кода для 1С:Предприятия 8.3
 
 [![Join telegram chat](https://img.shields.io/badge/chat-telegram-blue?style=flat&logo=telegram)](https://t.me/st1c8)
 [![GitHub issues](https://img.shields.io/github/issues-raw/stasganiev/OnesTemplates?style=badge)](https://github.com/stasganiev/OnesTemplates/issues)
@@ -17,11 +16,11 @@
 
 (в разработке) скоро здесь появятся инструкции:
 
-*** О механизме шаблонов автозамены в 1С ***
+**О механизме шаблонов автозамены в 1С**
 
-*** Как скачать и установить шаблоны на свой конфигуратор ***
+**Как скачать и установить шаблоны на свой конфигуратор**
 
-*** Как принять участие в разработке и предложить свои идеи ***
+**Как принять участие в разработке и предложить свои идеи**
 
 ## Каталог шаблонов
 
