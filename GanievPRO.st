@@ -1,6 +1,6 @@
 ﻿{1,
 {4,
-{"Ganiev.PRO (v8.3.3.5 from 17 Aug 2023)",1,0,"",""},
+{"Ganiev.PRO (v8.3.3.7 from 18 Sep 2023)",1,0,"",""},
 {0,
 {"Ваши предложения по улучшению / Your suggestions for improvement",0,0,"","// Есть мысли по развитию шаблонов? Пишите на e-mail: stas@ganiev.pro или в Telegram: @stas_ganiev
 
@@ -4096,7 +4096,7 @@ EndProcedure"}
 }
 },
 {3,
-{"Useful things",1,0,"",""},
+{"Helpfulness",1,0,"",""},
 {0,
 {"Data import from Excel Async",0,0,"","&AtClient
 Async Procedure PutFileCommand(Command)
