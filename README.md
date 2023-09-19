@@ -1,8 +1,10 @@
-# OnesTemplates - шаблоны кода для 1С:Предприятия 8.3
+# OnesTemplates - шаблоны кода 1С
 
 [![Join telegram chat](https://img.shields.io/badge/chat-telegram-blue?style=flat&logo=telegram)](https://t.me/st1c8)
 [![GitHub issues](https://img.shields.io/github/issues-raw/stasganiev/OnesTemplates?style=badge)](https://github.com/stasganiev/OnesTemplates/issues)
 [![Last release](https://img.shields.io/github/v/release/stasganiev/OnesTemplates?include_prereleases&label=last%20release&style=badge)](https://github.com/stasganiev/OnesTemplates/releases/latest)
+
+![title](./img/titlepaper.png)
 
 ## О проекте
 
@@ -28,7 +30,7 @@
 
 ## Авторы
 
-|*Имя*|*Страница*|*Telegram*|
+|*Имя*|*Страница*|*Telegram-канал*|
 |---|---|---|
 |Стас Ганиев|[Taplink](https://stasganiev.taplink.ws/)|[OneSCast](https://t.me/OneSCast)|
 |Артур|[Портал программиста 1С](https://koder.by/shablony_avtozameny_1s.php)|[1Cnik](https://t.me/by_1cnik)|
