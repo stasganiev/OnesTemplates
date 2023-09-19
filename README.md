@@ -4,7 +4,9 @@
 [![GitHub issues](https://img.shields.io/github/issues-raw/stasganiev/OnesTemplates?style=badge)](https://github.com/stasganiev/OnesTemplates/issues)
 [![Last release](https://img.shields.io/github/v/release/stasganiev/OnesTemplates?include_prereleases&label=last%20release&style=badge)](https://github.com/stasganiev/OnesTemplates/releases/latest)
 
-![title](./img/titlepaper.png)
+<div id="header" align="center">
+  <img src="./img/titlepaper.png" width="320" height="180"/>
+</div>
 
 ## О проекте
 
