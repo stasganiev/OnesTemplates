@@ -1,4 +1,4 @@
-{1,
+﻿{1,
 {4,
 {"Ganiev.PRO (v8.3.4.9 from 01 Okt 2023)",1,0,"",""},
 {0,
@@ -3783,14 +3783,14 @@ EndDo;"}
 #EndDelete"}
 },
 {0,
-{"Extension #Insert",0,0,"Ext[ension]","#Вставка
+{"Extension #Insert",0,0,"Ext[ension]","#Insert
 <?>
-#КонецВставки"}
+#EndInsert"}
 },
 {0,
-{"Extension #Delete",0,0,"Ext[ension]","#Удаление
+{"Extension #Delete",0,0,"Ext[ension]","#Delete
 <?>
-#КонецУдаления"}
+#EndDelete"}
 },
 {5,
 {"Procedure",1,0,"",""},
