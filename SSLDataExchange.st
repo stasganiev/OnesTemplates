@@ -1,8 +1,10 @@
 ﻿{1,
-{8,
+{2,
 {"Подсистема Обмен данными, БСП 3.1.8",1,0,"",""},
+{8,
+{"RU",1,0,"",""},
 {0,
-{"01 Модуль инициализации подсистемы",0,0,"","#Область ПрограммныйИнтерфейс
+{"01 Модуль инициализации подсистемы",0,0,"ПланОбмена=","#Область ПрограммныйИнтерфейс
 
 #Область ДляВызоваИзДругихПодсистем
 
@@ -255,10 +257,10 @@
 "}
 },
 {0,
-{"02 Настройка подсистемы - префикс ИБ",0,0,"","Префикс = НСтр(""ru = '<?""Префикс из 2 символов"">'"");"}
+{"02 Настройка подсистемы - префикс ИБ",0,0,"ПланОбмена=","Префикс = НСтр(""ru = '<?""Префикс из 2 символов"">'"");"}
 },
 {0,
-{"03 Настройка подсистемы - Соответствие версий формата",0,0,"","ВерсииФормата.Вставить(""1.3"", <?""Имя модуля"">);
+{"03 Настройка подсистемы - Соответствие версий формата",0,0,"ПланОбмена=","ВерсииФормата.Вставить(""1.3"", <?""Имя модуля"">);
 ВерсииФормата.Вставить(""1.4"", <?""Имя модуля"">);
 ВерсииФормата.Вставить(""1.5"", <?""Имя модуля"">);
 ВерсииФормата.Вставить(""1.6"", <?""Имя модуля"">);
@@ -267,12 +269,14 @@
 ВерсииФормата.Вставить(""1.10"", <?""Имя модуля"">);"}
 },
 {0,
-{"04 План обмена - подключение нового плана",0,0,"","ПланыОбменаПодсистемы.Добавить(Метаданные.ПланыОбмена.<?""Имя плана обмена"">);"}
+{"04 План обмена - подключение нового плана",0,0,"ПланОбмена=","ПланыОбменаПодсистемы.Добавить(Метаданные.ПланыОбмена.<?""Имя плана обмена"">);"}
 },
 {0,
-{"05 План обмена - модуль менеджера",0,0,"","//
-//
+{"05 План обмена - модуль менеджера",0,0,"ПланОбмена=","#Если Сервер Или ТолстыйКлиентОбычноеПриложение Или ВнешнееСоединение Тогда
+
 #Область ПрограммныйИнтерфейс
+
+#Область ПриПолученииНастроек
 
 // Заполняет настройки, влияющие на использование плана обмена.
 // 
@@ -310,10 +314,10 @@
 	Настройки.ПредупреждатьОНесоответствииВерсийПравилОбмена = Истина;
 	
 	// {{ Вариант [ОУФ] }}
-	//Настройки.Алгоритмы.ОбработчикПроверкиОграниченийПередачиДанных = Истина; // [ОУФ]
-	//Настройки.Алгоритмы.ОбработчикПроверкиЗначенийПоУмолчанию = Истина; // [ОУФ]
-	//Настройки.Алгоритмы.ПриОпределенииПоддерживаемыхОбъектовФормата = Истина; // [ОУФ]
-	//Настройки.Алгоритмы.ПриОпределенииПоддерживаемыхКорреспондентомОбъектовФормата = Истина; // [ОУФ]
+	//Настройки.Алгоритмы.ОбработчикПроверкиОграниченийПередачиДанных = Истина;
+	//Настройки.Алгоритмы.ОбработчикПроверкиЗначенийПоУмолчанию = Истина;
+	//Настройки.Алгоритмы.ПриОпределенииПоддерживаемыхОбъектовФормата = Истина;
+	//Настройки.Алгоритмы.ПриОпределенииПоддерживаемыхКорреспондентомОбъектовФормата = Истина;
 	
 	Настройки.ЭтоПланОбменаXDTO = Истина;
 	Настройки.ФорматОбмена = ""http://v8.1c.ru/edi/edi_stnd/EnterpriseData"";
@@ -416,10 +420,16 @@
 КонецПроцедуры
 
 #КонецОбласти
+
+#КонецОбласти
+
+#КонецЕсли
 "}
 },
 {0,
-{"06 План обмена - модуль формы узла",0,0,"","//!!! Не забудьте подключить обработчики к форме
+{"06 План обмена - модуль формы узла",0,0,"ПланОбмена=","
+//!!! Не забудьте подключить обработчики к форме
+
 #Область ОбработчикиСобытийФормы
 
 &НаКлиенте
@@ -447,7 +457,9 @@
 "}
 },
 {0,
-{"07 Подписки - модуль обработчиков событий",0,0,"","Процедура <?""Имя плана обмена"">РегистрацияДокументаПередЗаписью(Источник, Отказ, РежимЗаписи, РежимПроведения) Экспорт
+{"07 Подписки - модуль обработчиков событий",0,0,"ПланОбмена=","#Область СлужебныйПрограммныйИнтерфейс
+
+Процедура <?""Имя плана обмена"">РегистрацияДокументаПередЗаписью(Источник, Отказ, РежимЗаписи, РежимПроведения) Экспорт
 	ОбменДаннымиСобытия.МеханизмРегистрацииОбъектовПередЗаписьюДокумента(""<?""Имя плана обмена"">"", Источник, Отказ, РежимЗаписи, РежимПроведения);
 КонецПроцедуры
 
@@ -470,12 +482,242 @@
 Процедура <?""Имя плана обмена"">РегистрацияУдаленияПередУдалением(Источник, Отказ) Экспорт
 	ОбменДаннымиСобытия.МеханизмРегистрацииОбъектовПередУдалением(""<?""Имя плана обмена"">"", Источник, Отказ);
 КонецПроцедуры
+
+#КонецОбласти
 "}
 },
 {0,
-{"08 Вставка в обработчики объектов ПередЗаписью, ПриЗаписи и ПередУдалением",0,0,"","Если ОбменДанными.Загрузка Тогда
+{"08 Вставка в обработчики объектов: ПередЗаписью, ПриЗаписи, ПередУдалением",0,0,"ПланОбмена=","Если ОбменДанными.Загрузка Тогда
 	Возврат;
 КонецЕсли;"}
+}
+},
+{5,
+{"EN",1,0,"",""},
+{0,
+{"04 Exchange plan - append the new exchange plan",0,0,"ExchPlan=","SubsystemExchangePlans.Add(Metadata.ExchangePlans.<?""Exchange plan name"">);"}
+},
+{0,
+{"05 Exchange plan - manager module",0,0,"ПланОбмена=","#If Server Or ThickClientOrdinaryApplication Or ExternalConnection Then
+
+#Region Public
+
+#Region ForCallsFromOtherSubsystems
+
+// Fills in the settings that affect the exchange plan usage.
+// 
+// Parameters:
+//  Settings - Structure - default exchange plan settings, see DataExchangeServer. 
+//                          DefaultExchangePlanSettings details of the function return value.
+//
+Procedure WhenReceivingSettings(Settings) Export
+	
+	// {{ Not use at this case:
+	//Settings.Algorithms.AccountingSettingsCheckHandler = True; // through internet
+	//Settings.Algorithms.OnConnectToCorrespondent = True; // through internet or directly
+	//Settings.Algorithms.OnSendSenderData = True;
+	//Settings.Algorithms.OnGetSenderData = True;
+	//Settings.Algorithms.SetUpInteractiveExport = True; // except [DIB]
+	//Settings.Algorithms.SetUpInteractiveExportSaaS = True;
+	//Settings.Algorithms.DataTransferRestrictionsDetails = True;
+	//Settings.Algorithms.DefaultValuesDetails = True; // [SaaS]
+	//Settings.Algorithms.InteractiveExportFilterPresentation = True; // except [DIB]
+	//Settings.ExchangeSettingsOptions = New ValueTable; // see OnGetExchangeSettingsOptions()
+	//Settings.ExchangePlanNameToMigrateToNewExchange = """";
+	//Settings.ExchangePlanUsedInSaaS = False; // [SaaS]
+	//Settings.SourceConfigurationName = ""Suurce""; // [SaaS]
+	//Settings.DestinationConfigurationName = New Structure(""Destination""); // [SaaS], is NOT [XDTO]
+	// }}
+	
+	Settings.Algorithms.OnGetExchangeSettingsOptions = True;
+	Settings.Algorithms.OnGetSettingOptionDetails = True;
+	Settings.ExchangePlanPurpose = ""SynchronizationWithAnotherApplication""; // DIB
+	//Settings.Algorithms.OnSaveDataSynchronizationSettings = True;
+	//Settings.Algorithms.BeforeDataSynchronizationSetup = True;
+	//Settings.ConversionRulesAreRequired = True;
+	//Settings.SelectiveRegistrationMode = Undefined;
+	
+	// {{ Option [XML] }}
+	Settings.WarnAboutExchangeRuleVersionMismatch = True;
+	
+	// {{ Option [XDTO] }}
+	//Settings.Algorithms.DataTransferLimitsCheckHandler = True;
+	//Settings.Algorithms.DefaultValuesCheckHandler = True;
+	//Settings.Algorithms.OnDefineSupportedFormatObjects = True;
+	//Settings.Algorithms.OnDefineFormatObjectsSupportedByCorrespondent = True;
+	
+	Settings.IsXDTOExchangePlan = True;
+	Settings.ExchangeFormat = ""http://v8.1c.ru/edi/edi_stnd/EnterpriseData"";
+	Settings.ExchangeFormatExtensions = New Map;
+	FormatVersions = New Map;
+	DataExchangeOverridable.OnGetAvailableFormatVersions(FormatVersions);
+	Settings.ExchangeFormatVersions = FormatVersions;
+	
+	Settings.RulesForRegisteringInManager = True;
+	Settings.RegistrationManagerName = ""RegisteringManagerModule""; // module name
+	
+EndProcedure
+
+// Populates the collection of configuration options provided for the exchange plan.
+// 
+// Parameters:
+//  ExchangeSettingsOptions - ValueTable - a collection of exchange setting options, see return 
+//                                       value description of the DefaultExchangePlanSettings function of the DataExchangeServer common module.
+//  ContextParameters - Structure - see DataExchangeServer.ContextParametersOfSettingsOptionsReceipt  
+//                                       details of the function return value.
+//
+Procedure OnGetExchangeSettingsOptions(ExchangeSettingsOptions, ContextParameters) Export
+	
+	SetupOption = ExchangeSettingsOptions.Add();
+	SetupOption.SettingID        = ""XMLExchange"";
+	SetupOption.CorrespondentInSaaS   = False;
+	SetupOption.CorrespondentInLocalMode = True;
+	
+	SetupOption = ExchangeSettingsOptions.Add();
+	SetupOption.SettingID        = ""XDTOExchange"";
+	SetupOption.CorrespondentInSaaS   = False;
+	SetupOption.CorrespondentInLocalMode = True;
+	
+	SetupOption = ExchangeSettingsOptions.Add();
+	SetupOption.SettingID        = ""XDTOExchangeSendOnly"";
+	SetupOption.CorrespondentInSaaS   = False;
+	SetupOption.CorrespondentInLocalMode = True;
+	
+EndProcedure
+
+// Fills in a set of parameters that define the exchange settings option.
+// 
+// Parameters:
+//  OptionDetails - Structure - a default setting option set, see DataExchangeServer.
+//                                       DefaultExchangeSettingOptionDetails, details of the return  
+//                                       value.
+//  SettingID - String - an ID of data exchange settings option.
+//  ContextParameters - Structure - see DataExchangeServer. 
+//                                       ContextParametersSettingOptionDetailsReceiving details of the function return value.
+//
+Procedure OnGetSettingOptionDetails(OptionDetails, SettingID, ContextParameters) Export
+	
+	// {{ Not use at this case:
+	//OptionDetails.InitialImageCreationFormName = """"; // [DIB]
+	//OptionDetails.DefaultValues = New Structure; //
+	// }}
+	
+	OptionDetails.UseDataExchangeCreationWizard = True;
+	OptionDetails.SettingsFileNameForDestination = ""Exchange settings"";
+	OptionDetails.UsedExchangeMessagesTransports.Add(Enums.ExchangeMessagesTransportTypes.FILE); // Add the necessary options
+	OptionDetails.DetailedExchangeInformation = """";
+	//OptionDetails.DataSyncSettingsWizardFormName = """";
+	//OptionDetails.CorrespondentConfigurationName = """";
+	//OptionDetails.CorrespondentConfigurationDescription = """";
+	//OptionDetails.PathToRulesSetFileOnUserSite = """";
+	//OptionDetails.PathToRulesSetFileInTemplateDirectory = """";
+	//OptionDetails.CommonNodeData = """";
+	//OptionDetails.AccountingSettingsSetupNote = """";
+	//OptionDetails.DataMappingSupported = True;
+	
+	If SettingID = ""XMLExchange"" Then
+		
+		OptionDetails.NewDataExchangeCreationCommandTitle = ""Data exchange by rules (XML)"";
+		OptionDetails.ExchangeCreateWizardTitle = ""The new data exchange process by rules"";
+		OptionDetails.ExchangePlanNodeTitle = ""Destination (data exchange by rules)"";
+		OptionDetails.BriefExchangeInfo = ""Data exchange by rules, using Conversasion data v 2.1"";
+		
+	ElsIf SettingID = ""XDTOExchange"" Then
+		
+		OptionDetails.NewDataExchangeCreationCommandTitle = ""Universal data exchange (XDTO)"";
+		OptionDetails.ExchangeCreateWizardTitle = ""The new universal data exchange"";
+		OptionDetails.ExchangePlanNodeTitle = ""Destination (universal data exchange)"";
+		OptionDetails.BriefExchangeInfo = ""Data exchange by universal format (EnterpriceData)"";
+		//OptionDetails.FormatExtension = """"; // [XDTO]
+		
+	ElsIf SettingID = ""XDTOExchangeSendOnly"" Then
+		
+		OptionDetails.NewDataExchangeCreationCommandTitle = ""Universal data exchange (XDTO), send only"";
+		OptionDetails.ExchangeCreateWizardTitle = ""The new universal data exchange (send only)"";
+		OptionDetails.ExchangePlanNodeTitle = ""Destination (universal data exchange, send only)"";
+		OptionDetails.BriefExchangeInfo = ""Data exchange by universal format (EnterpriceData), send only"";
+		//OptionDetails.FormatExtension = """"; // [XDTO]
+		
+	EndIf;
+	
+	NodeFilters = New Structure;
+	NodeFilters.Insert(""ExchangeFormatVersion"", ""1.6""); // Structure's keys are repeated the exchange plan requisites names
+	OptionDetails.Filters = NodeFilters;
+	
+EndProcedure
+
+#EndRegion
+
+#EndRegion
+
+#EndIf
+"}
+},
+{0,
+{"06 Exchange plan - node form module",0,0,"ПланОбмена=","
+//!!! Don't ferget to connect the form event handlers to form
+
+#Region FormEventHandlers
+
+&AtClient
+Procedure OnClose(Exit)
+	
+	Notify(""Record_ExchangePlanNode"");
+	
+EndProcedure
+
+&AtServer
+Procedure OnWriteAtServer(Cancel, CurrentObject, WriteParameters)
+	
+	DataExchangeServer.NodeFormOnWriteAtServer(CurrentObject, Cancel);
+	
+EndProcedure
+
+&AtClient
+Procedure BeforeWrite(Cancel, WriteParameters)
+	
+	DataExchangeClient.BeforeWrite(ThisObject, Cancel, WriteParameters);
+	
+EndProcedure
+
+#EndRegion
+"}
+},
+{0,
+{"07 Event subscriptions - event handlers module",0,0,"ПланОбмена=","#Region Internal
+
+Procedure <?""Exchange plan name"">DocumentRegistrationBeforeWrite(Source, Cancel, WriteMode, PostingMode) Export
+	DataExchangeEvents.ObjectsRegistrationMechanismBeforeWriteDocument(""<?""Exchange plan name"">"", Source, Cancel, WriteMode, PostingMode);
+EndProcedure
+
+Procedure <?""Exchange plan name"">RegistrationBeforeWrite(Source, Cancel) Export
+	DataExchangeEvents.ObjectsRegistrationMechanismBeforeWrite(""<?""Exchange plan name"">"", Source, Cancel);
+EndProcedure
+
+Procedure <?""Exchange plan name"">RecordsSetRegistrationBeforeWrite(Source, Cancel, Replacing) Export
+	DataExchangeEvents.ObjectsRegistrationMechanismBeforeWriteRegister(""<?""Exchange plan name"">"", Source, Cancel, Replacing);
+EndProcedure
+
+Procedure <?""Exchange plan name"">CalculationRecordsSetRegistrationBeforeWrite(Source, Cancel, Replacing, WriteOnly, WriteActualActionPeriod, WriteRecalculations) Export
+	DataExchangeEvents.ObjectsRegistrationMechanismBeforeWriteRegister(""<?""Exchange plan name"">"", Source, Cancel, Replacing);
+EndProcedure
+
+Procedure <?""Exchange plan name"">ConstantRegistrationBeforeWrite(Source, Cancel) Export
+	DataExchangeEvents.ObjectsRegistrationMechanismBeforeWriteConstant(""<?""Exchange plan name"">"", Source, Cancel);
+EndProcedure
+
+Procedure <?""Exchange plan name"">DeleteRegistrationBeforeDelete(Source, Cancel) Export
+	DataExchangeEvents.ObjectsRegistrationMechanismBeforeDelete(""<?""Exchange plan name"">"", Source, Cancel);
+EndProcedure
+
+#EndRegion
+"}
+},
+{0,
+{"08 Starting code of the object handlers: BeforeWrite, OnWrite, BeforDelete",0,0,"ПланОбмена=","If DataExchange.Load Then
+	Return;
+EndIf;"}
+}
 }
 }
 }
