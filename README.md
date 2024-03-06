@@ -3,6 +3,7 @@
 [![Join telegram chat](https://img.shields.io/badge/chat-telegram-blue?style=flat&logo=telegram)](https://t.me/st1c8)
 [![GitHub issues](https://img.shields.io/github/issues-raw/stasganiev/OnesTemplates?style=badge)](https://github.com/stasganiev/OnesTemplates/issues)
 [![Last release](https://img.shields.io/github/v/release/stasganiev/OnesTemplates?include_prereleases&label=last%20release&style=badge)](https://github.com/stasganiev/OnesTemplates/releases/latest)
+[![OpenYellow](https://img.shields.io/endpoint?url=https://openyellow.neocities.org/badges/2/673372670.json)](https://openyellow.notion.site/openyellow/24727888daa641af95514b46bee4d6f2?p=a2406915722b4851a20b0ab826889185&amp;pm=s)
 
 <div id="header" align="center">
   <img src="./img/titlepaper.png" width="320" height="180"/>
@@ -47,7 +48,7 @@
 
 ## Каталог шаблонов
 
-(в разрботке)
+[Каталог шаблонов по алфавиту](./doc/catalog.md)
 
 ## <a name="title_outhers"></a> Авторы
 
