@@ -1,6 +1,6 @@
 ﻿{1,
 {4,
-{"Ganiev.PRO (v8.3.5.2 from 06 Mar 2024)",1,0,"",""},
+{"Ganiev.PRO (v8.3.6.1 from 12 Mar 2024)",1,0,"",""},
 {0,
 {"Ваши предложения по улучшению / Your suggestions for improvement",0,0,"","// Есть мысли по развитию шаблонов? Пишите на e-mail: stas@ganiev.pro или в Telegram: @stas_ganiev
 
@@ -11,7 +11,13 @@
 // Последнюю версию шаблонов всегда можно найти тут: https://github.com/stasganiev/OnesTemplates
 // С уважением, Стас Ганиев (@stas_ganiev)
 
-#Область 2024_01_24
+#Область 2024_03_12
+	// (версия 8.3.6 от 12.03.2024)
+	// К функциям упраления формой добавлен ""Экспорт""
+	// Конструктор описания типа можно вызвать по сниппету ""Тип=""
+#КонецОбласти
+
+#Область 2024_03_06
 	// (версия 8.3.5 от 06.03.2024)
 	// В прочие шаблоны добавлен ""Экспорт"" (Экс[порт])
 	// В группу ""Запросы"" добавлено ВНУТРЕННЕЕ СОЕДИНЕНИЕ
@@ -1424,7 +1430,7 @@
 {"Формат",0,0,"Формат","Формат(<?>, ""<?, ФорматнаяСтрока>"")"}
 },
 {0,
-{"Конструктор описания типов",0,1,"","<?""Конструктор описания типов"", КонструкторОписанияТипов>"}
+{"Конструктор описания типов",0,1,"Тип=","<?""Конструктор описания типов"", КонструкторОписанияТипов>"}
 },
 {0,
 {"Проверка типа",0,1,"","Если ТипЗнч(<?""Выражение для проверки типа"">) = Тип(""<?""Выберите тип"", ВыборТипа>"") Тогда
@@ -2092,7 +2098,7 @@
 {7,
 {"Формы",1,0,"",""},
 {0,
-{"Добавить реквизит формы",0,0,"","Процедура ДобавитьРеквизитФормы(ЭтаФорма, ИмяРеквизита, ТипРеквизита, Путь = """", Заголовок = """", СохраняемыеДанные = Ложь)
+{"Добавить реквизит формы",0,0,"","Процедура ДобавитьРеквизитФормы(ЭтаФорма, ИмяРеквизита, ТипРеквизита, Путь = """", Заголовок = """", СохраняемыеДанные = Ложь) Экспорт
 	
 	РеквизитФормы = Новый РеквизитФормы(ИмяРеквизита, ТипРеквизита, Путь, Заголовок, СохраняемыеДанные);
 	ДобавляемыеРеквизиты = Новый Массив;
@@ -2103,7 +2109,7 @@
 "}
 },
 {0,
-{"Добавить команду формы",0,0,"","Функция ДобавитьКомандуФормы(ЭтаФорма, ИмяКоманды, Действие, Заголовок)
+{"Добавить команду формы",0,0,"","Функция ДобавитьКомандуФормы(ЭтаФорма, ИмяКоманды, Действие, Заголовок) Экспорт
 	
 	Команда = ЭтаФорма.Команды.Добавить(ИмяКоманды);
 	Команда.Действие = Действие;
@@ -2115,7 +2121,7 @@
 "}
 },
 {0,
-{"Добавить элемент - кнопка формы",0,0,"","Функция ДобавитьКнопкуНаФорму(Элементы, Имя, ГруппаРодитель = Неопределено, ПередЭлементом = Неопределено, ИмяКоманды = """")
+{"Добавить элемент - кнопка формы",0,0,"","Функция ДобавитьКнопкуНаФорму(Элементы, Имя, ГруппаРодитель = Неопределено, ПередЭлементом = Неопределено, ИмяКоманды = """") Экспорт
 	
 	Если ПередЭлементом = Неопределено Тогда
 		НовыйЭлемент = Элементы.Добавить(Имя, Тип(""КнопкаФормы""), ГруппаРодитель);
@@ -2132,7 +2138,7 @@
 "}
 },
 {0,
-{"Добавить элемент - группа формы",0,0,"","Функция ДобавитьГруппуНаФорму(Элементы, Имя, ГруппаРодитель = Неопределено, ПередЭлементом = Неопределено)
+{"Добавить элемент - группа формы",0,0,"","Функция ДобавитьГруппуНаФорму(Элементы, Имя, ГруппаРодитель = Неопределено, ПередЭлементом = Неопределено) Экспорт
 	
 	Если ПередЭлементом = Неопределено Тогда
 		НовыйЭлемент = Элементы.Добавить(Имя, Тип(""ГруппаФормы""), ГруппаРодитель);
@@ -2149,7 +2155,7 @@
 "}
 },
 {0,
-{"Добавить элемент - поле формы",0,0,"","Функция ДобавитьПолеНаФорму(Элементы, Имя, ГруппаРодитель = Неопределено, ПередЭлементом = Неопределено, ПутьКДанным = """")
+{"Добавить элемент - поле формы",0,0,"","Функция ДобавитьПолеНаФорму(Элементы, Имя, ГруппаРодитель = Неопределено, ПередЭлементом = Неопределено, ПутьКДанным = """") Экспорт
 	
 	Если ПередЭлементом = Неопределено Тогда
 		НовыйЭлемент = Элементы.Add(Имя, Type(""ПолеФормы""), ГруппаРодитель);
@@ -2166,7 +2172,7 @@
 "}
 },
 {0,
-{"Добавить элемент - декорация формы",0,0,"","Функция ДобавитьДекорациюНаФорму(Элементы, Имя, ГруппаРодитель = Неопределено, ПередЭлементом = Неопределено)
+{"Добавить элемент - декорация формы",0,0,"","Функция ДобавитьДекорациюНаФорму(Элементы, Имя, ГруппаРодитель = Неопределено, ПередЭлементом = Неопределено) Экспорт
 	
 	Если ПередЭлементом = Неопределено Тогда
 		Элемент = Элементы.Добавить(Имя, Тип(""ДекорацияФормы""), ГруппаРодитель);
@@ -2186,7 +2192,7 @@
 "}
 },
 {0,
-{"Добавить элемент - таблица формы",0,0,"","Функция ДобавитьТаблицуНаФорму(Элементы, Имя, ГруппаРодитель = Неопределено, ПередЭлементом = Неопределено, ПутьКДанным = """")
+{"Добавить элемент - таблица формы",0,0,"","Функция ДобавитьТаблицуНаФорму(Элементы, Имя, ГруппаРодитель = Неопределено, ПередЭлементом = Неопределено, ПутьКДанным = """") Экспорт
 	
 	Если ПередЭлементом = Неопределено Тогда
 		Элемент = Элементы.Добавить(Имя, Тип(""ТаблицаФормы""), ГруппаРодитель);
@@ -3786,7 +3792,7 @@ OpenForm(""Catalog.<?"""", MetadataObject, ""Catalog"">.ListForm"", Parameters);
 {"Format",0,0,"Format","Format(<?>, ""<?, FormatString>"")"}
 },
 {0,
-{"Type description constructor",0,1,"","<?""Type description constructor"", TypeDescriptionConstructor>"}
+{"Type description constructor",0,1,"Type=","<?""Type description constructor"", TypeDescriptionConstructor>"}
 },
 {0,
 {"Type check",0,1,"","If TypeOf(<?""Checking type expression"">) = Type(""<?""Choose type"", TypeChoice>"") Then
@@ -4415,7 +4421,7 @@ EndProcedure"}
 {7,
 {"Forms",1,0,"",""},
 {0,
-{"Add form requisite",0,0,"","Procedure AddFormRequisite(Form, Name, RequisiteType, Path = """", Header = """", SavedData = False)
+{"Add form requisite",0,0,"","Procedure AddFormRequisite(Form, Name, RequisiteType, Path = """", Header = """", SavedData = False) Export
 	
 	Requisite = New FormAttribute(Name, RequisiteType, Path, Header, SavedData);
 	AddedRequisites = New Array;
@@ -4426,7 +4432,7 @@ EndProcedure
 "}
 },
 {0,
-{"Add form command",0,0,"","Function AddFormCommand(Form, CommandName, ActionName, Title)
+{"Add form command",0,0,"","Function AddFormCommand(Form, CommandName, ActionName, Title) Export
 	
 	Command = Form.Commands.Add(CommandName);
 	Command.Action = ActionName;
@@ -4438,7 +4444,7 @@ EndFunction
 "}
 },
 {0,
-{"Add item -  form button",0,0,"","Function AddButtonOnForm(Items, Name, ParentGroup = Undefined, ItemBefor = Undefined, CommandName = """")
+{"Add item -  form button",0,0,"","Function AddButtonOnForm(Items, Name, ParentGroup = Undefined, ItemBefor = Undefined, CommandName = """") Export
 	
 	If ItemBefor = Undefined Then
 		NewItem = Items.Add(Name, Type(""FormButton""), ParentGroup);
@@ -4455,7 +4461,7 @@ EndFunction
 "}
 },
 {0,
-{"Add item - form group",0,0,"","Function AddGroupOnForm(Items, Name, ParentGroup = Undefined, ItemBefor = Undefined)
+{"Add item - form group",0,0,"","Function AddGroupOnForm(Items, Name, ParentGroup = Undefined, ItemBefor = Undefined) Export
 	
 	If ItemBefor = Undefined Then
 		NewItem = Items.Add(Name, Type(""FormGroup""), ParentGroup);
@@ -4472,7 +4478,7 @@ EndFunction
 "}
 },
 {0,
-{"Add item - form field",0,0,"","Function AddFieldOnForm(Items, Name, ParentGroup = Undefined, ItemBefor = Undefined, DataPath = """")
+{"Add item - form field",0,0,"","Function AddFieldOnForm(Items, Name, ParentGroup = Undefined, ItemBefor = Undefined, DataPath = """") Export
 	
 	If ItemBefor = Undefined Then
 		NewItem = Items.Add(Name, Type(""FormField""), ParentGroup);
@@ -4489,7 +4495,7 @@ EndFunction
 "}
 },
 {0,
-{"Add item - form decoration",0,0,"","Function AddDecorationOnForm(Items, Name, ParentGroup = Undefined, ItemBefor = Undefined)
+{"Add item - form decoration",0,0,"","Function AddDecorationOnForm(Items, Name, ParentGroup = Undefined, ItemBefor = Undefined) Export
 	
 	If ItemBefor = Undefined Then
 		NewItem = Items.Add(Name, Type(""FormDecoration""), ParentGroup);
@@ -4505,7 +4511,7 @@ EndFunction
 "}
 },
 {0,
-{"Add item - form table",0,0,"","Function AddDecorationOnForm(Items, Name, ParentGroup = Undefined, ItemBefor = Undefined, DataPath = """")
+{"Add item - form table",0,0,"","Function AddDecorationOnForm(Items, Name, ParentGroup = Undefined, ItemBefor = Undefined, DataPath = """") Export
 	
 	If ItemBefor = Undefined Then
 		NewItem = Items.Add(Name, Type(""FormTable""), ParentGroup);
