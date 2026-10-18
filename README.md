@@ -107,7 +107,7 @@ OnesTemplates продолжает труд Павла Чистова, кото�
 
 | Имя | Страница | Telegram-канал |
 | --- | --- | --- |
-| Стас Ганиев | [GitHub](https://github.com/stasganiev) | [OneSCast](https://t.me/OneSCast) |
+| Стас Ганиев | [ganiev.pro](https://ganiev.pro/ru/), [GitHub](https://github.com/stasganiev) | [OneSCast](https://t.me/OneSCast) |
 | Артур | [Портал программиста 1С](https://koder.by/shablony_avtozameny_1s.php) | [1Cnik](https://t.me/by_1cnik) |
 
 ## Лицензия
